@@ -12,6 +12,8 @@ public class Come_Generate : MonoBehaviour
 
     int ComCnt = 0; // 今出ているコメントの数
     int Delcnt = 0; // 削除したコメントの数
+    int MoveCnt = 0;  // コメントを動かすためのカウント
+
     const float x = 84f; // 次のコメントの出現座標
     const float y = 17f;
 
@@ -29,13 +31,18 @@ public class Come_Generate : MonoBehaviour
         //Debug.Log(Move_flg);
         //Debug.Log(ComCnt);
 
+        // 次のコメントが決まったら動く処理をする
         if (Move_flg)
         {
             for(int i= Delcnt; i<ComCnt; i++)
+                TextList[i].transform.position += new Vector3(0f, 0.5f, 0f);
+            
+            MoveCnt += 1;
+            if (MoveCnt == 60)
             {
-                TextList[i].transform.position += new Vector3(0f, 30f, 0f);
+                Move_flg = false;
+                MoveCnt = 0;
             }
-            Move_flg = false;
         }
     }
 
