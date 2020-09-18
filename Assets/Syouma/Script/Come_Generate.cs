@@ -15,7 +15,7 @@ public class Come_Generate : MonoBehaviour
     int MoveCnt = 0;  // コメントを動かすためのカウント
     int ccc = 0;
 
-    const float x = 84f; // 次のコメントの出現座標
+    const float x = 5f; // 次のコメントの出現座標
     const float y = 17f;
 
     bool Move_flg = false;
