@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Door
   - Enemy
+  - Key
+  - Hand
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - Player
   - Enemy
   - camera
-  - 
-  - 
+  - Key
+  - Hand
   - 
   - 
   - 
