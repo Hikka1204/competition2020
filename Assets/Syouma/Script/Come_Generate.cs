@@ -10,9 +10,10 @@ public class Come_Generate : MonoBehaviour
     private List<GameObject> TextList = new List<GameObject>(); // 今出ているコメント
     RectTransform[] rect;
 
-    int ComCnt = 0; // 今出ているコメントの数
+    int ComNum = 0; // 今出ているコメントの数
     int Delcnt = 0; // 削除したコメントの数
     int MoveCnt = 0;  // コメントを動かすためのカウント
+    int ccc = 0;
 
     const float x = 84f; // 次のコメントの出現座標
     const float y = 17f;
@@ -29,12 +30,12 @@ public class Come_Generate : MonoBehaviour
     void Update()
     {
         //Debug.Log(Move_flg);
-        //Debug.Log(ComCnt);
+        //Debug.Log(ComNum);
 
         // 次のコメントが決まったら動く処理をする
         if (Move_flg)
         {
-            for(int i= Delcnt; i<ComCnt; i++)
+            for(int i= Delcnt; i< ComNum; i++)
                 TextList[i].transform.position += new Vector3(0f, 0.5f, 0f);
             
             MoveCnt += 1;
@@ -50,28 +51,23 @@ public class Come_Generate : MonoBehaviour
     /*** コメントを追加する処理 ***/
     void AddComment()
     {
-        if(ComCnt == 0)
-        {
-            TextList.Add((GameObject)Instantiate(TextPrefab));
-            TextList[ComCnt].transform.position = new Vector3(x, y, 0f);
-            TextList[ComCnt].transform.SetParent(canvas.transform, false);
-        }
-        else
-        {
-            Move_flg = true;
-            TextList.Add((GameObject)Instantiate(TextPrefab));
-            TextList[ComCnt].transform.position = new Vector3(x, y-24f, 0f);
-            TextList[ComCnt].transform.SetParent(canvas.transform, false);
-        }
+        Move_flg = true;
+        TextList.Add((GameObject)Instantiate(TextPrefab));
+        TextList[ComNum].transform.position = new Vector3(x, y-24f, 0f);
+        TextList[ComNum].transform.SetParent(canvas.transform, false);
 
-         ComCnt += 1;
-        if (ComCnt > 6) DeleteComment();
+         ComNum += 1;
+        //if(ccc != 6) ccc += 1;
+        if (ComNum > 6) DeleteComment();
     }
 
     /*** コメントを消す処理 ***/
     void DeleteComment() 
     {
         Destroy(TextList[Delcnt]);
+        //ComNum = 0;
         Delcnt += 1;
+        //if (Delcnt != 5) Delcnt += 1;
+        //else Delcnt = 0;
     }
 }
