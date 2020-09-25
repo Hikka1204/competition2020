@@ -2,28 +2,90 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class DoorMove : MonoBehaviour {
 
     //　ドアエリアに入っているかどうか
     private bool isNear;
     //　ドアのアニメーター
     private Animator animator;
+    [SerializeField] private float _CloseRate = 5f;   //開いて閉まるまでの時間
+    private float CloseTime;    //上の変数の格納用
 
-    [SerializeField] private float _speed = 1;  //ドアのアニメーション速度
+    [SerializeField] byte _KeyFlg;  //キーフラグ用
+    private byte GetKeyFlg;     //プレイヤーのキーを取得する変数
+    [SerializeField] private float _speed = 1f;  //ドアのアニメーション速度
+
+    private AudioSource audioSource;
+
+    [SerializeField] GameObject Hand;
+
+    [SerializeField] AudioClip _OpenSE;
+    [SerializeField] AudioClip _CloseSE;
+    [SerializeField] AudioClip _KeyInSE;
+    [SerializeField] AudioClip _KeyOutSE;
 
     void Start()
     {
         isNear = false;
         animator = transform.GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         animator.speed = _speed;
+        
     }
 
     void Update()
     {
-        if (Input.GetKeyDown("e") && isNear)
+        if(CloseTime > 0)   //開いた後に閉まるまでの処理
         {
-            animator.SetBool("Open", !animator.GetBool("Open"));
+            CloseTime -= Time.deltaTime;
+            
+            if(CloseTime <= 0)
+            {
+                animator.SetBool("Open", false);
+            }
         }
+
+
+        if (Input.GetKeyDown("e") && isNear )    //eキーが押されたら開くか閉まる
+        {
+            if (_KeyFlg == 0)   //鍵無しドアなら
+            {
+                animator.SetBool("Open", !animator.GetBool("Open"));
+                if (animator.GetBool("Open") == true)    //開くなら閉まる時間を格納する
+                {
+                    CloseTime = _CloseRate;
+                }
+                else //閉まるドアの音
+                {
+                    CloseTime = 0;
+                }
+            }
+            else if (_KeyFlg == GetKeyFlg)  //鍵付きなら鍵を持ってるか判断する
+            {
+                _KeyFlg = 0;    //鍵無しドアにする
+                audioSource.clip = _KeyInSE;
+                audioSource.Play();
+            }
+            else //鍵を持たずに鍵付きドアを開けようとしたとき
+            {
+                audioSource.clip = _KeyOutSE;
+                audioSource.Play();
+            }
+        }
+    }
+
+    public void OpenSE()    //アニメーションに関数を追加している //ドアが開く音
+    {
+        audioSource.clip = _OpenSE;
+        audioSource.Play();
+    }
+
+    public void CloseSE()   //アニメーションに関数を追加している //ドアが閉まる音
+    {
+        audioSource.clip = _CloseSE;
+        audioSource.Play();
     }
 
     void OnTriggerEnter(Collider col)
@@ -31,6 +93,16 @@ public class DoorMove : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             isNear = true;
+            if(_KeyFlg > 0)
+            {
+                GetKeyFlg = Hand.GetComponent<Hand>().GetKey();
+            }
+        }
+
+        if(col.gameObject.tag == "Enemy")
+        {
+            animator.SetBool("Open", true);
+            CloseTime = _CloseRate;
         }
     }
 
@@ -42,48 +114,5 @@ public class DoorMove : MonoBehaviour {
         }
     }
 
-    //   [SerializeField] private float _speed;   //動くスピード
-    //   [SerializeField] private float _angle_Y;  //Yの方角 ドアの傾きをどこまで増やすか
-    //   [SerializeField] private float _waitRate;    //ドアの待機時間入力
-    //   private float WaitTime; //ドアを開いた後の閉まるまでの待機時間 
-    //   private bool OpenFlag;      //TRUE:開く   FALSE:閉まる
-    //   private Transform IntObjectTr;  //このスクリプトのトランスフォームを取得
-
-    //   // Use this for initialization
-    //   void Start () {
-    //       IntObjectTr = gameObject.transform;     //オブジェクトのトランスフォームの初期値を追加
-    //       OpenFlag = false;
-
-    //   }
-
-    //// Update is called once per frame
-    //void Update () {
-    //       if (WaitTime > 0)
-    //       {
-    //           WaitTime -= Time.deltaTime;
-    //       }
-
-    //       if(OpenFlag == true && IntObjectTr.localEulerAngles.y + _angle_Y >= transform.localEulerAngles.y)
-    //       {
-    //           var Angle = transform.localEulerAngles;
-    //           transform.Rotate(0, _speed, 0);
-    //           if(OpenFlag == true && IntObjectTr.localEulerAngles.y + _angle_Y <= transform.localEulerAngles.y)
-    //           {
-    //               OpenFlag = false;
-    //               Debug.Log("とまれ？");
-    //               transform.localEulerAngles = new Vector3(Angle.x, IntObjectTr.localEulerAngles.y + _angle_Y, Angle.z);
-    //           }
-    //       }
-
-    //   }
-
-    //   private void OnTriggerStay(Collider other)  //当たり判定の中にいる時に
-    //   {
-    //       if(OpenFlag == false && other.gameObject.tag == "Player" && Input.GetKey("e"))    //Eキーを押すと開く
-    //       {
-    //           OpenFlag = true;
-    //           Debug.Log("開け？");
-    //       }
-    //   }
 
 }
