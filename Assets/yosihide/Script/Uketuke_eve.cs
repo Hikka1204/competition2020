@@ -12,7 +12,7 @@ public class Uketuke_eve : MonoBehaviour
     {
         Uketuke = GameObject.Find("Text").GetComponent<Text>();
         Uketuke.enabled = false;
-        Key1 = GameObject.Find("Key1");
+        Key1 = GameObject.Find("rust_key");
         
     }
 
