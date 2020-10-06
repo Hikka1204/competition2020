@@ -17,6 +17,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     [SerializeField] GameObject Destination;    //目的地
     private Animator Anim;      //アニメーション格納
     private bool Over_Flg;      //ゲームオーバーフラグ
+    [SerializeField] private Vector3[] Location_Nav;
 
 
     void Start()

@@ -5,22 +5,12 @@ using UnityEngine;
 public class Key1 : MonoBehaviour
 {
 
-    [SerializeField]private byte _KeyFlg = 1;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [SerializeField]private byte _KeyFlg = 2;
+    [SerializeField] private FlgManeger fmg;
 
     public byte GetKey()
     {
+        fmg.GetFlg(_KeyFlg);
         return _KeyFlg;
     }
 }

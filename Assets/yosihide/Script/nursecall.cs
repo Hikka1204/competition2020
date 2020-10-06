@@ -4,24 +4,38 @@ using UnityEngine;
 
 public class nursecall : MonoBehaviour
 {
+
     //効果音の設定
-    AudioSource audioSource;
     public AudioClip NurseCallSE;
+    [SerializeField] private AudioSource _NurseCall;
+    private bool NurseFlg = false;  //なってないか、なったか
+    private bool colflg = false;
 
-    void Start()
+    private void Update()
     {
-        audioSource = GetComponent<AudioSource>();
-    }
-    
-    
-        void OnTriggerEnter(Collider other)
+        if (NurseFlg == false && colflg == true && Input.GetKeyDown("e"))
         {
-
-            if (other.gameObject.tag == "Player")
-            {
-                Debug.Log("aa");
-                audioSource.PlayOneShot(NurseCallSE);
-            }
+            _NurseCall.GetComponent<AudioSource>().clip = NurseCallSE;
+            _NurseCall.GetComponent<AudioSource>().Play();
+            Destroy(GetComponent<nursecall>());
+            NurseFlg = true;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Hand")
+        {
+            colflg = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Hand")
+        {
+            colflg = false;
+        }
+    }
     
 }
