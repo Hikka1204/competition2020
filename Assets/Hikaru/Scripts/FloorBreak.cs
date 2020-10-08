@@ -6,16 +6,11 @@ using UnityEngine;
 
 public class FloorBreak : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private AudioSource audio;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     public void destroyObject()
@@ -33,19 +28,23 @@ public class FloorBreak : MonoBehaviour
             r.AddForce(vect, ForceMode.Impulse);
             r.AddTorque(vect, ForceMode.Impulse);
         });
+        audio.Play();
         Destroy(gameObject);
     }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            for(int i = 0; i < gameObject.transform.childCount; i++)
+            for (int i = 0; i < gameObject.transform.childCount; i++)
             {
                 gameObject.transform.GetChild(i).gameObject.SetActive(true);
             }
             destroyObject();
         }
     }
+
 
 }
