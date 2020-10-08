@@ -3,13 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Door
-  - Enemy
-  - Key
-  - Hand
-  - Wall
-  - Floor
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -19,16 +13,16 @@ TagManager:
   - UI
   - 
   - 
-  - postprocess
-  - Player
-  - Enemy
-  - camera
-  - Key
-  - Hand
-  - BreakBlock
-  - Floor
-  - Wall
-  - Door
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

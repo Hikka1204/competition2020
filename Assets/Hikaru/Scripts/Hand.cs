@@ -25,7 +25,7 @@ public class Hand : MonoBehaviour
 
             audioSource.clip = _PickUp;
             audioSource.Play();
-
+            colflg = false;
             Destroy(key.gameObject);
         }
     }
