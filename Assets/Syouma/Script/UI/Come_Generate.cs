@@ -8,7 +8,13 @@ public class Come_Generate : MonoBehaviour
     public GameObject canvas;//キャンバス
     public GameObject TextPrefab; // テキストプレファブをいれる変数
     private List<GameObject> TextList = new List<GameObject>(); // 今出ているコメント
-    RectTransform[] rect;
+
+    [SerializeField] private float startPosition;//上の移動限界値
+    [SerializeField] private float endPosition;//下の移動限界値
+    [SerializeField] private float moveSpeed;//上下の移動速度
+    private RectTransform window;//UIの座標変更
+    private bool MoveDecision = true;//今のウィンドウがどこにあるかの判定　trueなら上
+    private float nowPosition;//現在のウィンドウ座標
 
     int ComNum = 0; // 今出ているコメントの数
     int Delcnt = 0; // 削除したコメントの数
@@ -19,18 +25,26 @@ public class Come_Generate : MonoBehaviour
     const float y = 17f;
 
     bool Move_flg = false;
+    bool OnOff_flg = false;
 
     void Start()
     {
         TextList.Clear(); //Listの初期化
         InvokeRepeating("AddComment", 1, 3); // 1秒後に3秒間隔でコメント追加する
-        
+        window = canvas.GetComponent<RectTransform>();//取得
     }
 
     void Update()
     {
         //Debug.Log(Move_flg);
-        //Debug.Log(ComNum);
+        nowPosition = window.transform.position.y;//現在座標の取得
+
+        // Cキーを押してコメントの表示/非表示の切り替え
+        if (Input.GetKeyDown(KeyCode.C)) OnOff_flg = !OnOff_flg;
+
+        if (MoveDecision && OnOff_flg) OnMove();        // 非表示の処理
+        else if(!MoveDecision && !OnOff_flg) OffMove(); // 表示の処理
+                    
 
         // 次のコメントが決まったら動く処理をする
         if (Move_flg)
@@ -69,5 +83,26 @@ public class Come_Generate : MonoBehaviour
         Delcnt += 1;
         //if (Delcnt != 5) Delcnt += 1;
         //else Delcnt = 0;
+    }
+
+
+    /*** コメントを表示する処理 ***/
+    void OnMove()
+    {
+        if (nowPosition > startPosition)//この座標になるまで
+            window.transform.position -= new Vector3(0, moveSpeed, 0);//下に移動する
+        
+        else if (nowPosition <= startPosition)//制限より移動したら
+            MoveDecision = false;//下についたと知らせる
+    }
+
+    /*** コメントを非表示する処理 ***/
+    void OffMove()
+    {
+        if (nowPosition < endPosition)//この座標になるまで
+            window.transform.position += new Vector3(0, moveSpeed, 0);//上に移動する
+        
+        else if (nowPosition >= endPosition)//制限より移動したら
+            MoveDecision = true;//上についたと知らせる
     }
 }
