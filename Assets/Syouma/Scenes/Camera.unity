@@ -238,7 +238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: field of view
-      value: 40
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_Enabled
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132586693}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3784c82a2f62b694db7c683263862fcd, type: 3}
   m_Name: 
@@ -1127,6 +1127,39 @@ MonoBehaviour:
   EnableFieldOfViewAtten: 1
   FieldOfView: 50
   MoveFieldOfView: 60
+--- !u!114 &1132586701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132586693}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebafa4264c9a4474e843d2754b77e24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 684f984e95df21e4b8f56b7313c00433, type: 3}
+  displacementMap: {fileID: 2800000, guid: a9d377456ec652841a44d80d02ef3b64, type: 3}
+  intensity: 1
+  flipIntensity: 1
+  colorIntensity: 0.501
+--- !u!114 &1132586704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132586693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7569320986520d499aa33d84fb7d227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Zoom_Speed: 0.786
+  Zoom_Time: 2
+  Zoom_View: 10
+  Zoomflg: 0
 --- !u!1 &1200289166
 GameObject:
   m_ObjectHideFlags: 0
