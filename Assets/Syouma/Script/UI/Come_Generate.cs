@@ -9,17 +9,18 @@ public class Come_Generate : MonoBehaviour
     public GameObject TextPrefab; // テキストプレファブをいれる変数
     private List<GameObject> TextList = new List<GameObject>(); // 今出ているコメント
 
-    [SerializeField] private float startPosition;//上の移動限界値
-    [SerializeField] private float endPosition;//下の移動限界値
-    [SerializeField] private float moveSpeed;//上下の移動速度
-    private RectTransform window;//UIの座標変更
-    private bool MoveDecision = true;//今のウィンドウがどこにあるかの判定　trueなら上
-    private float nowPosition;//現在のウィンドウ座標
+    float startPosition;//上の移動限界値
+    float endPosition;//下の移動限界値
+    [SerializeField] private float OnOffSpeed;//表示.非表示の移動速度
+    [SerializeField] private float MoveSpeed;//コメントが流れる速度
+
+    RectTransform window;//UIの座標変更
+    bool MoveDecision = true;//今のウィンドウがどこにあるかの判定　trueなら上
+    float nowPosition;//現在のウィンドウ座標
 
     int ComNum = 0; // 今出ているコメントの数
     int Delcnt = 0; // 削除したコメントの数
     int MoveCnt = 0;  // コメントを動かすためのカウント
-    int ccc = 0;
 
     const float x = 5f; // 次のコメントの出現座標
     const float y = 17f;
@@ -30,7 +31,8 @@ public class Come_Generate : MonoBehaviour
     void Start()
     {
         TextList.Clear(); //Listの初期化
-        InvokeRepeating("AddComment", 1, 3); // 1秒後に3秒間隔でコメント追加する
+        //InvokeRepeating("AddComment", 1, 3); // 1秒後に3秒間隔でコメント追加する
+        Invoke("AddComment", 1); // 1秒後にコメント追加する
         window = canvas.GetComponent<RectTransform>();//取得
     }
 
@@ -50,10 +52,10 @@ public class Come_Generate : MonoBehaviour
         if (Move_flg)
         {
             for(int i= Delcnt; i< ComNum; i++)
-                TextList[i].transform.position += new Vector3(0f, 0.5f, 0f);
+                TextList[i].transform.position += new Vector3(0f, MoveSpeed, 0f);
             
             MoveCnt += 1;
-            if (MoveCnt == 60)
+            if (MoveCnt == 30)// MoveCnt(60) = MoveSpeed(0.5)
             {
                 Move_flg = false;
                 MoveCnt = 0;
@@ -65,24 +67,70 @@ public class Come_Generate : MonoBehaviour
     /*** コメントを追加する処理 ***/
     void AddComment()
     {
-        Move_flg = true;
-        TextList.Add((GameObject)Instantiate(TextPrefab));
-        TextList[ComNum].transform.position = new Vector3(x, y-24f, 0f);
-        TextList[ComNum].transform.SetParent(canvas.transform, false);
+        if (!Move_flg)
+        {
+            Move_flg = true;
+            TextList.Add((GameObject)Instantiate(TextPrefab));
+            TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
+            TextList[ComNum].transform.SetParent(canvas.transform, false);
+            TextList[ComNum].GetComponent<Come_List>().RandomComment();
 
-         ComNum += 1;
-        //if(ccc != 6) ccc += 1;
-        if (ComNum > 6) DeleteComment();
+            ComNum += 1;
+            if (ComNum > 6) DeleteComment();
+        }
+        Invoke("AddComment", Random.Range(3, 7));
+    }
+
+    public void AddComment_Reaction(int index)
+    {
+        if (!Move_flg)
+        {
+            Move_flg = true;
+            TextList.Add((GameObject)Instantiate(TextPrefab));
+            TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
+            TextList[ComNum].transform.SetParent(canvas.transform, false);
+            TextList[ComNum].GetComponent<Come_List>().ReactionCommnet(index);
+
+            ComNum += 1;
+            if (ComNum > 6) DeleteComment();
+        }
+    }
+
+    public void AddComment_Escape(int index)
+    {
+        if (!Move_flg)
+        {
+            Move_flg = true;
+            TextList.Add((GameObject)Instantiate(TextPrefab));
+            TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
+            TextList[ComNum].transform.SetParent(canvas.transform, false);
+            TextList[ComNum].GetComponent<Come_List>().EscapeCommnet(index);
+
+            ComNum += 1;
+            if (ComNum > 6) DeleteComment();
+        }
+    }
+
+    public void AddComment_Hint(int index)
+    {
+        if (!Move_flg)
+        {
+            Move_flg = true;
+            TextList.Add((GameObject)Instantiate(TextPrefab));
+            TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
+            TextList[ComNum].transform.SetParent(canvas.transform, false);
+            TextList[ComNum].GetComponent<Come_List>().HintCommnet(index);
+
+            ComNum += 1;
+            if (ComNum > 6) DeleteComment();
+        }
     }
 
     /*** コメントを消す処理 ***/
     void DeleteComment() 
     {
         Destroy(TextList[Delcnt]);
-        //ComNum = 0;
         Delcnt += 1;
-        //if (Delcnt != 5) Delcnt += 1;
-        //else Delcnt = 0;
     }
 
 
@@ -90,7 +138,7 @@ public class Come_Generate : MonoBehaviour
     void OnMove()
     {
         if (nowPosition > startPosition)//この座標になるまで
-            window.transform.position -= new Vector3(0, moveSpeed, 0);//下に移動する
+            window.transform.position -= new Vector3(0, OnOffSpeed, 0);//下に移動する
         
         else if (nowPosition <= startPosition)//制限より移動したら
             MoveDecision = false;//下についたと知らせる
@@ -100,7 +148,7 @@ public class Come_Generate : MonoBehaviour
     void OffMove()
     {
         if (nowPosition < endPosition)//この座標になるまで
-            window.transform.position += new Vector3(0, moveSpeed, 0);//上に移動する
+            window.transform.position += new Vector3(0, OnOffSpeed, 0);//上に移動する
         
         else if (nowPosition >= endPosition)//制限より移動したら
             MoveDecision = true;//上についたと知らせる
