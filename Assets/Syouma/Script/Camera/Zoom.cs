@@ -13,21 +13,31 @@ public class Zoom : MonoBehaviour
     const float MaxView = 50f; // 元の視野角
     public bool Zoomflg = false; // true=ズームイン、false=ズームアウト
 
+    GameObject CameraOBJ; // カメラそのものが入る変数
+    CameraControllerFPS CameraController; // CameraControllerFPSが入る変数
+    bool g_FOVflg;
+
     void Start()
     {
         cam = this.GetComponent<Camera>();
         zoom -= Zoom_Speed;
         Zoomflg = false;
+
+        CameraOBJ = GameObject.Find("FirstPersonCharacter");
+        CameraController = CameraOBJ.GetComponent<CameraControllerFPS>();
+
     }
 
     void Update()
     {
         //if (Input.GetKey(KeyCode.Q)) Zoomflg = true;
 
-        if (Zoomflg)
+        if (Zoomflg){
             cam.fieldOfView += zoom; // JOJOにズームインしている
-        else
+            CameraController.g_FOVflg = false; // Fov値を固定化解除
+        }else{
             cam.fieldOfView -= zoom; // JOJOにズームアウトしている
+        }
 
         // 最小値と最大値を決める
         if (cam.fieldOfView < Zoom_View)
@@ -39,6 +49,7 @@ public class Zoom : MonoBehaviour
         if (cam.fieldOfView > MaxView)
         {
             cam.fieldOfView = MaxView;
+            CameraController.g_FOVflg = true; // Fov値を固定化
         }
     }
     

@@ -96,16 +96,20 @@ MonoBehaviour:
   - "\u308A\u3093\u3084\uFF1A"
   - "\u305F\u3044\u304C\uFF1A"
   - "\u304F\u308A\u3085\u3046\uFF1A"
-  Sayhello:
-  - "\u3053\u3093\u3070\u3093\u306F"
-  - "\u3046\u307D\u3064"
-  - "\uFF3E\uFF3E"
-  Reaction: []
+  Talk:
+  - a
+  - bb
+  - ccc
+  Reaction:
+  - "\u6016\u3044"
+  - "\u3084\u3070"
   Escape:
   - "\u3084\u3070\u3044\u3084\u3070\u3044"
   - "\u9003\u3052\u308D\uFF01"
   - "\u65E9\u304F\u96A0\u308C\u308D\uFF01\uFF01"
-  Hint: []
+  Hint:
+  - aaaaa
+  - oooooo
 --- !u!65 &3407564634878199797
 BoxCollider:
   m_ObjectHideFlags: 0
