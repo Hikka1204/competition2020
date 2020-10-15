@@ -5,6 +5,7 @@ using UnityEngine;
 public class FlgManeger : MonoBehaviour
 {
     private int flg = 0;
+    [SerializeField] private GameObject _EnemyObject;   //エネミー
     [SerializeField] private GameObject _Key1;  //最初の鍵
     [SerializeField] private GameObject _breakFloor; //壊れるオブジェクトの追加
     [SerializeField] private GameObject _destroyFloor;  //デストロイする床
