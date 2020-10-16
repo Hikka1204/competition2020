@@ -4,8 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Reaction
-  - Hint
+  - Floor
+  - Wall
+  - Enemy
+  - Hand
+  - Key
+  - Door
+  - Enemy_eye_Tracking
+  - Player_Body_Tracking
   layers:
   - Default
   - TransparentFX
@@ -15,16 +21,16 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Hand
+  - Enemy
+  - Wall
+  - Floor
+  - Enemy_eye_Tracking
+  - Player_Body_Tracking
+  - Key
+  - Door
+  - Floor_Break
   - 
   - 
   - 

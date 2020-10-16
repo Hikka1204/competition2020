@@ -10,9 +10,9 @@ public class Staging_Enemy : MonoBehaviour
     [SerializeField] Vector3 Destination;
     private Animator Anim;      //アニメーション格納
     private bool Player_flg;      //ゲームオーバーフラグ
-    [SerializeField] BoxCollider _BoxTrigge;
-    [SerializeField] BoxCollider _BoxTrigge1;
-    private float Timedes = 3f;    //即デストロイしないようにするための変数
+    [SerializeField] GlitchEffect camera;
+    [SerializeField] GameObject _StaColi;
+    [SerializeField] private float Timedes = 5f;    //即デストロイしないようにするための変数
 
     void Start()
     {
@@ -30,16 +30,18 @@ public class Staging_Enemy : MonoBehaviour
     {
         
 
-        if (Player_flg == true && Enemy_Nav.pathStatus == NavMeshPathStatus.PathComplete) { //目的に行きついたとき
+        if (Player_flg == true) { //目的に行きついたとき
             if(Timedes > 0)
             {
                 Timedes -= Time.deltaTime;
-                if(Timedes <= 0)
-                {
-                    Destroy(gameObject);
-                }
+                
             }
-            
+            if (Timedes <= 0)
+            {
+                camera.enabled = false;
+                Destroy(gameObject);
+            }
+
         }
     }
 
@@ -50,10 +52,9 @@ public class Staging_Enemy : MonoBehaviour
         {
             Enemy_Nav.SetDestination(Destination);
             Player_flg = true;
-            _BoxTrigge.enabled = false;
-            _BoxTrigge1.enabled = false;
+            Destroy(_StaColi);
             Anim.SetFloat("speed", Enemy_Nav.speed);
-            
+            camera.enabled = true;
         }
     }
 }

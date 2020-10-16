@@ -13,11 +13,19 @@ using UnityEngine.AI;
 
 public class Nav_Enemy_Scarecrow : MonoBehaviour
 {
+    [SerializeField] private Transform Player_Tr;
+    [SerializeField] private float _SearchRate; //探索時間が過ぎるとまた別の目的地に行く
+    [SerializeField] private Vector3[] Location_Nav;
+    [SerializeField] private float _TrackingRate;   //追いかける時間
     NavMeshAgent Enemy_Nav;     //このオブジェクトについてるナビメッシュ
-    [SerializeField] GameObject Destination;    //目的地
     private Animator Anim;      //アニメーション格納
     private bool Over_Flg;      //ゲームオーバーフラグ
-    [SerializeField] private Vector3[] Location_Nav;
+    private bool Player_Get; //このスクリプトをaddcomponent時にplayerを発見した状態にするか
+    private int Number;  //目的地のナンバー
+    private bool Player_flg;    //playerを見つけたか見つけてないか
+    private byte Move_Status;   //探索の状態
+    private float SearchTime;   //_SearchRateの取得
+    private float TrackingTime; //_TrackingRateの取得
 
 
     void Start()
@@ -28,17 +36,85 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         //Destination = GameObject.Find("Goal");
         Anim = GetComponent<Animator>();
         //目的地を設定
-        Enemy_Nav.SetDestination(Destination.transform.position);
+        //Enemy_Nav.SetDestination(Destination.position);
         Over_Flg = false;
+        Player_flg = false;
+        SearchTime = _SearchRate;
+        Number = 0;
+        Anim.SetFloat("speed", Enemy_Nav.speed);
+        SetSearchLocation();
     }
 
     void Update()
     {
-        if (Over_Flg == false)
+        if(Over_Flg == false)
         {
-            //目的地を設定
-            Enemy_Nav.SetDestination(Destination.transform.position);
-            Anim.SetFloat("speed", Enemy_Nav.speed);
+            if (Player_Get == false && TrackingTime > 0)
+            {
+                TrackingTime -= Time.deltaTime;
+                SetPlayerLocation();
+                if (TrackingTime <= 0)
+                {
+                    SetSearchLocation();
+                }
+            }
+            else if(Player_Get == true)
+            {
+                SetPlayerLocation();
+            }
+            
+
+            if (Player_Get == false && SearchTime > 0 && TrackingTime <= 0)
+            {
+                SearchTime -= Time.deltaTime;
+                if (SearchTime <= 0)
+                {
+                    SetSearchLocation();
+                }
+            }
+        }
+
+        //if (Over_Flg == false)
+        //{
+        //    //目的地を設定
+        //    //Enemy_Nav.SetDestination(Destination);
+        //    Anim.SetFloat("speed", Enemy_Nav.speed);
+        //}
+    }
+
+
+    private void SetPlayerLocation()
+    {
+        Enemy_Nav.SetDestination(Player_Tr.position);
+    }
+
+    private void SetSearchLocation()
+    {
+        int RandomNumber;   //ランダムな値を取得
+        while (true)
+        {
+            RandomNumber = Random.Range(0, Location_Nav.Length);
+            if (Number != RandomNumber)
+            {
+                Number = RandomNumber;
+                Enemy_Nav.SetDestination(Location_Nav[Number]);
+                SearchTime = _SearchRate;
+                break;
+            }
+        }
+    }
+
+    public void GetPlayer(bool Get)
+    {
+        Player_Get = Get;
+        switch (Player_Get)
+        {
+            case true:
+                SetPlayerLocation();
+                break;
+            case false:
+                TrackingTime = _TrackingRate;
+                break;
         }
     }
 
