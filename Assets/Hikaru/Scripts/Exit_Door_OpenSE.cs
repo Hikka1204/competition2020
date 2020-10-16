@@ -45,6 +45,7 @@ public class Exit_Door_OpenSE : MonoBehaviour
             _audiosource.Play();
             SEflg = true;
             CloseTime = CloseRate;
+            //
         }
     }
 
