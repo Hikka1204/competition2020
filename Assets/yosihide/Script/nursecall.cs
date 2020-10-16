@@ -15,6 +15,7 @@ public class nursecall : MonoBehaviour
     {
         if (NurseFlg == false && colflg == true && Input.GetKeyDown("e"))
         {
+            //
             _NurseCall.GetComponent<AudioSource>().clip = NurseCallSE;
             _NurseCall.GetComponent<AudioSource>().Play();
             Destroy(GetComponent<nursecall>());
