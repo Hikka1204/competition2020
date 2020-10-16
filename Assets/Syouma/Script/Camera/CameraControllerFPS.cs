@@ -38,6 +38,8 @@ public class CameraControllerFPS : MonoBehaviour
 
     private Coroutine revertCameraTransformToExpectedCoroutine;
 
+    [System.NonSerialized] public bool g_FOVflg = true; // カメラがズームする時はFOVを操作できるようにするフラグ
+
     // Use this for initialization
     private void Start()
     {
@@ -148,6 +150,7 @@ public class CameraControllerFPS : MonoBehaviour
         // カメラの位置・回転・FoVに修正を加える
         transform.position = currentCameraPosition;
         transform.rotation = currentCameraRotation;
+        if(g_FOVflg) // ズームするときはFoVを変更しない
         camera.fieldOfView = currentFov;
 
         // 次のフレームに備えて現フレームのデータを保存しておく

@@ -8,7 +8,7 @@ public class Hand : MonoBehaviour
     [SerializeField] AudioClip _PickUp;
     byte keyFlg;    //キーのフラグ　数字で制御
     private bool colflg;
-    private GameObject key;
+    private GameObject Keyg;
 
     // Start is called before the first frame update
     void Start()
@@ -21,12 +21,12 @@ public class Hand : MonoBehaviour
     {
         if (colflg == true && Input.GetKeyDown("e"))
         {
-            keyFlg = key.gameObject.GetComponent<Key1>().GetKey();
+            keyFlg = Keyg.gameObject.GetComponent<Key1>().GetKey();
 
             audioSource.clip = _PickUp;
             audioSource.Play();
             colflg = false;
-            Destroy(key.gameObject);
+            Destroy(Keyg.gameObject);
         }
     }
 
@@ -40,7 +40,7 @@ public class Hand : MonoBehaviour
         if (other.gameObject.tag == "Key")
         {
             colflg = true;
-            key = other.gameObject;
+            Keyg = other.gameObject;
         }
     }
 
@@ -49,7 +49,7 @@ public class Hand : MonoBehaviour
         if (other.gameObject.tag == "Key")
         {
             colflg = false;
-            key = null;
+            Keyg = null;
         }
     }
 

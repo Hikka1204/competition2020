@@ -6,7 +6,7 @@ public class StopSE : MonoBehaviour
 {
 
     private AudioSource Audio;
-    [SerializeField] private byte _KeyFlg = 1;
+    [SerializeField] private byte _fmgFlg = 1;
     [SerializeField] private FlgManeger fmg;
     private bool colflg = false;
 
@@ -21,7 +21,7 @@ public class StopSE : MonoBehaviour
         if (Audio.clip != null && colflg == true && Input.GetKeyDown("e"))
         {
             Audio.Stop();
-            fmg.GetFlg(_KeyFlg);
+            fmg.GetFlg(_fmgFlg);
             Destroy(gameObject.GetComponent<StopSE>());
         }
     }
