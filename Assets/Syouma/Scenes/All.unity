@@ -377,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 166860, guid: 189dff70245addd45bf37c2e992c9912, type: 3}
       propertyPath: m_TagString
-      value: Reaction
+      value: Hint
       objectReference: {fileID: 0}
     - target: {fileID: 457228, guid: 189dff70245addd45bf37c2e992c9912, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1546,6 +1546,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6334428, y: 2.769274, z: 4.587983}
   m_Center: {x: -0.0028192997, y: 0.0000001644266, z: 2.8841062}
+--- !u!65 &1479806819
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479806814}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3781765, y: 2.769274, z: 5.373164}
+  m_Center: {x: 4.406556, y: 0.0000001644266, z: 2.617117}
 --- !u!1 &1686106099
 GameObject:
   m_ObjectHideFlags: 0
