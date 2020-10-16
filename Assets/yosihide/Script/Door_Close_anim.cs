@@ -5,11 +5,16 @@ using UnityEngine;
 public class Door_Close_anim : MonoBehaviour
 {
     private Animator animator;
+    private AudioSource audioSource;
     [SerializeField] private float _speed = 1;  //ドアのアニメーション速度
+    [SerializeField] AudioClip _OpenSE;
+    [SerializeField] AudioClip _CloseSE;
+
 
     void Start()
     {
         animator = transform.GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         animator.SetBool("Open", true);
         animator.speed = _speed;
     }
@@ -19,12 +24,26 @@ public class Door_Close_anim : MonoBehaviour
         
     }
 
+    public void OpenSE()    //アニメーションに関数を追加している //ドアが開く音
+    {
+        audioSource.clip = _OpenSE;
+        audioSource.Play();
+    }
+
+    public void CloseSE()   //アニメーションに関数を追加している //ドアが閉まる音
+    {
+        audioSource.clip = _CloseSE;
+        audioSource.Play();
+        Destroy(gameObject.GetComponent<Door_Close_anim>());
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             animator.SetBool("Open", false);
-            Destroy(gameObject.GetComponent<Door_Close_anim>());
+            
         }
     }
 }
