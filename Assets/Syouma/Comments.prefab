@@ -108,8 +108,9 @@ MonoBehaviour:
   - "\u9003\u3052\u308D\uFF01"
   - "\u65E9\u304F\u96A0\u308C\u308D\uFF01\uFF01"
   Hint:
-  - aaaaa
-  - oooooo
+  - "\u4F55\u304B\u97F3\u304C\u306A\u3063\u3066\u308B\u305E"
+  - "\u6249\u304C\u958B\u304F\u97F3\u304C\u3057\u305F\u306A"
+  - "\u306A\u3093\u3060\u3042\u308C\uFF01\uFF1F"
 --- !u!65 &3407564634878199797
 BoxCollider:
   m_ObjectHideFlags: 0
