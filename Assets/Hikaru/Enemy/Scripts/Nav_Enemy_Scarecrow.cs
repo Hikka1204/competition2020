@@ -17,6 +17,11 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     [SerializeField] private float _SearchRate; //探索時間が過ぎるとまた別の目的地に行く
     [SerializeField] private Vector3[] Location_Nav;
     [SerializeField] private float _TrackingRate;   //追いかける時間
+    [SerializeField] private AudioClip _NormalBGM;
+    [SerializeField] private AudioClip _TrackingBGM;
+    [SerializeField] private AudioClip _DeathSE;
+
+    private AudioSource audio;
     NavMeshAgent Enemy_Nav;     //このオブジェクトについてるナビメッシュ
     private Animator Anim;      //アニメーション格納
     private bool Over_Flg;      //ゲームオーバーフラグ
@@ -32,6 +37,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     {
         //プレイヤーのNavMeshAgentを取得
         Enemy_Nav = GetComponent<NavMeshAgent>();
+        audio = gameObject.GetComponent<AudioSource>();
         //目的地のオブジェクトを取得
         //Destination = GameObject.Find("Goal");
         Anim = GetComponent<Animator>();
@@ -43,6 +49,8 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         Number = 0;
         Anim.SetFloat("speed", Enemy_Nav.speed);
         SetSearchLocation();
+        audio.clip = _NormalBGM;
+        audio.Play();
     }
 
     void Update()
@@ -56,6 +64,8 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                 if (TrackingTime <= 0)
                 {
                     SetSearchLocation();
+                    audio.clip = _NormalBGM;
+                    audio.Play();
                 }
             }
             else if(Player_Get == true)
@@ -102,6 +112,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                 break;
             }
         }
+        
     }
 
     public void GetPlayer(bool Get)
@@ -111,6 +122,11 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         {
             case true:
                 SetPlayerLocation();
+                if (audio.clip != _TrackingBGM)
+                {
+                    audio.clip = _TrackingBGM;
+                    audio.Play();
+                }
                 break;
             case false:
                 TrackingTime = _TrackingRate;
@@ -126,6 +142,8 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
             Anim.SetBool("attack", true);
             Over_Flg = true;
+            audio.clip = _DeathSE;
+            audio.Play();
         }
     }
 }
