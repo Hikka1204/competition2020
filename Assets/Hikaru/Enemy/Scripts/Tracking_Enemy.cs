@@ -7,6 +7,8 @@ public class Tracking_Enemy : MonoBehaviour
 
     [SerializeField] private Nav_Enemy_Scarecrow parent;
 
+    private bool playerflg = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,17 +23,20 @@ public class Tracking_Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player_Body_Tracking")
+        if (playerflg == false && other.gameObject.tag == "Player_Body_Tracking")
         {
             parent.GetPlayer(true);
+            playerflg = true;
         }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player_Body_Tracking")
+        if (playerflg == true && other.gameObject.tag == "Player_Body_Tracking")
         {
             parent.GetPlayer(false);
+            playerflg = false;
         }
     }
 
