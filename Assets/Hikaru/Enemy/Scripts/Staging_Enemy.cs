@@ -13,6 +13,8 @@ public class Staging_Enemy : MonoBehaviour
     [SerializeField] GlitchEffect camera;
     [SerializeField] GameObject _StaColi;
     [SerializeField] private float Timedes = 5f;    //即デストロイしないようにするための変数
+    private Staging_Enemy StaEne;
+    [SerializeField] GameObject PlayerOb;   //playerのオブジェクト
 
     void Start()
     {
@@ -21,6 +23,8 @@ public class Staging_Enemy : MonoBehaviour
         //目的地のオブジェクトを取得
         //Destination = GameObject.Find("Goal");
         Anim = GetComponent<Animator>();
+        //Script格納
+        StaEne = gameObject.GetComponent<Staging_Enemy>();
         //目的地を設定
         Enemy_Nav.SetDestination(gameObject.transform.position);
         Player_flg = false;
@@ -38,8 +42,12 @@ public class Staging_Enemy : MonoBehaviour
             }
             if (Timedes <= 0)
             {
+                PlayerOb.GetComponent<CharacterController>().enabled = true;
+                PlayerOb.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
                 camera.enabled = false;
-                Destroy(gameObject);
+                gameObject.GetComponent<Staging_Enemy>().
+                gameObject.SetActive(false);
+                StaEne.enabled = false;
             }
 
         }
@@ -51,6 +59,8 @@ public class Staging_Enemy : MonoBehaviour
         if(Player_flg == false && other.gameObject.tag == "Player")
         {
             Enemy_Nav.SetDestination(Destination);
+            PlayerOb.GetComponent<CharacterController>().enabled = false;
+            PlayerOb.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
             Player_flg = true;
             Destroy(_StaColi);
             Anim.SetFloat("speed", Enemy_Nav.speed);
