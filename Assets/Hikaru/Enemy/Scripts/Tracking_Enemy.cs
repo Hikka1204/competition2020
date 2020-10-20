@@ -23,6 +23,8 @@ public class Tracking_Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
+
         if (playerflg == false && other.gameObject.tag == "Player_Body_Tracking")
         {
             parent.GetPlayer(true);
