@@ -16,10 +16,28 @@ public class PlayerSerif : MonoBehaviour
 
     void Update()
     {
+        // No.0 : 鍵がない状態で出口を調べた時のセリフ
         if (FlagManager.Instance.flags[0] == true){
-            this.GetComponent<Text>().text += "鍵がかかっているようだ";
-            FlagManager.Instance.flags[0] = false;
+            this.GetComponent<Text>().text = "鍵がかかっているようだ";
+            TextControl(0);
+        }
+        // No.1 : 
+        else if (FlagManager.Instance.flags[1] == true)
+        {
+            this.GetComponent<Text>().text = "何だあれは！";
+            TextControl(1);
         }
 
+    }
+
+    void TextControl (int i)
+    {
+        Invoke("TextClear", WaitTime);
+        FlagManager.Instance.flags[i] = false;
+    }
+
+    void TextClear()
+    {
+        this.GetComponent<Text>().text = "";
     }
 }

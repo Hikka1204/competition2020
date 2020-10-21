@@ -29,7 +29,7 @@ public class FlagManager : MonoBehaviour
 		}
 	}
 
-	public bool[] flags = new bool[128];
+    public bool[] flags = new bool[30];
 
 	[ContextMenu("ResetFlags")]
 	public void ResetFlags()
