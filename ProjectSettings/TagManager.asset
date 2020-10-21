@@ -12,6 +12,8 @@ TagManager:
   - Door
   - Enemy_eye_Tracking
   - Player_Body_Tracking
+  - FloorBreak
+  - call
   layers:
   - Default
   - TransparentFX
@@ -31,7 +33,7 @@ TagManager:
   - Key
   - Door
   - Floor_Break
-  - 
+  - call
   - 
   - 
   - 

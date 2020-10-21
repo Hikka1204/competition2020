@@ -9,6 +9,11 @@ public class Key1 : MonoBehaviour
     [SerializeField] private byte _fmgFlg = 2;
     [SerializeField] private FlgManeger fmg;
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public byte GetKey()
     {
         fmg.GetFlg(_fmgFlg);

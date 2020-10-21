@@ -10,6 +10,7 @@ public class FloorBreak : MonoBehaviour
 
     private void Start()
     {
+        //gameObject.SetActive(false);
         audio = GetComponent<AudioSource>();
     }
 
