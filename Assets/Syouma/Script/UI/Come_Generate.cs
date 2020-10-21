@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/* **************************
+ * ・
+ * ・コメントが上に流れる処理
+ * ・コメントのON/Off処理
+ ***************************/
+
 public class Come_Generate : MonoBehaviour
 {
     public GameObject canvas;//キャンバス
@@ -28,8 +34,13 @@ public class Come_Generate : MonoBehaviour
     bool Move_flg = false;
     bool OnOff_flg = false;
 
+    GameObject Player;
+    Come_Flg comeflg;
+
     void Start()
     {
+        Player = GameObject.Find("FPSController");
+        comeflg = Player.GetComponent<Come_Flg>();
         TextList.Clear(); //Listの初期化
         //InvokeRepeating("AddComment", 1, 3); // 1秒後に3秒間隔でコメント追加する
         Invoke("AddComment", 1); // 1秒後にコメント追加する
@@ -65,20 +76,22 @@ public class Come_Generate : MonoBehaviour
 
 
     /*** コメントを追加する処理 ***/
-    void AddComment()
+    public void AddComment()
     {
-        if (!Move_flg)
-        {
-            Move_flg = true;
-            TextList.Add((GameObject)Instantiate(TextPrefab));
-            TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
-            TextList[ComNum].transform.SetParent(canvas.transform, false);
-            TextList[ComNum].GetComponent<Come_List>().RandomComment();
+        if (!comeflg.EscapeFlg){
+            if (!Move_flg)
+            {
+                Move_flg = true;
+                TextList.Add((GameObject)Instantiate(TextPrefab));
+                TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
+                TextList[ComNum].transform.SetParent(canvas.transform, false);
+                TextList[ComNum].GetComponent<Come_List>().RandomComment();
 
-            ComNum += 1;
-            if (ComNum > 6) DeleteComment();
+                ComNum += 1;
+                if (ComNum > 6) DeleteComment();
+            }
+            Invoke("AddComment", Random.Range(3, 7));
         }
-        Invoke("AddComment", Random.Range(3, 7));
     }
 
     public void AddComment_Reaction(int index)
