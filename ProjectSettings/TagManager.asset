@@ -14,6 +14,8 @@ TagManager:
   - Player_Body_Tracking
   - FloorBreak
   - call
+  - Hint
+  - staging
   layers:
   - Default
   - TransparentFX
@@ -34,7 +36,7 @@ TagManager:
   - Door
   - Floor_Break
   - call
-  - 
+  - staging
   - 
   - 
   - 
