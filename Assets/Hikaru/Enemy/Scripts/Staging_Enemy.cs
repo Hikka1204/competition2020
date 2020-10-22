@@ -15,9 +15,13 @@ public class Staging_Enemy : MonoBehaviour
     [SerializeField] private float Timedes = 5f;    //即デストロイしないようにするための変数
     private Staging_Enemy StaEne;
     [SerializeField] GameObject PlayerOb;   //playerのオブジェクト
+    [SerializeField] GameObject CameraOb;   //cameraのオブジェクト
+    Zoom zoom;
 
     void Start()
     {
+        //カメラのZoomスクリプトを取得
+        zoom = CameraOb.GetComponent<Zoom>();
         //プレイヤーのNavMeshAgentを取得
         Enemy_Nav = GetComponent<NavMeshAgent>();
         //目的地のオブジェクトを取得
@@ -65,6 +69,10 @@ public class Staging_Enemy : MonoBehaviour
             Destroy(_StaColi);
             Anim.SetFloat("speed", Enemy_Nav.speed);
             camera.enabled = true;
+
+            // ズームさせる処理
+            zoom.Zoomflg = true;
+
         }
     }
 }

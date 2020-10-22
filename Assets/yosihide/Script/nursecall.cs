@@ -16,6 +16,7 @@ public class nursecall : MonoBehaviour
         if (NurseFlg == false && colflg == true && Input.GetKeyDown("e"))
         {
             //
+            FlagManager.Instance.SerifFlg[0] = true; // 「鍵がかかっているようだ」を表示
             FlagManager.Instance.Co_Hint[1] = true; // コメント「何かなってるぞ」を表示
             _NurseCall.GetComponent<AudioSource>().clip = NurseCallSE;
             _NurseCall.GetComponent<AudioSource>().Play();
