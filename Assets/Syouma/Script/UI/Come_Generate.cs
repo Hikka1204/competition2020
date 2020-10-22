@@ -94,7 +94,7 @@ public class Come_Generate : MonoBehaviour
         }
     }
 
-    public void AddComment_Reaction(int index)
+    public void AddComment_Reaction()
     {
         if (!Move_flg)
         {
@@ -102,14 +102,14 @@ public class Come_Generate : MonoBehaviour
             TextList.Add((GameObject)Instantiate(TextPrefab));
             TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
             TextList[ComNum].transform.SetParent(canvas.transform, false);
-            TextList[ComNum].GetComponent<Come_List>().ReactionCommnet(index);
+            TextList[ComNum].GetComponent<Come_List>().ReactionCommnet();
 
             ComNum += 1;
             if (ComNum > 6) DeleteComment();
         }
     }
 
-    public void AddComment_Escape(int index)
+    public void AddComment_Escape()
     {
         if (!Move_flg)
         {
@@ -117,7 +117,7 @@ public class Come_Generate : MonoBehaviour
             TextList.Add((GameObject)Instantiate(TextPrefab));
             TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
             TextList[ComNum].transform.SetParent(canvas.transform, false);
-            TextList[ComNum].GetComponent<Come_List>().EscapeCommnet(index);
+            TextList[ComNum].GetComponent<Come_List>().EscapeCommnet();
 
             ComNum += 1;
             if (ComNum > 6) DeleteComment();

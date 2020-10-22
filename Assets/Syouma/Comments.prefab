@@ -91,3 +91,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c87d84d0ea8bbe419a9d89741bf2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name:
+  - "\u308A\u3093\u3084\uFF1A"
+  - "\u305F\u3044\u304C\uFF1A"
+  - "\u304F\u308A\u3085\u3046\uFF1A"
+  Talk:
+  - Talk1
+  - Talk2
+  - Talk3
+  Reaction:
+  - "\u30EA\u30A2\u30AF\u30B7\u30E7\u30F31"
+  - "\u30EA\u30A2\u30AF\u30B7\u30E7\u30F32"
+  - "\u30EA\u30A2\u30AF\u30B7\u30E7\u30F33"
+  Escape:
+  - "\u3048\u3059\u3051\u30FC\u30771"
+  - "\u3048\u3059\u3051\u30FC\u30772"
+  - "\u3048\u3059\u3051\u30FC\u30773"
+  Hint:
+  - HINT1
+  - HINT2
+  - HINT3
