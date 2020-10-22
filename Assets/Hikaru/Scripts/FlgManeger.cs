@@ -6,6 +6,7 @@ public class FlgManeger : MonoBehaviour
 {
     private int flg = 0;
     [SerializeField] private GameObject _EnemyObject;   //エネミー
+    [SerializeField] private GameObject _Uketuke_eve;   //地下室へ誘導するテキスト
     [SerializeField] private GameObject _Key1;  //最初の鍵
     [SerializeField] private GameObject _breakFloor; //壊れるオブジェクトの追加
     [SerializeField] private GameObject _destroyFloor;  //デストロイする床
@@ -42,10 +43,10 @@ public class FlgManeger : MonoBehaviour
             case 1:
                 _Key1.SetActive(true);
                 _keyAudio.Play();
+                _Uketuke_eve.SetActive(true);
                 break;
             case 2:
                 _breakFloor.SetActive(true);
-                _breakFloor.gameObject.AddComponent<FloorBreak>();
                 _exitDoorOpenSE.SetActive(true);
                 _stagingEnemy.SetActive(true);
                 Destroy(_destroyFloor);
