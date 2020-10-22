@@ -46,7 +46,7 @@ public class Exit_Door_OpenSE : MonoBehaviour
             SEflg = true;
             CloseTime = CloseRate;
             //
-            FlagManager.Instance.flags[0] = true; // 「鍵がかかっているようだ」を表示
+            
         }
     }
 

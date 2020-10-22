@@ -7,7 +7,7 @@ using UnityEngine;
 public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
 {
     bool once_esc;
-    int _HintNum = 0;
+    int _HintNum;   // ヒント系のコメントを順番に出すため
 
     public bool EscapeFlg; // true=逃げている、false=通常時
 
@@ -18,6 +18,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     void Start()
     {
         ComeObj = GameObject.Find("Comment"); // UI「Comment」を入れいている
+        _HintNum = 0;
         EscapeFlg = false;
         once_esc = false;
 
@@ -37,8 +38,16 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
         else{
             if (once_esc){
                 once_esc = false;
-                Invoke("addcomment", 3); 
+                Invoke("addcomment", Random.Range(3, 5)); 
             }
+        }
+
+        // ヒント系コメントを0～順にコメントさせている
+        if (FlagManager.Instance.Co_Hint[_HintNum] == true)
+        {
+            ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
+            FlagManager.Instance.Co_Hint[_HintNum] = false;
+            _HintNum++;
         }
     }
 
@@ -52,7 +61,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     {
         if (EscapeFlg)
         {
-            ComeObj.GetComponent<Come_Generate>().AddComment_Escape(Random.Range(0, CommentManager.Instance.Co_Escape.Length));
+            ComeObj.GetComponent<Come_Generate>().AddComment_Escape();
             Invoke("EscapeFlgCome", Random.Range(1, 3));
         }
     }
@@ -60,7 +69,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     public void ReactionCome()
     {
         //_ReactionNum = Random.Range(0, Lists.Reaction.Count);
-        ComeObj.GetComponent<Come_Generate>().AddComment_Reaction(Random.Range(0, CommentManager.Instance.Co_Reaction.Length));
+        ComeObj.GetComponent<Come_Generate>().AddComment_Reaction();
     }
 
     //private void OnTriggerEnter(Collider other)

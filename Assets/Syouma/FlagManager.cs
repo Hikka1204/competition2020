@@ -29,17 +29,13 @@ public class FlagManager : MonoBehaviour
 		}
 	}
 
-    public bool[] flags = new bool[30]; // プレイヤーのセリフフラグ
-    //public string[] Co_Name = new string[10];   // コメントしてる人の名前一覧
-    //public string[] Co_Talk = new string[30];       // 会話系のコメント一覧
-    //public string[] Co_Reaction = new string[10];   // リアクション系のコメント一覧
-    //public string[] Co_Escape = new string[10];     // 追いかけられている時のコメント一覧 
-    //public string[] Co_Hint = new string[30];       // ヒント系のコメント一覧 
+    public bool[] SerifFlg = new bool[30]; // プレイヤーのセリフフラグ
+    public bool[] Co_Hint = new bool[30];       // ヒント系のコメント一覧 
 
     [ContextMenu("ResetFlags")]
 	public void ResetFlags()
 	{
-		flags = new bool[flags.Length];
+        SerifFlg = new bool[SerifFlg.Length];
         //Co_Name = new string[Co_Name.Length];
         //Co_Talk = new string[Co_Talk.Length];
         //Co_Reaction = new string[Co_Reaction.Length];

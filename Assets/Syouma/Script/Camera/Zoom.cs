@@ -13,6 +13,8 @@ public class Zoom : MonoBehaviour
     const float MaxView = 50f; // 元の視野角
     public bool Zoomflg = false; // true=ズームイン、false=ズームアウト
 
+    [SerializeField] private CameraObject _cameraObj;
+
     GameObject CameraOBJ; // カメラそのものが入る変数
     CameraControllerFPS CameraController; // CameraControllerFPSが入る変数
     bool g_FOVflg;
@@ -33,9 +35,9 @@ public class Zoom : MonoBehaviour
         //if (Input.GetKey(KeyCode.Q)) Zoomflg = true;
 
         if (Zoomflg){
-            cam.fieldOfView += zoom; // JOJOにズームインしている
-            CameraController.g_FOVflg = false; // Fov値を固定化解除
-        }else{
+            Invoke("ZoomStart",1);
+        }
+        else{
             cam.fieldOfView -= zoom; // JOJOにズームアウトしている
         }
 
@@ -53,9 +55,16 @@ public class Zoom : MonoBehaviour
         }
     }
     
+    void ZoomStart()
+    {
+        cam.fieldOfView += zoom; // JOJOにズームインしている
+        CameraController.g_FOVflg = false; // Fov値を固定化解除
+        _cameraObj.enabled = true;
+    }
 
     void ZoomOut()
     {
         Zoomflg = false; // ズームアウト開始のフラグ
+        _cameraObj.enabled = false;
     }
 }
