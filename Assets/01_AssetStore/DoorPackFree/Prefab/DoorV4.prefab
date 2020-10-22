@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5071016639967384411}
   - component: {fileID: 7932852356541774695}
   - component: {fileID: 5857827165416196911}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 01_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,10 +54,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c2d8aea817ff67d4292424d139872f20, type: 2}
+  - {fileID: 2100000, guid: fba65221063a9d142acc2203185df485, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -65,6 +66,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -87,9 +89,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4654792255263791864}
   - component: {fileID: 4654792255270958360}
-  m_Layer: 0
-  m_Name: Door001
-  m_TagString: Untagged
+  m_Layer: 16
+  m_Name: DoorV4
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +105,7 @@ Transform:
   m_GameObject: {fileID: 4654792255263688408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.350835, y: -3.5253367, z: 7.340805}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.5195057, z: 1.9714609}
   m_Children:
   - {fileID: 5071016639967384411}
   - {fileID: 5711690854959939201}
@@ -140,7 +142,7 @@ GameObject:
   - component: {fileID: 5711690854959939201}
   - component: {fileID: 6795240499097899517}
   - component: {fileID: 3541487000594173398}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: 03_low
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,10 +185,11 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c2d8aea817ff67d4292424d139872f20, type: 2}
+  - {fileID: 2100000, guid: fba65221063a9d142acc2203185df485, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -194,6 +197,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
