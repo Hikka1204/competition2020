@@ -42,17 +42,38 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
             }
         }
 
-        // ヒント系コメントを0～順にコメントさせている
-        if (FlagManager.Instance.Co_Hint[_HintNum] == true)
+        //// ヒント系コメントを0～順にコメントさせている
+        //if (FlagManager.Instance.Co_Hint[_HintNum] == true)
+        //{
+        //    ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
+        //    FlagManager.Instance.Co_Hint[_HintNum] = false;
+        //    _HintNum++;
+        //}
+
+        // 
+        if (FlagManager.Instance.Co_Hint[0])
+        {
+            ComeObj.GetComponent<Come_Generate>().AddComment_Hint(0);
+            FlagManager.Instance.Co_Hint[0] = false;
+            _HintNum++;
+        }  // No.1:ナースコールが鳴った時のコメント
+        if (FlagManager.Instance.Co_Hint[1])
         {
             ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
-            FlagManager.Instance.Co_Hint[_HintNum] = false;
-            _HintNum++;
+            Invoke("HintCome", 2); 
+            Invoke("HintCome", 4); 
+            FlagManager.Instance.Co_Hint[1] = false;
         }
     }
 
+    void HintCome()
+    {
+        _HintNum++;
+        ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
+    }
+
     // 敵から逃げきった後に通常会話を生成するためだけの関数
-    void addcomment()
+    void addhint()
     {
         ComeObj.GetComponent<Come_Generate>().AddComment();
     }
