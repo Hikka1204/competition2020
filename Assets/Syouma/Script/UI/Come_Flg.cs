@@ -61,7 +61,6 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
         {
             ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
             Invoke("HintCome", 2); 
-            Invoke("HintCome", 4); 
             FlagManager.Instance.Co_Hint[1] = false;
         }
     }
