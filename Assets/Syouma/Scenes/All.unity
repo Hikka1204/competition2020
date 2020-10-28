@@ -1009,7 +1009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EscapeFlg: 0
-  Com_Prehub: {fileID: 8016191809941951430, guid: d10c66f9140bb3e479acddf3d3747c6f,
+  Com_Prehub: {fileID: 4186559728870434470, guid: 3f3372720264c7e408c8afc10f043ef1,
     type: 3}
 --- !u!1 &726948524 stripped
 GameObject:
@@ -1173,6 +1173,7 @@ MonoBehaviour:
   Zoom_Time: 2
   Zoom_View: 10
   Zoomflg: 0
+  _cameraObj: {fileID: 0}
 --- !u!114 &1048727261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,7 +1436,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1113406194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2104,8 +2105,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1911135268}
-  TextPrefab: {fileID: 8016191809941951430, guid: d10c66f9140bb3e479acddf3d3747c6f,
+  TextPrefab: {fileID: 4186559728870434470, guid: 3f3372720264c7e408c8afc10f043ef1,
     type: 3}
+  startPosition: -210
+  endPosition: 50
   OnOffSpeed: 4
   MoveSpeed: 1
 --- !u!1 &2106520516

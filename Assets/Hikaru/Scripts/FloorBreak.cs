@@ -24,7 +24,7 @@ public class FloorBreak : MonoBehaviour
             r.gameObject.SetActive(true);
             r.isKinematic = false;
             r.transform.SetParent(null);
-            r.gameObject.AddComponent<AutoDestroy>().time = 2f;
+            //r.gameObject.AddComponent<AutoDestroy>().time = 2f;
             var vect = new Vector3(random.Next(min, max), random.Next(0, max), random.Next(min, max));
             r.AddForce(vect, ForceMode.Impulse);
             r.AddTorque(vect, ForceMode.Impulse);
