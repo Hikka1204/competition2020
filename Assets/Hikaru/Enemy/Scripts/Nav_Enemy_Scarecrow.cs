@@ -110,6 +110,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                 Number = RandomNumber;
                 Enemy_Nav.SetDestination(Location_Nav[Number]);
                 SearchTime = _SearchRate;
+                Anim.SetFloat("speed", Enemy_Nav.speed);
                 break;
             }
         }
@@ -131,6 +132,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                 {
                     TrackingStatus = true;
                     _player_BGM.GetComponent<Player_BGM>().BGMPlay(1);
+                    Anim.SetFloat("speed", Enemy_Nav.speed);
                     audio.clip = _TrackingSE;
                     audio.Play();
                 }

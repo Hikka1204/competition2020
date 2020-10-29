@@ -26,7 +26,7 @@ public class Player_BGM : MonoBehaviour
 
     public void BGMPlay(int a)
     {
-        audio.Stop();
+        if(audio.clip != null) audio.Stop();
         switch (a)
         {
             case 0:

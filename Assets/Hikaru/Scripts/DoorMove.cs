@@ -100,7 +100,7 @@ public class DoorMove : MonoBehaviour {
             return;
         }
 
-        if(col.gameObject.tag == "Enemy" && col.gameObject.GetComponent<Nav_Enemy_Scarecrow>().GetTrackingStatus() == true)
+        if(col.gameObject.tag == "Enemy_Anim" || (col.gameObject.tag == "Enemy" && col.gameObject.GetComponent<Nav_Enemy_Scarecrow>().GetTrackingStatus() == true))
         {
             animator.SetBool("Open", true);
             CloseTime = _CloseRate;
