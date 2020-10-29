@@ -16,6 +16,7 @@ TagManager:
   - call
   - Hint
   - staging
+  - letter
   layers:
   - Default
   - TransparentFX
@@ -37,7 +38,7 @@ TagManager:
   - Floor_Break
   - call
   - staging
-  - 
+  - letter
   - 
   - 
   - 

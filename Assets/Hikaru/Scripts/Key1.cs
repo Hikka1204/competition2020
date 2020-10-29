@@ -8,10 +8,14 @@ public class Key1 : MonoBehaviour
     [SerializeField]private byte _KeyFlg = 1;
     [SerializeField] private byte _fmgFlg = 2;
     [SerializeField] private FlgManeger fmg;
+    [SerializeField] private bool StartSetActive = true;
 
     private void Start()
     {
-        gameObject.SetActive(false);
+        if (StartSetActive == false)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public byte GetKey()

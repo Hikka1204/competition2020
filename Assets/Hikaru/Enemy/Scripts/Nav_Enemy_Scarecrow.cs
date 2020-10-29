@@ -28,6 +28,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     private bool Player_Get; //このスクリプトをaddcomponent時にplayerを発見した状態にするか
     private int Number;  //目的地のナンバー
     private bool Player_flg;    //playerを見つけたか見つけてないか
+    private bool TrackingStatus;    //エネミーの追いかける状態 true:追いかけてる状態 false:追いかけてない状態
     private byte Move_Status;   //探索の状態
     private float SearchTime;   //_SearchRateの取得
     private float TrackingTime; //_TrackingRateの取得
@@ -45,6 +46,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         //Enemy_Nav.SetDestination(Destination.position);
         Over_Flg = false;
         Player_flg = false;
+        TrackingStatus = false;
         SearchTime = _SearchRate;
         Number = 0;
         Anim.SetFloat("speed", Enemy_Nav.speed);
@@ -61,6 +63,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                 SetPlayerLocation();
                 if (TrackingTime <= 0)
                 {
+                    TrackingStatus = false;
                     SetSearchLocation();
                     _player_BGM.GetComponent<Player_BGM>().BGMPlay(0);
                     audio.Stop();
@@ -113,6 +116,11 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         
     }
 
+    public bool GetTrackingStatus()
+    {
+        return TrackingStatus;
+    }
+
     public void GetPlayer(bool Get)
     {
         switch (Get)
@@ -121,6 +129,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                 SetPlayerLocation();
                 if (Player_Get == false && TrackingTime <= 0)
                 {
+                    TrackingStatus = true;
                     _player_BGM.GetComponent<Player_BGM>().BGMPlay(1);
                     audio.clip = _TrackingSE;
                     audio.Play();
