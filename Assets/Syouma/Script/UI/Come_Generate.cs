@@ -15,8 +15,8 @@ public class Come_Generate : MonoBehaviour
     public GameObject TextPrefab; // テキストプレファブをいれる変数
     private List<GameObject> TextList = new List<GameObject>(); // 今出ているコメント
 
-    float startPosition;//上の移動限界値
-    float endPosition;//下の移動限界値
+    public float startPosition;//上の移動限界値
+    public float endPosition;//下の移動限界値
     [SerializeField] private float OnOffSpeed;//表示.非表示の移動速度
     [SerializeField] private float MoveSpeed;//コメントが流れる速度
 
@@ -66,7 +66,7 @@ public class Come_Generate : MonoBehaviour
                 TextList[i].transform.position += new Vector3(0f, MoveSpeed, 0f);
             
             MoveCnt += 1;
-            if (MoveCnt == 30)// MoveCnt(60) = MoveSpeed(0.5)
+            if (MoveCnt == 40)// MoveCnt(60) = MoveSpeed(0.5)
             {
                 Move_flg = false;
                 MoveCnt = 0;
@@ -85,9 +85,10 @@ public class Come_Generate : MonoBehaviour
                 TextList.Add((GameObject)Instantiate(TextPrefab));
                 TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
                 TextList[ComNum].transform.SetParent(canvas.transform, false);
-                TextList[ComNum].GetComponent<Come_List>().RandomComment();
+                //TextList[ComNum].GetComponent<Come_List>().RandomComment();
+                TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().RandomComment();
 
-                ComNum += 1;
+                ComNum ++;
                 if (ComNum > 6) DeleteComment();
             }
             Invoke("AddComment", Random.Range(3, 7));
@@ -104,7 +105,7 @@ public class Come_Generate : MonoBehaviour
             TextList[ComNum].transform.SetParent(canvas.transform, false);
             TextList[ComNum].GetComponent<Come_List>().ReactionCommnet();
 
-            ComNum += 1;
+            ComNum++;
             if (ComNum > 6) DeleteComment();
         }
     }
@@ -119,7 +120,7 @@ public class Come_Generate : MonoBehaviour
             TextList[ComNum].transform.SetParent(canvas.transform, false);
             TextList[ComNum].GetComponent<Come_List>().EscapeCommnet();
 
-            ComNum += 1;
+            ComNum++;
             if (ComNum > 6) DeleteComment();
         }
     }
@@ -134,7 +135,7 @@ public class Come_Generate : MonoBehaviour
             TextList[ComNum].transform.SetParent(canvas.transform, false);
             TextList[ComNum].GetComponent<Come_List>().HintCommnet(index);
 
-            ComNum += 1;
+            ComNum++;
             if (ComNum > 6) DeleteComment();
         }
     }
