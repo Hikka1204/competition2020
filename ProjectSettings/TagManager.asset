@@ -16,6 +16,8 @@ TagManager:
   - call
   - Hint
   - staging
+  - letter
+  - Enemy_Anim
   layers:
   - Default
   - TransparentFX
@@ -37,7 +39,7 @@ TagManager:
   - Floor_Break
   - call
   - staging
-  - 
+  - letter
   - 
   - 
   - 

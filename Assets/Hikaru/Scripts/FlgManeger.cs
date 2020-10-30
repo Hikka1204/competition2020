@@ -13,6 +13,7 @@ public class FlgManeger : MonoBehaviour
     [SerializeField] private GameObject _exitDoorOpenSE;    //離れたらドアが開く音を鳴らすオブジェクト
     [SerializeField] private GameObject _stagingEnemy;  //演出用エネミー
     [SerializeField] private AudioSource _keyAudio;     //鍵の音
+    [SerializeField] private GameObject _exitEvent;     //範囲外に出た時
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,12 @@ public class FlgManeger : MonoBehaviour
                 _exitDoorOpenSE.SetActive(true);
                 _stagingEnemy.SetActive(true);
                 Destroy(_destroyFloor);
+                break;
+            case 3:
+                _exitEvent.SetActive(true);
+                break;
+
+            default:
                 break;
         }
 
