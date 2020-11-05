@@ -44,9 +44,9 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _GlossHigh: 0.7169596
-    - _GlossLow: 0.1666343
-    - _HighSpecMultiplayer: 1.91453
+    - _GlossHigh: 0.45
+    - _GlossLow: 1
+    - _HighSpecMultiplayer: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CubeColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

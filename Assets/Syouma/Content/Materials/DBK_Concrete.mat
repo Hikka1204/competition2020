@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 6d9f77cfe1320914c8c5d9542be34eec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ColorMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _ColorTheme:
         m_Texture: {fileID: 2800000, guid: 674cca30d60d52842b402f8e05c69623, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -119,7 +123,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DetailNM:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -139,12 +151,32 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _FirstTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _FourthTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Heigh:
         m_Texture: {fileID: 2800000, guid: 33f4ce6210409e74ba537615da1c3916, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainNM:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: bf84d265e341525459ab1fd8a003c547, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex1:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskB:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -156,6 +188,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalGood:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normals:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -207,6 +243,14 @@ Material:
         m_Texture: {fileID: 2800000, guid: 78c21b9113589ad45b319bf2aff62708, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SecondTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Smoothness:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _T_OldBricks_A:
         m_Texture: {fileID: 2800000, guid: a8398228ba53cb540bb8ee9e5cc69aca, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -255,6 +299,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: cf1a045bb42bc464a9bad3dc74f0e92d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ThirdTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _TransitionNM:
         m_Texture: {fileID: 2800000, guid: 4ea5083d09e1aa747b5ad9a32ad2cb74, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -273,23 +321,27 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AO: 3.07
+    - _AODirt: 0
     - _Albedo: 0
-    - _BareBrightness: 0.98823535
+    - _Alpha: 0
+    - _BareBrightness: 1.2
     - _BareConcreteRange: 0.66243684
     - _BareConcreteSmooth: 0.34628615
-    - _BareSmoothness: 0.64473736
+    - _BareSmoothness: 0.61
     - _BaseColor: 0.4357953
     - _BlendPower: 0.299
     - _BricksSmoothness: 0.5034706
     - _BumpScale: 1
     - _CavityEdgesStrenght: 0.6596708
     - _Color: 2
+    - _ColorMask: 15
     - _ColorTheme1: 1.1163812
     - _ColorTheme2: 0
     - _ColorThemeSel: 0
-    - _ConcreteBareRange: 0.65
-    - _ConcreteBareSmooth: 0.267
+    - _ConcreteBareRange: 0.69
+    - _ConcreteBareSmooth: 0.71
     - _ConcreteBareSmoothness: 0.64473736
+    - _ConcreteBrightness: 0
     - _ConcreteDamageScale: 1.2973446
     - _ConcreteDamageTiling: 2
     - _ConcreteDmgSmoothness: 0.5034706
@@ -301,47 +353,52 @@ Material:
     - _CracksTiling: 0
     - _CustomColor: 38
     - _Cutoff: 0.5
-    - _DamageAmount: 0.91764706
+    - _DamageAmount: 0.56
     - _DamageAmount1: 1
     - _DamageAmountInside: 0.88
-    - _DamageAmountSmooth: 14.4
+    - _DamageAmountSmooth: 4.8
     - _DamageAmountTiling: 4.141967
-    - _DamageBrightness: 1.9594152
+    - _DamageBrightness: 2.59
     - _DamageBrigthness: 3.01
-    - _DamageMultiplier: 0.7882353
+    - _DamageMultiplier: 0.28
     - _DamageMultiplier1: 0.6878818
+    - _DamageNMTiling: 1
     - _DamageScale: 1.1935546
     - _DamageSize: 0
-    - _DamageSmoothness: 0.515
+    - _DamageSmoothness: 0.75
     - _DamageSmoothness1: 75.3
     - _DamageSmoothnessIn: 100
     - _DamageSmoothnessInside: 72.7
     - _DamageTiling: 2
     - _DamagedConcreteBrigthness: 2.5767925
     - _DamagedEdgesBrightness: 2.319149
+    - _DetailNMTiling: 0
     - _DetailNormalMapScale: 1
+    - _DetailScale: 0
     - _DiffuseExp: 1
     - _DirtAmount: 0
     - _DirtBlend1: 0
     - _DirtBlend2: 0
     - _DirtBrightness: 0
     - _DirtBrightness1: 0.547
-    - _DirtContrast: 1.0362995
+    - _DirtContrast: 1.54
+    - _DirtInsideMultiplier: 0
     - _DirtMultiply: 0
     - _DirtMultiply1: 0.295627
-    - _DirtOverlay: 0.358
+    - _DirtOverlay: 0.536
     - _DirtPlasterPower: 0.438
-    - _DirtRange: 0.59488237
+    - _DirtRange: 0.5
     - _DirtRo: 0.90294117
     - _DirtRoughness: 0
-    - _DirtSmooth: 0.6242941
-    - _DirtSmoothness: 1.0712789
+    - _DirtSmooth: 0.79
+    - _DirtSmoothness: 1.13
     - _DirtSmoothness1: 7.1480064
     - _DirtStrenght: 0.38071212
     - _DmgConcreteBrigthness: 3.01
     - _DstBlend: 0
     - _Edges: 0.47388238
-    - _EdgesOverlay: 0.408
+    - _EdgesAdd: 0
+    - _EdgesOverlay: 0.53
     - _EdgesStrenght: 0.6596708
     - _Exp: 33.8
     - _ExtraDamage: 0
@@ -366,17 +423,20 @@ Material:
     - _InsideSmoothness: 0
     - _Int0: 0
     - _Keyword1: 0
-    - _MainSmoothness: 0.426
+    - _MainSmoothness: 0.4
     - _Metallic: 0
     - _Mode: 0
+    - _NormalsScale: 4.080567
     - _OcclusionStrength: 1
     - _Offset: 1
     - _OutsideColor: 0
     - _OverlayDirtStrenght: 0.42682976
     - _PaintAmount: 0.5298843
     - _PaintDetails: 0
-    - _PaintEdgesMultiply: 0.4832942
+    - _PaintEdgesMultiply: 0.72
     - _PaintOpacity: 0
+    - _PaintRange: 0
+    - _PaintSmooth: 0
     - _PaintSmoothness: 0.582
     - _Parallax: 0.02
     - _Plaster: 0.41792566
@@ -396,12 +456,19 @@ Material:
     - _Scale: 0.90588236
     - _SkinColor: 1
     - _Smoothnes: 0.3596622
+    - _Smoothness: 1
     - _SmoothnessIn: 100
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
     - _Step: 0.1
     - _Strenght: 4.3
+    - _Strength: 0.2
     - _Substract: 1.88
     - _Tiling: 5
     - _TransitionAmount: 0.0020354865
@@ -411,6 +478,7 @@ Material:
     - _TransitionScale: 2
     - _UVSec: 0
     - _UseCustomColor: 0
+    - _UseUIAlphaClip: 0
     - _ZWrite: 1
     - __dirty: 0
     m_Colors:
