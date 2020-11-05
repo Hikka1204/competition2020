@@ -14,9 +14,23 @@ public class Come_List : MonoBehaviour
     public List<string> Escape = new List<string>();   // 追いかけられている時のコメント一覧 
     public List<string> Hint = new List<string>();     // ヒント系のコメント一覧 
 
+    //public int[][] aiu = new int[10][];
+
+    struct ComeData{
+        public string Name;
+        public string[] Comment;
+    }
+    [System.NonSerialized] ComeData[] Audience;
+    //ComeData[] Audience = new ComeData[10];
+
     void Start()
     {
-
+        Audience[0].Name = "かおり";
+            Audience[0].Comment[0] = "怖くないの？";
+            Audience[0].Comment[1] = "初見です。";
+            Audience[0].Comment[2] = "気を付けてください";
+            Audience[0].Comment[3] = "チャンネル登録しました";
+            Audience[0].Comment[4] = "無理しないでくださいね";
     }
 
     void Update()
