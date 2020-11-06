@@ -17,6 +17,7 @@ TagManager:
   - Hint
   - staging
   - letter
+  - Enemy_Anim
   layers:
   - Default
   - TransparentFX

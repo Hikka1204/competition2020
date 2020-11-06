@@ -103,7 +103,7 @@ public class Come_Generate : MonoBehaviour
             TextList.Add((GameObject)Instantiate(TextPrefab));
             TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
             TextList[ComNum].transform.SetParent(canvas.transform, false);
-            TextList[ComNum].GetComponent<Come_List>().ReactionCommnet();
+            TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().ReactionCommnet();
 
             ComNum++;
             if (ComNum > 6) DeleteComment();
@@ -118,7 +118,7 @@ public class Come_Generate : MonoBehaviour
             TextList.Add((GameObject)Instantiate(TextPrefab));
             TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
             TextList[ComNum].transform.SetParent(canvas.transform, false);
-            TextList[ComNum].GetComponent<Come_List>().EscapeCommnet();
+            TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().EscapeCommnet();
 
             ComNum++;
             if (ComNum > 6) DeleteComment();
@@ -133,7 +133,7 @@ public class Come_Generate : MonoBehaviour
             TextList.Add((GameObject)Instantiate(TextPrefab));
             TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
             TextList[ComNum].transform.SetParent(canvas.transform, false);
-            TextList[ComNum].GetComponent<Come_List>().HintCommnet(index);
+            TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().HintCommnet(index);
 
             ComNum++;
             if (ComNum > 6) DeleteComment();

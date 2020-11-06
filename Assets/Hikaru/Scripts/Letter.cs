@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Letter : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Letter : MonoBehaviour
     [SerializeField] private Vector3 FPS_Po = new Vector3(0.0f,0.0f,0.47f);
     [SerializeField] private byte _fmgFlg = 3;
     [SerializeField] private FlgManeger fmg;
+    [SerializeField] CharacterController _p_Chara;
+    [SerializeField] FirstPersonController _p_Fir;
     private Vector3 InitPo;
     private bool isNear;
     private bool isFPS;
@@ -30,6 +33,8 @@ public class Letter : MonoBehaviour
         {
             isFPS = true;
             isNear = false;
+            _p_Chara.enabled = false;
+            _p_Fir.enabled = false;
             gameObject.transform.parent = _pr_camera.gameObject.transform;
             gameObject.transform.localPosition = FPS_Po;
             gameObject.transform.localRotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
@@ -45,6 +50,8 @@ public class Letter : MonoBehaviour
         {
             isFPS = false;
             isNear = true;
+            _p_Chara.enabled = true;
+            _p_Fir.enabled = true;
             gameObject.transform.parent = null;
             gameObject.transform.position = new Vector3(InitPo.x, InitPo.y, InitPo.z);
             gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);

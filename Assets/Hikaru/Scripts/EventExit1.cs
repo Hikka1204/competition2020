@@ -10,7 +10,7 @@ public class EventExit1 : MonoBehaviour
     [SerializeField] private Vector3 _spawnPo;
     [SerializeField] CharacterController _p_Chara;
     [SerializeField] FirstPersonController _p_Fir;
-    [SerializeField] CameraObject _p_CameraObject;
+    [SerializeField] EventCamera _p_CameraObject;
     [SerializeField] GlitchEffect _p_CameraGl;
     [SerializeField] private float _eventRate = 2f;
     private float EventTime;
@@ -45,15 +45,14 @@ public class EventExit1 : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            _enemy.SetActive(true);
+            _enemy.SetActive(false);
             _enemy.transform.position = _spawnPo;
             _p_CameraObject.enabled = true;
             _p_CameraGl.enabled = true;
             _p_Chara.enabled = false;
             _p_Fir.enabled = false;
             EventTime = _eventRate;
-
-
+            _enemy.SetActive(true);
         }
     }
 
