@@ -62,7 +62,7 @@ public class DoorMove : MonoBehaviour {
                 //    CloseTime = 0;
                 //}
             }
-            else if (_KeyFlg == GetKeyFlg)  //鍵付きなら鍵を持ってるか判断する
+            else if (_KeyFlg <= GetKeyFlg)  //鍵付きなら鍵を持ってるか判断する
             {
                 _KeyFlg = 0;    //鍵無しドアにする
                 audioSource.clip = _KeyInSE;
