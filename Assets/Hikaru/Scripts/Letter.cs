@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
+//手紙の処理 イベント
+
 public class Letter : MonoBehaviour
 {
 
@@ -12,6 +14,8 @@ public class Letter : MonoBehaviour
     [SerializeField] private FlgManeger fmg;
     [SerializeField] CharacterController _p_Chara;
     [SerializeField] FirstPersonController _p_Fir;
+    [SerializeField] private GameObject key;
+    [SerializeField] private GameObject key1;
     private Vector3 InitPo;
     private bool isNear;
     private bool isFPS;
@@ -42,8 +46,10 @@ public class Letter : MonoBehaviour
             {
                 fmg.GetFlg(_fmgFlg);
                 isEventFlg = true;
+                key.gameObject.GetComponent<MaterialChange>().enabled = true;
+                key1.gameObject.GetComponent<MaterialChange>().enabled = true;
             }
-            
+
         }
 
         else if (Input.GetKeyDown("e") && isFPS)
