@@ -31,6 +31,7 @@ public class EventExit1 : MonoBehaviour
             _enemy.GetComponent<Nav_Enemy_Scarecrow>().GetPlayer(true);
             if (EventTime <= 0)
             {
+                _p_CameraObject.CameraStop();
                 _p_CameraObject.enabled = false;
                 _p_CameraGl.enabled = false;
                 _p_Chara.enabled = true;
@@ -41,19 +42,36 @@ public class EventExit1 : MonoBehaviour
 
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
             _enemy.SetActive(false);
             _enemy.transform.position = _spawnPo;
             _p_CameraObject.enabled = true;
+            _p_CameraObject.CameraNum(0);
             _p_CameraGl.enabled = true;
             _p_Chara.enabled = false;
             _p_Fir.enabled = false;
             EventTime = _eventRate;
             _enemy.SetActive(true);
         }
+
     }
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.gameObject.tag == "Player")
+    //    {
+    //        _enemy.SetActive(false);
+    //        _enemy.transform.position = _spawnPo;
+    //        _p_CameraObject.enabled = true;
+    //        _p_CameraGl.enabled = true;
+    //        _p_Chara.enabled = false;
+    //        _p_Fir.enabled = false;
+    //        EventTime = _eventRate;
+    //        _enemy.SetActive(true);
+    //    }
+    //}
 
 }

@@ -6,7 +6,7 @@ public class Hand : MonoBehaviour
 {
     AudioSource audioSource;
     [SerializeField] AudioClip _PickUp;
-    byte keyFlg;    //キーのフラグ　数字で制御
+    [SerializeField] byte keyFlg = 0;    //キーのフラグ　数字で制御
     private bool colflg;
     private GameObject Keyg;
 

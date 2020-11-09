@@ -6,13 +6,13 @@ public class Hit_Over : MonoBehaviour
 {
 
     private UnityStandardAssets.Characters.FirstPerson.FirstPersonController FirstPerson;
-    private CameraObject cameraobject;
+    private EventCamera cameraobject;
 
     // Start is called before the first frame update
     void Start()
     {
         FirstPerson = GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>();
-        cameraobject = transform.GetChild(0).gameObject.GetComponent<CameraObject>();
+        cameraobject = transform.GetChild(0).gameObject.GetComponent<EventCamera>();
     }
 
     // Update is called once per frame
