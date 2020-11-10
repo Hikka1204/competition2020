@@ -51,24 +51,25 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
         //}
 
         // 
-        if (FlagManager.Instance.Co_Hint[0])
-        {
-            ComeObj.GetComponent<Come_Generate>().AddComment_Hint(0);
-            FlagManager.Instance.Co_Hint[0] = false;
-            _HintNum++;
-        }  // No.1:ナースコールが鳴った時のコメント
-        if (FlagManager.Instance.Co_Hint[1])
-        {
-            ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
-            Invoke("HintCome", 2); 
-            FlagManager.Instance.Co_Hint[1] = false;
-        }
+
+        //if (FlagManager.Instance.Co_Hint[0])
+        //{
+        //    ComeObj.GetComponent<Come_Generate>().AddComment_Hint(0);
+        //    FlagManager.Instance.Co_Hint[0] = false;
+        //    _HintNum++;
+        //}  // No.1:ナースコールが鳴った時のコメント
+        //if (FlagManager.Instance.Co_Hint[1])
+        //{
+        //    ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
+        //    Invoke("HintCome", 2); 
+        //    FlagManager.Instance.Co_Hint[1] = false;
+        //}
     }
 
     void HintCome()
     {
         _HintNum++;
-        ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
+        //ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
     }
 
     // 敵から逃げきった後に通常会話を生成するためだけの関数
@@ -81,7 +82,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     {
         if (EscapeFlg)
         {
-            ComeObj.GetComponent<Come_Generate>().AddComment_Escape();
+            //ComeObj.GetComponent<Come_Generate>().AddComment_Escape();
             Invoke("EscapeFlgCome", Random.Range(1, 3));
         }
     }
@@ -89,7 +90,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     public void ReactionCome()
     {
         //_ReactionNum = Random.Range(0, Lists.Reaction.Count);
-        ComeObj.GetComponent<Come_Generate>().AddComment_Reaction();
+        //ComeObj.GetComponent<Come_Generate>().AddComment_Reaction();
     }
 
     //private void OnTriggerEnter(Collider other)
