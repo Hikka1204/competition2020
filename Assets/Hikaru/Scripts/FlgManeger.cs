@@ -49,7 +49,7 @@ public class FlgManeger : MonoBehaviour
                 _keyAudio.Play();
                 _Uketuke_eve.SetActive(true);
                 break;
-            case 2: //鍵を拾った時
+            case 2: //更衣室の鍵を拾った時
                 _breakFloor.SetActive(true);
                 _exitDoorOpenSE.SetActive(true);
                 _stagingEnemy.SetActive(true);
@@ -80,7 +80,6 @@ public class FlgManeger : MonoBehaviour
                 break;
             case 3:
                 break;
-
             default:
                 break;
         }

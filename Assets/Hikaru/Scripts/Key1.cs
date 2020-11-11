@@ -20,7 +20,30 @@ public class Key1 : MonoBehaviour
 
     public byte GetKey()
     {
+
         fmg.GetFlg(_fmgFlg);
         return _KeyFlg;
+    }
+
+    private void TextSwitch(byte key)
+    {
+        switch (key)
+        {
+            case 1:
+                //更衣室のカギ
+                break;
+            case 2:
+                //階段のカギ
+                break;
+            case 3:
+                //診察室のカギ
+                break;
+            case 4:
+                //霊安室のカギ
+                break;
+            case 5:
+                //非常口のカギ
+                break;
+        }
     }
 }
