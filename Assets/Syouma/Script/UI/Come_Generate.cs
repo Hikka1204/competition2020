@@ -95,50 +95,50 @@ public class Come_Generate : MonoBehaviour
         }
     }
 
-    public void AddComment_Reaction()
-    {
-        if (!Move_flg)
-        {
-            Move_flg = true;
-            TextList.Add((GameObject)Instantiate(TextPrefab));
-            TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
-            TextList[ComNum].transform.SetParent(canvas.transform, false);
-            TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().ReactionCommnet();
+    //public void AddComment_Reaction()
+    //{
+    //    if (!Move_flg)
+    //    {
+    //        Move_flg = true;
+    //        TextList.Add((GameObject)Instantiate(TextPrefab));
+    //        TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
+    //        TextList[ComNum].transform.SetParent(canvas.transform, false);
+    //        TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().ReactionCommnet();
 
-            ComNum++;
-            if (ComNum > 6) DeleteComment();
-        }
-    }
+    //        ComNum++;
+    //        if (ComNum > 6) DeleteComment();
+    //    }
+    //}
 
-    public void AddComment_Escape()
-    {
-        if (!Move_flg)
-        {
-            Move_flg = true;
-            TextList.Add((GameObject)Instantiate(TextPrefab));
-            TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
-            TextList[ComNum].transform.SetParent(canvas.transform, false);
-            TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().EscapeCommnet();
+    //public void AddComment_Escape()
+    //{
+    //    if (!Move_flg)
+    //    {
+    //        Move_flg = true;
+    //        TextList.Add((GameObject)Instantiate(TextPrefab));
+    //        TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
+    //        TextList[ComNum].transform.SetParent(canvas.transform, false);
+    //        TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().EscapeCommnet();
 
-            ComNum++;
-            if (ComNum > 6) DeleteComment();
-        }
-    }
+    //        ComNum++;
+    //        if (ComNum > 6) DeleteComment();
+    //    }
+    //}
 
-    public void AddComment_Hint(int index)
-    {
-        if (!Move_flg)
-        {
-            Move_flg = true;
-            TextList.Add((GameObject)Instantiate(TextPrefab));
-            TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
-            TextList[ComNum].transform.SetParent(canvas.transform, false);
-            TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().HintCommnet(index);
+    //public void AddComment_Hint(int index)
+    //{
+    //    if (!Move_flg)
+    //    {
+    //        Move_flg = true;
+    //        TextList.Add((GameObject)Instantiate(TextPrefab));
+    //        TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
+    //        TextList[ComNum].transform.SetParent(canvas.transform, false);
+    //        TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().HintCommnet(index);
 
-            ComNum++;
-            if (ComNum > 6) DeleteComment();
-        }
-    }
+    //        ComNum++;
+    //        if (ComNum > 6) DeleteComment();
+    //    }
+    //}
 
     /*** コメントを消す処理 ***/
     void DeleteComment() 
