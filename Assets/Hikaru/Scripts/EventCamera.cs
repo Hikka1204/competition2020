@@ -6,6 +6,7 @@ public class EventCamera : MonoBehaviour
 {
     [SerializeField] private GameObject _enemyCamera; // 注視したいオブジェクトをInspectorから入れておく
     [SerializeField] private GameObject _eventRote; // 注視したいオブジェクトをInspectorから入れておく
+    [SerializeField] private GameObject _Reference_Enemy_Camera; // 注視したいオブジェクトをInspectorから入れておく
     public float speed = 0.1f;  // 補完スピードを決める
     private bool isEvent = false;
     private GameObject targetObject;
@@ -39,6 +40,10 @@ public class EventCamera : MonoBehaviour
                 break;
             case 1:
                 targetObject = _eventRote;
+                isEvent = true;
+                break;
+            case 2:
+                targetObject = _Reference_Enemy_Camera;
                 isEvent = true;
                 break;
         }
