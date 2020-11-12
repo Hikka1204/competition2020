@@ -29,11 +29,11 @@ public class Event_Op : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("e") && isNear)
-        {   //eキーが押されたらEventを始める
-            AddForce_Rubble.SetActive(true);
-            Destroy(WallDes);
-        }
+        //if (Input.GetKeyDown("e") && isNear)
+        //{   //eキーが押されたらEventを始める
+        //    AddForce_Rubble.SetActive(true);
+        //    Destroy(WallDes);
+        //}
         
         
         //if (EventTime > 0)
@@ -63,6 +63,12 @@ public class Event_Op : MonoBehaviour
             //    _p_Fir.enabled = false;
             //    EventTime = _eventRate;
             //}
+    }
+
+    private void OnDestroy()
+    {
+        AddForce_Rubble.SetActive(true);
+        Destroy(WallDes);
     }
 
 

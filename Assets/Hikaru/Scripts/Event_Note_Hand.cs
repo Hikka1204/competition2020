@@ -43,6 +43,7 @@ public class Event_Note_Hand : MonoBehaviour
             gameObject.transform.parent = _pr_camera.gameObject.transform;
             gameObject.transform.localPosition = FPS_Po;
             gameObject.transform.localRotation = Quaternion.Euler(FPS_Ro.x, FPS_Ro.y, FPS_Ro.z);
+            gameObject.GetComponent<MaterialChange>().StopCo();
         }
 
         else if (Input.GetKeyDown("e") && isFPS)
@@ -54,6 +55,7 @@ public class Event_Note_Hand : MonoBehaviour
             gameObject.transform.parent = null;
             gameObject.transform.position = new Vector3(InitPo.x, InitPo.y, InitPo.z);
             gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            gameObject.GetComponent<MaterialChange>().StartCo();
             if (isEventFlg == false)
             {
                 fmg.GetFlg(_fmgFlg);

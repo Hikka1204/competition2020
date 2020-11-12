@@ -36,7 +36,7 @@ public class Letter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("e") && isNear)    //eキーが押されたら開くか閉まる
+        if (Input.GetKeyDown("e") && isNear)    //取る
         {
             isFPS = true;
             isNear = false;
@@ -45,6 +45,7 @@ public class Letter : MonoBehaviour
             gameObject.transform.parent = _pr_camera.gameObject.transform;
             gameObject.transform.localPosition = FPS_Po;
             gameObject.transform.localRotation = Quaternion.Euler(FPS_Ro.x, FPS_Ro.y, FPS_Ro.z);
+            gameObject.GetComponent<MaterialChange>().StopCo();
             if (isEventFlg == false)
             {
                 fmg.GetFlg(_fmgFlg);
@@ -66,6 +67,7 @@ public class Letter : MonoBehaviour
             gameObject.transform.parent = null;
             gameObject.transform.position = new Vector3(InitPo.x, InitPo.y, InitPo.z);
             gameObject.transform.rotation = InitRo;
+            gameObject.GetComponent<MaterialChange>().StartCo();
         }
 
 
