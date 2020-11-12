@@ -19,6 +19,8 @@ TagManager:
   - letter
   - Enemy_Anim
   - Shelf
+  - DoorOpen
+  - DoorClose
   layers:
   - Default
   - TransparentFX

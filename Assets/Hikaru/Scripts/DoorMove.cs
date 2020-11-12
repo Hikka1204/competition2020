@@ -78,12 +78,14 @@ public class DoorMove : MonoBehaviour {
 
     public void OpenSE()    //アニメーションに関数を追加している //ドアが開く音
     {
+        this.tag = "DoorOpen";
         audioSource.clip = _OpenSE;
         audioSource.Play();
     }
 
     public void CloseSE()   //アニメーションに関数を追加している //ドアが閉まる音
     {
+        this.tag = "DoorClose";
         audioSource.clip = _CloseSE;
         audioSource.Play();
     }
