@@ -13,6 +13,11 @@ public class op_room_lighting : MonoBehaviour
         StartCoroutine("Blink");
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine("Blink");
+    }
+
     IEnumerator Blink()
     {
         while (true)
@@ -20,10 +25,10 @@ public class op_room_lighting : MonoBehaviour
             var renderComponent = GetComponent<Renderer>();
             var lightComponent = GetComponent<Light>();
             renderComponent.material = _default;
-            lightComponent.enabled = !lightComponent.enabled;
+            lightComponent.enabled = false;
             yield return new WaitForSeconds(interval);
             renderComponent.material = _change;
-            lightComponent.enabled = !lightComponent.enabled;
+            lightComponent.enabled = true;
             yield return new WaitForSeconds(interval);
         }
     }

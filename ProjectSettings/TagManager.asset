@@ -18,6 +18,7 @@ TagManager:
   - staging
   - letter
   - Enemy_Anim
+  - Shelf
   layers:
   - Default
   - TransparentFX
@@ -40,8 +41,8 @@ TagManager:
   - call
   - staging
   - letter
-  - 
-  - 
+  - Book
+  - Shelf
   - 
   - 
   - 
