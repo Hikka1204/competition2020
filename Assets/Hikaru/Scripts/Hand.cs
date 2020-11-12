@@ -21,12 +21,15 @@ public class Hand : MonoBehaviour
     {
         if (colflg == true && Input.GetKeyDown("e"))
         {
-            keyFlg = Keyg.gameObject.GetComponent<Key1>().GetKey();
+            if(keyFlg <= Keyg.gameObject.GetComponent<Key1>().GetKey())
+                keyFlg = Keyg.gameObject.GetComponent<Key1>().GetKey();
 
+            
             audioSource.clip = _PickUp;
             audioSource.Play();
             colflg = false;
             Destroy(Keyg.gameObject);
+            Keyg = null;
         }
     }
 

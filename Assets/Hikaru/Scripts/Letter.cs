@@ -17,6 +17,7 @@ public class Letter : MonoBehaviour
     [SerializeField] private GameObject key;
     [SerializeField] private GameObject key1;
     private Vector3 InitPo;
+    private Quaternion InitRo;
     private bool isNear;
     private bool isFPS;
     private bool isEventFlg;
@@ -25,6 +26,7 @@ public class Letter : MonoBehaviour
     void Start()
     {
         InitPo = gameObject.transform.position;
+        InitRo = gameObject.transform.rotation;
         isNear = false;
         isFPS = false;
         isEventFlg = false;
@@ -47,7 +49,9 @@ public class Letter : MonoBehaviour
                 fmg.GetFlg(_fmgFlg);
                 isEventFlg = true;
                 key.gameObject.GetComponent<MaterialChange>().enabled = true;
+                key.gameObject.GetComponent<BoxCollider>().enabled = true;
                 key1.gameObject.GetComponent<MaterialChange>().enabled = true;
+                key1.gameObject.GetComponent<BoxCollider>().enabled = true;
             }
 
         }
@@ -60,7 +64,7 @@ public class Letter : MonoBehaviour
             _p_Fir.enabled = true;
             gameObject.transform.parent = null;
             gameObject.transform.position = new Vector3(InitPo.x, InitPo.y, InitPo.z);
-            gameObject.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            gameObject.transform.rotation = InitRo;
         }
 
 
