@@ -31,13 +31,16 @@ public class Raycast : MonoBehaviour
                 case "Key":
                     TextUI.GetComponent<Text>().text = "[E]拾う";
                     break;
-                case "Door":
+                case "DoorClose":
                     TextUI.GetComponent<Text>().text = "「E」開く";
+                    break;
+                case "DoorOpen":
+                    TextUI.GetComponent<Text>().text = "「E」閉じる";
                     break;
             }
 
         }
-        else// Ray上に何もない時
+        else// Ray上に何もない時、テキストをクリア
         {
             TextUI.GetComponent<Text>().text = "";
         }
