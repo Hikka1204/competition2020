@@ -73,9 +73,9 @@ public class FlgManeger : MonoBehaviour
             case 4: //診察室のノートを読んだ時
                 _cameraRoll.gameObject.SetActive(true);
                 _bloodHandP.SetActive(true);
+                _Event_Enter_Reference_room.gameObject.SetActive(true);
                 break;
             case 5: //資料室でイベントが起きた時
-                _Event_Enter_Reference_room.gameObject.SetActive(true);
                 _Operating_room_rust_key.gameObject.SetActive(true);
                 operating_room_lighting.GetComponent<op_room_lighting>().enabled = true;
                 break;

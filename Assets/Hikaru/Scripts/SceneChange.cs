@@ -26,7 +26,7 @@ public class SceneChange : MonoBehaviour
             FadeRate -= Time.deltaTime;
             if(FadeRate <= 0 || Input.GetMouseButtonDown(0))
             {
-                fadeManager.fadeOutStart(0, 0, 0, 0, "protVer1.00_1024");
+                fadeManager.fadeOutStart(0, 0, 0, 0, "prot_1113");
             }
         }
 
