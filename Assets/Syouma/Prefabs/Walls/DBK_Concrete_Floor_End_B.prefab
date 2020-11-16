@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5087927399066994162}
   - component: {fileID: 8157189451770137175}
   - component: {fileID: 6255746033909923485}
-  - component: {fileID: 5561140795928159593}
+  - component: {fileID: -3849863692478131886}
   m_Layer: 0
   m_Name: DBK_Concrete_Floor_End_B
   m_TagString: Untagged
@@ -160,7 +160,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5561140795928159593
+--- !u!65 &-3849863692478131886
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,5 +171,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8004247, y: 0.2000043, z: 2.2112665}
-  m_Center: {x: -0.9002122, y: 0.10000055, z: 1.105633}
+  m_Size: {x: 1.5959209, y: 0.2000043, z: 1.5249733}
+  m_Center: {x: -0.79796034, y: 0.10000055, z: 0.7624865}
