@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class Come_List : MonoBehaviour
+
 {
     //[SerializeField] List<string> Name = new List<string>(); // コメントしてる人の名前リスト
 
@@ -19,7 +19,7 @@ public class Come_List : MonoBehaviour
         public string[] Comment_2; // 中盤
         public string[] Comment_3; // 終盤
     }
-    ComeData[] Audience = new ComeData[10];
+    ComeData[] Audience = new ComeData[15];
     bool First_flg = false;
 
     int Status = 0;
@@ -174,6 +174,58 @@ public class Come_List : MonoBehaviour
         Audience[9].Comment_3[2] = "大丈夫ですか?";
         Audience[9].Comment_3[3] = "こんなとこ早く出ましょう。";
 
+        Audience[10].Name = "もち：";
+        Audience[10].Comment_1[0] = "廃病院的なところですか？";
+        Audience[10].Comment_1[1] = "今日は何しに来たの？";
+        Audience[10].Comment_1[2] = "不気味だ…";
+            Audience[10].Comment_2[0] = "ガチじゃん";
+            Audience[10].Comment_2[1] = "やっばぁ…";
+            Audience[10].Comment_2[2] = "もう帰ろう";
+        Audience[10].Comment_3[0] = "帰ろう…";
+        Audience[10].Comment_3[1] = "無理だってやばいじゃん";
+        Audience[10].Comment_3[2] = "ドア壊しちゃえ";
+
+        Audience[11].Name = "目黒：";
+        Audience[11].Comment_1[0] = "ここってガチですか？？";
+        Audience[11].Comment_1[1] = "めっちゃ雰囲気ありますね";
+            Audience[11].Comment_2[0] = "うわ…ガチやん";
+            Audience[11].Comment_2[1] = "身体とか大丈夫ですか？";
+        Audience[11].Comment_3[0] = "まじでやばいじゃん";
+        Audience[11].Comment_3[1] = "応援してるから死ぬなー";
+
+        Audience[12].Name = "ぼたん飴：";
+        Audience[12].Comment_1[0] = "雰囲気ありますねー";
+        Audience[12].Comment_1[1] = "うわ…真っ暗";
+        Audience[12].Comment_1[2] = "幽霊見たい！";
+            Audience[12].Comment_2[0] = "最悪";
+            Audience[12].Comment_2[1] = "成仏してくれよー";
+            Audience[12].Comment_2[3] = "怖すぎてわろた";
+        Audience[12].Comment_3[0] = "笑えない…";
+        Audience[12].Comment_3[1] = "気持ち悪い…";
+        Audience[12].Comment_3[1] = "これ以上見れないかも";
+
+        Audience[13].Name = "髪の毛ほしい：";
+        Audience[13].Comment_1[0] = "うわ…怖そうｗ";
+        Audience[13].Comment_1[1] = "ライト無いと無理だな";
+        Audience[13].Comment_1[2] = "暗ッ！";
+            Audience[13].Comment_2[0] = "こんなにハッキリ写るんだ";
+            Audience[13].Comment_2[1] = "やべぇなおい";
+            Audience[13].Comment_2[3] = "うわ…";
+        Audience[13].Comment_3[0] = "こんなの配信していいのかよ";
+        Audience[13].Comment_3[1] = "BANされねぇのか心配だ";
+        Audience[13].Comment_3[1] = "ケガしないようにしなよ";
+
+        Audience[14].Name = "たか：";
+        Audience[14].Comment_1[0] = "こんちわー";
+        Audience[14].Comment_1[1] = "うっわ、暗ッ！";
+        Audience[14].Comment_1[2] = "うせやん";
+        Audience[14].Comment_1[3] = "いぇいいぇい";
+            Audience[14].Comment_2[0] = "居るやん！あ、ちゃうか…";
+            Audience[14].Comment_2[1] = "タバコ吸わせて";
+        Audience[14].Comment_3[0] = "休憩";
+        Audience[14].Comment_3[1] = "来るな来いよボケッ！";
+        Audience[14].Comment_3[1] = "あーもう、なんかやだなぁ";
+
     }
 
     public void RandomComment()
@@ -200,8 +252,8 @@ public class Come_List : MonoBehaviour
                     // 序盤のコメントがない人だと人を変える
                     while (Audience[i].Comment_1[0] == null)
                         i = Random.Range(0, Audience.Length);
-                    
 
+                    Debug.Log("何回入ったか");
                     j = Random.Range(0, Audience[i].Comment_1.Length);
                 } while (Check == Audience[i].Name + Audience[i].Comment_1[j] && 0 == Audience[i].Comment_1[j].Length);
                 // ひとつ前のコメントと同じが調べている

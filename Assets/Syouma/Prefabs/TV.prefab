@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 400000}
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
-  - component: {fileID: 6500000}
+  - component: {fileID: 6956853189088420681}
   m_Layer: 0
-  m_Name: TV_90
+  m_Name: TV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6500000
+--- !u!65 &6956853189088420681
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,5 +91,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.38661993, y: 0.2978265, z: 0.28384602}
-  m_Center: {x: 0.000000037252903, y: 0.1485029, z: -0.038624205}
+  m_Size: {x: 0.98201466, y: 0.7564793, z: 0.72096884}
+  m_Center: {x: 0.00000008940697, y: 0.3771998, z: -0.098105505}
