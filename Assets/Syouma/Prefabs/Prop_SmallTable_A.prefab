@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 457142}
   - component: {fileID: 3393338}
   - component: {fileID: 2325728}
-  - component: {fileID: 6573398}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: lo_Prop_SmallTable_A_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 16
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &457142
 Transform:
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6573398
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131464}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5881537, y: 1.2126795, z: 0.5174784}
-  m_Center: {x: 0.00082470477, y: 0.6010242, z: 0.24138345}
 --- !u!1 &142902
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,13 +90,12 @@ GameObject:
   - component: {fileID: 408016}
   - component: {fileID: 3371150}
   - component: {fileID: 2313160}
-  - component: {fileID: 6555428}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: lo_Prop_SmallTable_A_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 16
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &408016
 Transform:
@@ -173,19 +158,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6555428
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142902}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5881537, y: 1.2126795, z: 0.5174784}
-  m_Center: {x: 0.00082470477, y: 0.6010242, z: 0.24138345}
 --- !u!1 &148580
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,12 +168,13 @@ GameObject:
   m_Component:
   - component: {fileID: 436586}
   - component: {fileID: 20568700}
-  m_Layer: 8
+  - component: {fileID: 7745323356537351116}
+  m_Layer: 0
   m_Name: Prop_SmallTable_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 16
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &436586
 Transform:
@@ -242,3 +215,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2325728}
   m_Enabled: 1
+--- !u!65 &7745323356537351116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148580}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6658325, y: 1.2235451, z: 0.5190735}
+  m_Center: {x: 0.00793457, y: 0.60321236, z: 0.24046326}

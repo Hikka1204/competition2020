@@ -20,19 +20,59 @@ public class Come_List : MonoBehaviour
         public string[] Comment_3; // 終盤
     }
     ComeData[] Audience = new ComeData[15];
-    bool First_flg = false;
 
-    int Status = 0;
+    int Status = 0; // [0=序盤,1=中盤,2=終盤]
+    bool EndFlg = false;
+
+    private void Awake()
+    {
+        CommentSet();
+    }
 
     void Start()
     {
-
 
     }
 
     void Update()
     {
+        if (!EndFlg)
+        {
+            //Debug.Log("koko");
 
+            // コメントする人をランダムで決める
+            int i = Random.Range(0, Audience.Length);
+            int j;
+            string Check = null;
+
+            // コメントした人の名前入力
+            this.GetComponent<Text>().text = Audience[i].Name;
+            // コメントの内容を入力
+            switch (Status)
+            {
+                case 0:// 序盤
+                    do{
+                        // 序盤のコメントがない人だと人を変える
+                        while (Audience[i].Comment_1[0] == null)
+                            i = Random.Range(0, Audience.Length);
+                        do{
+                            j = Random.Range(0, Audience[i].Comment_1.Length);
+                        } while (Audience[i].Comment_1[j] == null);
+                        Debug.Log("koko");
+                    } while (Check == (Audience[i].Name + Audience[i].Comment_1[j])); // ひとつ前のコメントと同じが調べている
+                    this.GetComponent<Text>().text += Audience[i].Comment_1[j];
+                    Check = this.GetComponent<Text>().text;
+                    EndFlg = true;
+                    break;
+
+                case 1:// 中盤
+                    this.GetComponent<Text>().text += Audience[i].Comment_2[Random.Range(0, Audience[i].Comment_2.Length)];
+                    break;
+                case 2:// 終盤
+                    this.GetComponent<Text>().text += Audience[i].Comment_3[Random.Range(0, Audience[i].Comment_3.Length)];
+                    break;
+            }
+        }
     }
 
     void CommentSet()
@@ -228,53 +268,47 @@ public class Come_List : MonoBehaviour
 
     }
 
-    public void RandomComment()
-    {
-        if (!First_flg)
-        {
-            First_flg = true;
-            CommentSet();
-        }
-        Debug.Log(First_flg);
-        // コメントする人をランダムで決める
-        int i = Random.Range(0, Audience.Length);
-        int j;
-        string Check = null;
+    //public void RandomComment()
+    //{
 
-        // コメントした人の名前入力
-        this.GetComponent<Text>().text += Audience[i].Name;
-        // コメントの内容を入力
-        switch (Status)
-        {
-            case 0:// 序盤
-                do
-                {
-                    // 序盤のコメントがない人だと人を変える
-                    while (Audience[i].Comment_1[0] == null)
-                        i = Random.Range(0, Audience.Length);
+    //    // コメントする人をランダムで決める
+    //    int i = Random.Range(0, Audience.Length);
+    //    int j;
+    //    string Check = null;
 
-                    Debug.Log("何回入ったか");
-                    j = Random.Range(0, Audience[i].Comment_1.Length);
-                } while (Check == Audience[i].Name + Audience[i].Comment_1[j] && 0 == Audience[i].Comment_1[j].Length);
-                // ひとつ前のコメントと同じが調べている
+    //    // コメントした人の名前入力
+    //    this.GetComponent<Text>().text += Audience[i].Name;
+    //    // コメントの内容を入力
+    //    switch (Status)
+    //    {
+    //        case 0:// 序盤
+    //            do
+    //            {
+    //                // 序盤のコメントがない人だと人を変える
+    //                while (Audience[i].Comment_1[0] == null)
+    //                    i = Random.Range(0, Audience.Length);
+                   
+    //                j = Random.Range(0, Audience[i].Comment_1.Length);
+    //            } while (Check == Audience[i].Name + Audience[i].Comment_1[j] && 0 == Audience[i].Comment_1[j].Length);
+    //            // ひとつ前のコメントと同じが調べている
 
-                this.GetComponent<Text>().text += Audience[i].Comment_1[j];
-                Check = this.GetComponent<Text>().text;
-                break;
-            case 1:// 中盤
-                this.GetComponent<Text>().text += Audience[i].Comment_2[Random.Range(0, Audience[i].Comment_2.Length)];
-                break;
-            case 2:// 終盤
-                this.GetComponent<Text>().text += Audience[i].Comment_3[Random.Range(0, Audience[i].Comment_3.Length)];
-                break;
-        }
+    //            this.GetComponent<Text>().text += Audience[i].Comment_1[j];
+    //            Check = this.GetComponent<Text>().text;
+    //            break;
+    //        case 1:// 中盤
+    //            this.GetComponent<Text>().text += Audience[i].Comment_2[Random.Range(0, Audience[i].Comment_2.Length)];
+    //            break;
+    //        case 2:// 終盤
+    //            this.GetComponent<Text>().text += Audience[i].Comment_3[Random.Range(0, Audience[i].Comment_3.Length)];
+    //            break;
+    //    }
 
 
-        //// コメントした人の名前をランダムで入力
-        //this.GetComponent<Text>().text += Name[Random.Range(0, Name.Count)];
-        //// あいさつ系を入力
-        //this.GetComponent<Text>().text += Talk[Random.Range(0, Talk.Count)];
-    }
+    //    //// コメントした人の名前をランダムで入力
+    //    //this.GetComponent<Text>().text += Name[Random.Range(0, Name.Count)];
+    //    //// あいさつ系を入力
+    //    //this.GetComponent<Text>().text += Talk[Random.Range(0, Talk.Count)];
+    //}
 
     ///*** リアクション系の生成 ***/
     //public void ReactionCommnet()
