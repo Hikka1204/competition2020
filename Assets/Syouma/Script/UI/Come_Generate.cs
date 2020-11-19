@@ -58,9 +58,6 @@ public class Come_Generate : MonoBehaviour
         if (MoveDecision && OnOff_flg) OnMove();        // 非表示の処理
         else if(!MoveDecision && !OnOff_flg) OffMove(); // 表示の処理
 
-        CreatComment();
-
-
 
         // 次のコメントが決まったら動く処理をする
         if (Move_flg)
@@ -78,10 +75,6 @@ public class Come_Generate : MonoBehaviour
     }
 
    
-    void CreatComment()
-    {
-
-    }
 
     /*** コメントを追加する処理 ***/
     public void AddComment()
