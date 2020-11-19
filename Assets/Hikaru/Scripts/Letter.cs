@@ -50,9 +50,9 @@ public class Letter : MonoBehaviour
             {
                 fmg.GetFlg(_fmgFlg);
                 isEventFlg = true;
-                key.gameObject.GetComponent<MaterialChange>().enabled = true;
+                key.gameObject.GetComponent<MaterialEmiChange>().enabled = true;
                 key.gameObject.GetComponent<BoxCollider>().enabled = true;
-                key1.gameObject.GetComponent<MaterialChange>().enabled = true;
+                key1.gameObject.GetComponent<MaterialEmiChange>().enabled = true;
                 key1.gameObject.GetComponent<BoxCollider>().enabled = true;
             }
 
