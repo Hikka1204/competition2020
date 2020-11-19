@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6172958536862840227}
   - component: {fileID: 7063080728277531142}
   - component: {fileID: 5035567309393186508}
+  - component: {fileID: 4411504841451051347}
   m_Layer: 0
   m_Name: DBK_Concrete_Pillar_End_B
   m_TagString: Untagged
@@ -80,6 +81,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4411504841451051347
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6836765199758585625}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5000001, y: 2.1529727, z: 0.5000001}
+  m_Center: {x: -0.0000000559668, y: 1.0764863, z: -0.0000000559668}
 --- !u!1 &8317881533518405101
 GameObject:
   m_ObjectHideFlags: 0

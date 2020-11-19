@@ -90,8 +90,9 @@ GameObject:
   - component: {fileID: 5070695985493804888}
   - component: {fileID: 8210449936200009981}
   - component: {fileID: 6203031182159150135}
+  - component: {fileID: 3919563955373216856}
   m_Layer: 0
-  m_Name: DBK_Concrete_Pillar_A 1
+  m_Name: DBK_Concrete_Pillar_A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,3 +160,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3919563955373216856
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5554463975374839266}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 3.0000005, z: 0.50000006}
+  m_Center: {x: 0, y: 1.5000002, z: -0.000000029802322}

@@ -21,6 +21,7 @@ TagManager:
   - Shelf
   - DoorOpen
   - DoorClose
+  - CommentManager
   layers:
   - Default
   - TransparentFX
