@@ -53,7 +53,7 @@ public class EventOpRoom : MonoBehaviour
         _eventCamera.CameraStop();
         _p_Chara.enabled = true;
         _p_Fir.enabled = true;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         yield break;
     }
 
