@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class EventCamera : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class EventCamera : MonoBehaviour
     private void Start()
     {
         //isEvent = false;
+        
     }
 
     // Update is called once per frame
@@ -32,6 +34,7 @@ public class EventCamera : MonoBehaviour
 
     public void CameraNum(int a)
     {
+        
         switch (a)
         {
             case 0:
@@ -48,6 +51,7 @@ public class EventCamera : MonoBehaviour
                 break;
         }
     }
+
     public void CameraStop()
     {
         isEvent = false;

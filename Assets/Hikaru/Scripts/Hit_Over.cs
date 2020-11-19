@@ -20,7 +20,7 @@ public class Hit_Over : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKey(KeyCode.R)) Over_UI.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.Escape)) Quit();
-        if (Input.GetKey(KeyCode.R)) RetryButton();
+        //if (Input.GetKey(KeyCode.R)) RetryButton();
     }
 
     void Quit()
