@@ -971,6 +971,7 @@ GameObject:
   - component: {fileID: 434578}
   - component: {fileID: 3317822}
   - component: {fileID: 2346756}
+  - component: {fileID: 2163101831221755184}
   m_Layer: 0
   m_Name: Chest of drawers
   m_TagString: Untagged
@@ -1039,6 +1040,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2163101831221755184
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184154}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.56196296, y: 1.6265813, z: 0.86187947}
+  m_Center: {x: 0.00037918985, y: 0.0003782501, z: -0.4088294}
 --- !u!1 &191864
 GameObject:
   m_ObjectHideFlags: 0

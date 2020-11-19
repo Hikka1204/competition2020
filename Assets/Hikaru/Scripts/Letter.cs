@@ -10,6 +10,7 @@ public class Letter : MonoBehaviour
 
     [SerializeField] private GameObject _pr_camera;
     [SerializeField] private Vector3 FPS_Po = new Vector3(0.0f,0.0f,0.47f);
+    [SerializeField] private Vector3 FPS_Ro = new Vector3(90.0f, 180.0f, 0.0f);
     [SerializeField] private byte _fmgFlg = 3;
     [SerializeField] private FlgManeger fmg;
     [SerializeField] CharacterController _p_Chara;
@@ -35,7 +36,7 @@ public class Letter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("e") && isNear)    //eキーが押されたら開くか閉まる
+        if (Input.GetKeyDown("e") && isNear)    //取る
         {
             isFPS = true;
             isNear = false;
@@ -43,7 +44,8 @@ public class Letter : MonoBehaviour
             _p_Fir.enabled = false;
             gameObject.transform.parent = _pr_camera.gameObject.transform;
             gameObject.transform.localPosition = FPS_Po;
-            gameObject.transform.localRotation = Quaternion.Euler(90.0f, 0.0f, 0.0f);
+            gameObject.transform.localRotation = Quaternion.Euler(FPS_Ro.x, FPS_Ro.y, FPS_Ro.z);
+            gameObject.GetComponent<MaterialChange>().StopCo();
             if (isEventFlg == false)
             {
                 fmg.GetFlg(_fmgFlg);
@@ -65,6 +67,7 @@ public class Letter : MonoBehaviour
             gameObject.transform.parent = null;
             gameObject.transform.position = new Vector3(InitPo.x, InitPo.y, InitPo.z);
             gameObject.transform.rotation = InitRo;
+            gameObject.GetComponent<MaterialChange>().StartCo();
         }
 
 

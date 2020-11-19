@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 3077958111179658259}
   - component: {fileID: 2096637889938611126}
   - component: {fileID: 4250331816272768892}
+  - component: {fileID: 8611334508171218233}
   m_Layer: 0
   m_Name: DBK_Concrete_Floor_Side_C
   m_TagString: Untagged
@@ -159,3 +160,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8611334508171218233
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2449054625036570281}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.0146008, y: 0.200003, z: 3.0000033}
+  m_Center: {x: -1.0073023, y: 0.10000107, z: 1.5000005}

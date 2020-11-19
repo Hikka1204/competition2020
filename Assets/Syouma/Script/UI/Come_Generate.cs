@@ -57,7 +57,7 @@ public class Come_Generate : MonoBehaviour
 
         if (MoveDecision && OnOff_flg) OnMove();        // 非表示の処理
         else if(!MoveDecision && !OnOff_flg) OffMove(); // 表示の処理
-                    
+
 
         // 次のコメントが決まったら動く処理をする
         if (Move_flg)
@@ -74,6 +74,7 @@ public class Come_Generate : MonoBehaviour
         }
     }
 
+   
 
     /*** コメントを追加する処理 ***/
     public void AddComment()
@@ -86,12 +87,13 @@ public class Come_Generate : MonoBehaviour
                 TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
                 TextList[ComNum].transform.SetParent(canvas.transform, false);
                 //TextList[ComNum].GetComponent<Come_List>().RandomComment();
-                TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().RandomComment();
+                TextList[ComNum].gameObject.GetComponentInChildren<Come_List>();
 
                 ComNum ++;
                 if (ComNum > 6) DeleteComment();
             }
-            Invoke("AddComment", Random.Range(3, 7));
+            //Invoke("AddComment", Random.Range(3, 7));
+            Invoke("AddComment", 1);
         }
     }
 

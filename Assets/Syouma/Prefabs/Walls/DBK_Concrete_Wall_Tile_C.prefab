@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 6708527808002608654}
   - component: {fileID: 7689511443529220523}
   - component: {fileID: 5571610947858773345}
+  - component: {fileID: 3259524273809725574}
   m_Layer: 0
   m_Name: DBK_Concrete_Wall_Tile_C
   m_TagString: Untagged
@@ -159,3 +160,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &3259524273809725574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6220221859026375860}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.0000048, y: 2.186126, z: 0.26336834}
+  m_Center: {x: -1.5000024, y: 1.0930628, z: -0.12571771}

@@ -49,7 +49,8 @@ public class Staging_Enemy : MonoBehaviour
                 PlayerOb.GetComponent<CharacterController>().enabled = true;
                 PlayerOb.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
                 camera.enabled = false;
-                gameObject.GetComponent<Staging_Enemy>().
+                //gameObject.GetComponent<Staging_Enemy>().
+                //Destroy(gameObject);
                 gameObject.SetActive(false);
                 StaEne.enabled = false;
             }
