@@ -34,13 +34,11 @@ public class Come_Generate : MonoBehaviour
     bool Move_flg = false;
     bool OnOff_flg = false;
 
-    GameObject Player;
     Come_Flg comeflg;
 
     void Start()
     {
-        Player = GameObject.Find("FPSController");
-        comeflg = Player.GetComponent<Come_Flg>();
+        comeflg = GameObject.FindGameObjectWithTag("Player").GetComponent<Come_Flg>();
         TextList.Clear(); //Listの初期化
         //InvokeRepeating("AddComment", 1, 3); // 1秒後に3秒間隔でコメント追加する
         Invoke("AddComment", 1); // 1秒後にコメント追加する
@@ -49,7 +47,6 @@ public class Come_Generate : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(Move_flg);
         nowPosition = window.transform.position.y;//現在座標の取得
 
         // Cキーを押してコメントの表示/非表示の切り替え
@@ -79,7 +76,8 @@ public class Come_Generate : MonoBehaviour
     /*** コメントを追加する処理 ***/
     public void AddComment()
     {
-        if (!comeflg.EscapeFlg){
+        if (!CommentManager.Instance.Escape_Flg)
+        {
             if (!Move_flg)
             {
                 Move_flg = true;
@@ -92,8 +90,8 @@ public class Come_Generate : MonoBehaviour
                 ComNum ++;
                 if (ComNum > 6) DeleteComment();
             }
-            //Invoke("AddComment", Random.Range(3, 7));
-            Invoke("AddComment", 1);
+            Invoke("AddComment", Random.Range(3, 7));
+            //Invoke("AddComment", 1); /*デバッグ用*/
         }
     }
 
@@ -112,20 +110,20 @@ public class Come_Generate : MonoBehaviour
     //    }
     //}
 
-    //public void AddComment_Escape()
-    //{
-    //    if (!Move_flg)
-    //    {
-    //        Move_flg = true;
-    //        TextList.Add((GameObject)Instantiate(TextPrefab));
-    //        TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
-    //        TextList[ComNum].transform.SetParent(canvas.transform, false);
-    //        TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().EscapeCommnet();
+    public void AddComment_Escape()
+    {
+        if (!Move_flg)
+        {
+            Move_flg = true;
+            TextList.Add((GameObject)Instantiate(TextPrefab));
+            TextList[ComNum].transform.position = new Vector3(x, y - 24f, 0f);
+            TextList[ComNum].transform.SetParent(canvas.transform, false);
+            TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().EscapeCommnet();
 
-    //        ComNum++;
-    //        if (ComNum > 6) DeleteComment();
-    //    }
-    //}
+            ComNum++;
+            if (ComNum > 6) DeleteComment();
+        }
+    }
 
     //public void AddComment_Hint(int index)
     //{
