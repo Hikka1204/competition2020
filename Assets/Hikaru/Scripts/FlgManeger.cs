@@ -41,9 +41,9 @@ public class FlgManeger : MonoBehaviour
 
     //リスタートするとき
     [SerializeField] private GameObject _enemy;
-    [SerializeField] private Vector3[] _enemySpawnPo = new Vector3[8];
+    [SerializeField] private Vector3[] _enemySpawnPo = new Vector3[9];
     [SerializeField] private GameObject _FPSController;
-    [SerializeField] private Vector3[] _PlayerSpawnPo = new Vector3[8];
+    [SerializeField] private Vector3[] _PlayerSpawnPo = new Vector3[9];
     [SerializeField] CharacterController _p_Chara;
     [SerializeField] FirstPersonController _p_Fir;
     [SerializeField] GlitchEffect _p_CameraGl;
@@ -90,7 +90,7 @@ public class FlgManeger : MonoBehaviour
                 Destroy(_floor65_Des);
                 break;
             case 3: //更衣室の手紙を読んだ時
-                _Reference_room_rust_key.SetActive(true);
+                _Reference_room_rust_key.gameObject.SetActive(true);
                 _EnterEvent.gameObject.SetActive(true);
                 _NoteOb.gameObject.SetActive(true);
                 break;

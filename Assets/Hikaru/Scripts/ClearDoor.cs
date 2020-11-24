@@ -9,7 +9,7 @@ public class ClearDoor : MonoBehaviour
     private bool isNear;
     [SerializeField] GameObject clearUI;  //ゲームクリアUI
 
-    [SerializeField] byte _KeyFlg = 6;  //キーフラグ用
+    [SerializeField] byte _KeyFlg = 7;  //キーフラグ用
     [SerializeField] GameObject Hand;
     private byte GetKeyFlg;     //プレイヤーのキーを取得する変数
 
