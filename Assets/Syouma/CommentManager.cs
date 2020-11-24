@@ -56,7 +56,7 @@ public class CommentManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Escape_Flg);
+
     }
 
     void EscapeComeSet()

@@ -15,10 +15,10 @@ public class Come_Generate : MonoBehaviour
     public GameObject TextPrefab; // テキストプレファブをいれる変数
     private List<GameObject> TextList = new List<GameObject>(); // 今出ているコメント
 
-    public float startPosition;//上の移動限界値
-    public float endPosition;//下の移動限界値
-    [SerializeField] private float OnOffSpeed;//表示.非表示の移動速度
-    [SerializeField] private float MoveSpeed;//コメントが流れる速度
+    float startPosition;//上の移動限界値
+    float endPosition;//下の移動限界値
+    float OnOffSpeed;//表示.非表示の移動速度
+    float MoveSpeed;//コメントが流れる速度
 
     RectTransform window;//UIの座標変更
     bool MoveDecision = true;//今のウィンドウがどこにあるかの判定　trueなら上
@@ -38,7 +38,7 @@ public class Come_Generate : MonoBehaviour
 
     void Start()
     {
-        comeflg = GameObject.FindGameObjectWithTag("Player").GetComponent<Come_Flg>();
+        //comeflg = GameObject.FindGameObjectWithTag("Player").GetComponent<Come_Flg>();
         TextList.Clear(); //Listの初期化
         //InvokeRepeating("AddComment", 1, 3); // 1秒後に3秒間隔でコメント追加する
         Invoke("AddComment", 1); // 1秒後にコメント追加する
