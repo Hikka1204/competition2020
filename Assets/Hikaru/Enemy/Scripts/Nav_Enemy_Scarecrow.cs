@@ -65,6 +65,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
             TrackingStatus = false;
             ForeverTrackingflg = false;
             SearchTime = _SearchRate;
+            TrackingTime = 0;
             Number = 0;
             Anim.SetFloat("speed", Enemy_Nav.speed);
             SetSearchLocation();

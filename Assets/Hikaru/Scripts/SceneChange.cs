@@ -32,7 +32,7 @@ public class SceneChange : MonoBehaviour
                         fadeManager.fadeOutStart(0, 0, 0, 0, "protOP");
                     break;
                     case 2:
-                        fadeManager.fadeOutStart(0, 0, 0, 0, "Build1119");
+                        fadeManager.fadeOutStart(0, 0, 0, 0, "Master_1125");
                     break;
                 }
             }

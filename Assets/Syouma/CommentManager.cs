@@ -46,7 +46,7 @@ public class CommentManager : MonoBehaviour
 
     public bool Escape_Flg; // true=逃げている、false=通常時
     // 逃げている間のコメント集
-    [System.NonSerialized] public string[] Escape = new string[38];
+    [System.NonSerialized] public string[] Escape = new string[39];
     void Start()
     {
         CommentSet();
