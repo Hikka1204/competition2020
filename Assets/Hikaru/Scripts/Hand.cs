@@ -28,7 +28,8 @@ public class Hand : MonoBehaviour
             audioSource.clip = _PickUp;
             audioSource.Play();
             colflg = false;
-            Destroy(Keyg.gameObject);
+            //Destroy(Keyg.gameObject);
+            Keyg.gameObject.SetActive(false);
             Keyg = null;
         }
     }
@@ -36,6 +37,11 @@ public class Hand : MonoBehaviour
     public byte GetKey()
     {
         return keyFlg;
+    }
+
+    public void SetKey(byte a)
+    {
+        keyFlg = a;
     }
 
     private void OnTriggerEnter(Collider other)

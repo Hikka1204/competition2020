@@ -22,6 +22,7 @@ public class EventExit1 : MonoBehaviour
         
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -36,7 +37,8 @@ public class EventExit1 : MonoBehaviour
                 _p_CameraGl.enabled = false;
                 _p_Chara.enabled = true;
                 _p_Fir.enabled = true;
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                gameObject.SetActive(true);
             }
         }
 

@@ -39,6 +39,15 @@ public class BlowOff : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        if (isCollision)
+        {
+            isCollision = false;
+            isEvent = false;
+        }
+    }
+
     private void Addforce()
     {
         if (isCollision == false)

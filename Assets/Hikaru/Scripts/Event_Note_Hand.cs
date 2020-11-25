@@ -31,6 +31,7 @@ public class Event_Note_Hand : MonoBehaviour
         isEventFlg = false;
     }
 
+
     // Update is called once per frame
     void Update()
     {

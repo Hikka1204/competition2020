@@ -14,6 +14,7 @@ public class DoorMove : MonoBehaviour {
     private float CloseTime;    //上の変数の格納用
 
     [SerializeField] byte _KeyFlg;  //キーフラグ用
+    private byte IntKey;
     private byte GetKeyFlg;     //プレイヤーのキーを取得する変数
     [SerializeField] private float _speed = 1f;  //ドアのアニメーション速度
 
@@ -32,7 +33,7 @@ public class DoorMove : MonoBehaviour {
         animator = transform.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         animator.speed = _speed;
-        
+        IntKey = _KeyFlg;
     }
 
     void Update()
@@ -70,10 +71,21 @@ public class DoorMove : MonoBehaviour {
             }
             else //鍵を持たずに鍵付きドアを開けようとしたとき
             {
+                FlagManager.Instance.SerifFlg[0] = true;
                 audioSource.clip = _KeyOutSE;
                 audioSource.Play();
             }
         }
+
+        if(IntKey != 0 && Input.GetKey(KeyCode.R) && IntKey >= Hand.GetComponent<Hand>().GetKey())
+        {
+            if (_KeyFlg != IntKey)
+            {
+                _KeyFlg = IntKey;
+            }
+            
+        }
+        
     }
 
     public void OpenSE()    //アニメーションに関数を追加している //ドアが開く音

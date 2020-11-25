@@ -7,8 +7,8 @@ public class Staging_Door : MonoBehaviour
 {
 
     
-    private bool isNear;    //　ドアエリアに入っているかどうか
-    private bool isEvent;   //Eventが起きたかどうか
+    private bool isNear = false;    //　ドアエリアに入っているかどうか
+    private bool isEvent = false;   //Eventが起きたかどうか
     private AudioSource audioSource;
     [SerializeField] private float _eventRate = 2f;
     private float EventTime;
@@ -26,8 +26,15 @@ public class Staging_Door : MonoBehaviour
         isEvent = false;
         audioSource = GetComponent<AudioSource>();
         gameObject.GetComponent<DoorMove>().enabled = false;
-
     }
+
+    public void Respawn()
+    {
+        isNear = false;
+        isEvent = false;
+        gameObject.GetComponent<DoorMove>().enabled = false;
+    }
+
 
     void Update()
     {
