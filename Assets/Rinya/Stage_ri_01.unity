@@ -8824,13 +8824,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 316f49dd2ef039b43bcb081c3b7216fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _EnemyObject: {fileID: 0}
-  _Key1: {fileID: 1211150642}
+  _Uketuke_eve: {fileID: 0}
+  _Changing_room_rust_key: {fileID: 0}
+  _keyAudio: {fileID: 1778185384}
+  _floor65_Des: {fileID: 0}
   _breakFloor: {fileID: 1670698165}
-  _destroyFloor: {fileID: 1389921478}
   _exitDoorOpenSE: {fileID: 910742357}
   _stagingEnemy: {fileID: 1027979651}
-  _keyAudio: {fileID: 1778185384}
+  _Examination_room_rust_key: {fileID: 0}
+  _Stairs_rust_key: {fileID: 0}
+  _letter: {fileID: 0}
+  _Reference_room_rust_key: {fileID: 0}
+  _EnterEvent: {fileID: 0}
+  _NoteOb: {fileID: 0}
+  _cameraRoll: {fileID: 0}
+  _bloodHandP: {fileID: 0}
+  _Event_Enter_Reference_room: {fileID: 0}
+  _Operating_room_rust_key: {fileID: 0}
+  _operating_room_lighting1: {fileID: 0}
+  _operating_room_lighting2: {fileID: 0}
+  _Morgue_rust_key: {fileID: 0}
+  _Emergency_exit_rust_key: {fileID: 0}
+  _EnemySpawn_P: {fileID: 0}
+  _enemy: {fileID: 0}
+  _enemySpawnPo:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  _FPSController: {fileID: 0}
+  _PlayerSpawnPo:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  _p_Chara: {fileID: 0}
+  _p_Fir: {fileID: 0}
+  _p_CameraGl: {fileID: 0}
+  _eventCamera: {fileID: 0}
 --- !u!1 &183112818
 GameObject:
   m_ObjectHideFlags: 0
@@ -49869,12 +49910,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210983194}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1211150642 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 374289202576707483, guid: 78df1db2fbc8ec64f949fac0c05bf693,
-    type: 3}
-  m_PrefabInstance: {fileID: 636298188}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1213250598
 GameObject:
   m_ObjectHideFlags: 0
@@ -71064,6 +71099,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fmgFlg: 1
   fmg: {fileID: 181373191}
+  Light: {fileID: 0}
 --- !u!1 &1690166303
 GameObject:
   m_ObjectHideFlags: 0
