@@ -22,6 +22,8 @@ TagManager:
   - DoorOpen
   - DoorClose
   - CommentManager
+  - FlagManager
+  - Comment
   layers:
   - Default
   - TransparentFX

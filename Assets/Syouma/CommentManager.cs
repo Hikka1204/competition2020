@@ -4,6 +4,36 @@ using UnityEngine;
 
 public class CommentManager : MonoBehaviour
 {
+    private static CommentManager instance = null;
+    public static CommentManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<CommentManager>();
+
+                if (instance == null)
+                {
+                    instance = new GameObject("CommentManager").AddComponent<CommentManager>();
+                }
+            }
+            return instance;
+        }
+    }
+
+    void Awake()
+    {
+        if (Instance == this)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+    }
     public struct ComeData
     {
         public string Name;
@@ -14,16 +44,67 @@ public class CommentManager : MonoBehaviour
     [System.NonSerialized] public ComeData[] Audience = new ComeData[15];
     [System.NonSerialized] public string Previous = null; // ひとつ前のコメントを入れる変数
 
+    public bool Escape_Flg; // true=逃げている、false=通常時
+    // 逃げている間のコメント集
+    [System.NonSerialized] public string[] Escape = new string[38];
     void Start()
     {
         CommentSet();
+        EscapeComeSet();
+        Escape_Flg = false;
     }
 
     void Update()
     {
-        
+
     }
 
+    void EscapeComeSet()
+    {
+        Escape[0]  = "かおり：逃げて！";
+        Escape[1]  = "かおり：なんなの？！";
+        Escape[2]  = "かおり：何あれ！！";
+        Escape[3]  = "ちょんまげ男：走れ！";
+        Escape[4]  = "ちょんまげ男：走れ走れ走れ";
+        Escape[5]  = "ちょんまげ男：なんだよあれ！";
+        Escape[6]  = "卵かけライス：だからやめとけって...";
+        Escape[7]  = "卵かけライス：捕まるなよ";
+        Escape[8]  = "卵かけライス：助からないかもな";
+        Escape[9]  = "みさき：ええええええ！";
+        Escape[10]  = "みさき：やばいいい";
+        Escape[11]  = "みさき：死なないで！";
+        Escape[12] = "りんご星人：なんだこいつっ！";
+        Escape[13] = "りんご星人：すごいもの見てるわ";
+        Escape[14] = "りんご星人：逃げきれ！";
+        Escape[15] = "みかママ：え？";
+        Escape[16] = "みかママ：お願い逃げて";
+        Escape[17] = "みかママ：逃げ切って！";
+        Escape[18] = "あげパン：やばいやばい";
+        Escape[19] = "あげパン：早く逃げて";
+        Escape[20] = "あげパン：すごくない";
+
+        Escape[21] = "さちこ：早く出て";
+        Escape[22] = "さちこ：逃げてください！";
+        Escape[23] = "さちこ：もう無理です";
+        Escape[24] = "きな粉：死なないで";
+        Escape[25] = "きな粉：えええ";
+        Escape[26] = "きな粉：こわ";
+        Escape[27] = "もち：早く出よ！！！";
+        Escape[28] = "もち：怖い怖い怖い";
+        Escape[29] = "もち：無理無理";
+        Escape[30] = "目黒：ヤバヤバ";
+        Escape[31] = "目黒：捕まらないで";
+        Escape[32] = "目黒：ガチカコレ";
+        Escape[33] = "ぼたん飴：こわっｗ";
+        Escape[34] = "ぼたん飴：本物の幽霊？！";
+        Escape[35] = "ぼたん飴：これ本当ですか？";
+        Escape[36] = "髪の毛ほしい：まじ？";
+        Escape[37] = "髪の毛ほしい：もっと走って！";
+        Escape[38] = "髪の毛ほしい：来てるって！！";
+        //Escape[39] = "たか：";
+        //Escape[40] = "たか：";
+        //Escape[41] = "たか：";
+    }
     void CommentSet()
     {
         for (int i = 0; i < Audience.Length; i++)
@@ -33,7 +114,6 @@ public class CommentManager : MonoBehaviour
             Audience[i].Comment_3 = new string[5];
         }
 
-        Debug.Log("aaaaaa");
         Audience[0].Name = "かおり：";
         Audience[0].Comment_1[0] = "怖くないの？";
         Audience[0].Comment_1[1] = "初見です。";

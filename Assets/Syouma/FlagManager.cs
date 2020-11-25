@@ -19,7 +19,7 @@ public class FlagManager : MonoBehaviour
 		}
 	}
 
-	void Awake()
+    void Awake()
 	{
 		if( Instance == this )
 		{
@@ -27,11 +27,13 @@ public class FlagManager : MonoBehaviour
 		}else{
 			Destroy (gameObject);
 		}
-	}
+        
+    }
 
     public bool[] SerifFlg = new bool[30]; // プレイヤーのセリフフラグ
     public bool[] Co_Hint = new bool[30];       // ヒント系のコメント一覧 
     public bool[] Key_Text = new bool[8];       // ヒント系のコメント一覧 
+
 
     [ContextMenu("ResetFlags")]
 	public void ResetFlags()

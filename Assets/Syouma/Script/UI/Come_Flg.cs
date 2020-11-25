@@ -9,27 +9,27 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     bool once_esc;
     int _HintNum;   // ヒント系のコメントを順番に出すため
 
-    public bool EscapeFlg; // true=逃げている、false=通常時
-
     GameObject ComeObj;
     [SerializeField] GameObject Com_Prehub;
-    Come_List Lists;
+    private CommentManager commentManager;
 
     void Start()
     {
-        ComeObj = GameObject.Find("Comment"); // UI「Comment」を入れいている
+        commentManager = GameObject.FindGameObjectWithTag("CommentManager").GetComponent<CommentManager>();
+        
+
+        ComeObj = GameObject.FindGameObjectWithTag("Comment"); // UI「Comment」を入れいている
         _HintNum = 0;
-        EscapeFlg = false;
         once_esc = false;
 
-        //Com_Prehub = GameObject.Find("Comments");// プレファブ「Comments」を入れいている
-        Lists = Com_Prehub.GetComponent<Come_List>();
     }
 
     void Update()
     {
+        
         // 逃げている間だけ逃げる系のコメントを生成
-        if (EscapeFlg){
+        if (CommentManager.Instance.Escape_Flg)
+        {
             if (!once_esc){
                 once_esc = true;
                 EscapeFlgCome();
@@ -78,11 +78,17 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
         ComeObj.GetComponent<Come_Generate>().AddComment();
     }
 
+    void addcomment()
+    {
+        ComeObj.GetComponent<Come_Generate>().AddComment();
+    }
+
     public void EscapeFlgCome()
     {
-        if (EscapeFlg)
+        if (CommentManager.Instance.Escape_Flg)
         {
-            //ComeObj.GetComponent<Come_Generate>().AddComment_Escape();
+            Debug.Log("逃走中");
+            ComeObj.GetComponent<Come_Generate>().AddComment_Escape();
             Invoke("EscapeFlgCome", Random.Range(1, 3));
         }
     }
@@ -93,22 +99,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
         //ComeObj.GetComponent<Come_Generate>().AddComment_Reaction();
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    /*** リアクション系の生成しにいく ***/
-    //    if (other.tag == "Reaction")
-    //    {
-    //    }
-    //    /*** 逃げる系の生成しにいく ***/
-    //    if (other.tag == "Escape")
-    //    {
-    //    }
-    //    /*** ヒント系の生成しにいく ***/
-    //    if (other.tag == "Hint")
-    //    {
-    //        ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
-    //        _HintNum++;
-    //    }
+   
     //    // ナースコール
     //    // ナースコール止めて扉の音が鳴ったあと
     //    // ズームで幽霊を見た後
