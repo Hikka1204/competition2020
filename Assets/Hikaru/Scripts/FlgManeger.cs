@@ -63,7 +63,10 @@ public class FlgManeger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.R)) PlayerSpawn();
+        if (_enemy.GetComponent<Nav_Enemy_Scarecrow>().Get_Over_Flg() && Input.GetKey(KeyCode.R))
+        {
+            PlayerSpawn();
+        }
     }
 
     public void GetFlg(int gflg)
@@ -92,8 +95,7 @@ public class FlgManeger : MonoBehaviour
                 _Examination_room_rust_key.gameObject.SetActive(true);
                 _Stairs_rust_key.gameObject.SetActive(true);
                 _letter.gameObject.SetActive(true);
-                _Staging_Door.GetComponent<Staging_Door>().enabled = true;
-                _Staging_Door.GetComponent<Staging_Door>().Respawn();
+                
                 Destroy(_floor65_Des);
                 break;
             case 3: //更衣室の手紙を読んだ時
@@ -135,6 +137,7 @@ public class FlgManeger : MonoBehaviour
             _enemy.SetActive(true);
             _enemy.transform.position = _enemySpawnPo[flg];
             _enemy.GetComponent<NavMeshAgent>().enabled = true;
+            _enemy.GetComponent<Nav_Enemy_Scarecrow>().Respawn();
         }
         _p_CameraGl.enabled = false;
         _eventCamera.CameraStop();
@@ -151,15 +154,21 @@ public class FlgManeger : MonoBehaviour
 
                 break;
             case 2://更衣室の鍵を拾った時
-                _Changing_room_rust_key.gameObject.SetActive(true);
-                _breakFloor.gameObject.SetActive(true);
-                _exitDoorOpenSE.gameObject.SetActive(true);
-                _stagingEnemy.gameObject.SetActive(true);
-                _Examination_room_rust_key.gameObject.SetActive(true);
-                _Stairs_rust_key.gameObject.SetActive(true);
-                _letter.gameObject.SetActive(true);
-
-                _hand.SetKey(0);
+                int i = 0;
+                while (i++ < 2)
+                {
+                    _Changing_room_rust_key.gameObject.SetActive(true);
+                    _breakFloor.gameObject.SetActive(true);
+                    _exitDoorOpenSE.gameObject.SetActive(true);
+                    _stagingEnemy.gameObject.SetActive(true);
+                    _Examination_room_rust_key.gameObject.SetActive(true);
+                    _Stairs_rust_key.gameObject.SetActive(true);
+                    _letter.gameObject.SetActive(true);
+                    _Staging_Door.GetComponent<Staging_Door>().enabled = true;
+                    _Staging_Door.GetComponent<Staging_Door>().Respawn();
+                    _enemy.SetActive(false);
+                    _hand.SetKey(0);
+                }
                 break;
             case 3://更衣室の手紙を読んだ時
                 _Changing_room_rust_key.gameObject.SetActive(true);

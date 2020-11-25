@@ -47,10 +47,12 @@ public class Staging_Enemy : MonoBehaviour
     {
         if (Player_flg)
         {
+            Enemy_Nav.enabled = false;
             //最初のポジションを格納
             transform.position = IntPo;
             transform.localEulerAngles = IntRo;
             Player_flg = false;
+            Enemy_Nav.enabled = true;
             Enemy_Nav.SetDestination(IntPo);
             _StaColi.SetActive(true);
             TimedesTime = Timedes;
