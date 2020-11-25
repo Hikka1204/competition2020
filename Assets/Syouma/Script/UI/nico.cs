@@ -11,12 +11,12 @@ public class nico : MonoBehaviour
     int Delcnt = 0; // 削除したコメントの数
 
     // コメントの出現座標
-    const float x = 770f;
+    const float x =　0f;
     float y;
-    const float Step0 = 510f; // 各階層のY座標
-    const float Step1 = 480f;
-    const float Step2 = 450f;
-    const float Step3 = 420f;
+    const float Step0 = 0f; // 各階層のY座標
+    const float Step1 = -30f;
+    const float Step2 = -60f;
+    const float Step3 = -90f;
     bool[] StepShift; 
 
 
@@ -29,11 +29,10 @@ public class nico : MonoBehaviour
 
     void Update()
     {
-        if (StepShift[0]) Invoke("Step0Reset", 2);
-        if (StepShift[1]) Invoke("Step1Reset", 1);
+        if (StepShift[0]) Invoke("Step0Reset", 3);
+        if (StepShift[1]) Invoke("Step1Reset", 2);
         if (StepShift[2]) Invoke("Step2Reset", 2);
-        if (StepShift[3]) Invoke("Step3Reset", 3);
-
+        if (StepShift[3]) Invoke("Step3Reset", 1);
     }
 
     /*** コメントを追加する処理 ***/
@@ -54,13 +53,11 @@ public class nico : MonoBehaviour
     /*** 逃げている間のコメントを追加する処理 ***/
     public void AddComment_Escape()
     {
-
         Generate();
         TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().EscapeCommnet();
 
         ComNum++;
         if (ComNum > 6) DeleteComment();
-
     }
 
     void Generate()
