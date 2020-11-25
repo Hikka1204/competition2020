@@ -7,7 +7,7 @@ public class SceneChange : MonoBehaviour
     GameObject ManageObject;
     SceneFadeManager fadeManager;
     [SerializeField] private float FadeRate;
-    
+    [SerializeField] private byte SceneNumber = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +26,18 @@ public class SceneChange : MonoBehaviour
             FadeRate -= Time.deltaTime;
             if(FadeRate <= 0 || Input.GetMouseButtonDown(0))
             {
-                fadeManager.fadeOutStart(0, 0, 0, 0, "Build1119");
+                switch (SceneNumber)
+                {
+                    case 1:
+                        fadeManager.fadeOutStart(0, 0, 0, 0, "protOP");
+                    break;
+                    case 2:
+                        fadeManager.fadeOutStart(0, 0, 0, 0, "Build1119");
+                    break;
+                }
             }
+                
+            
         }
 
     }

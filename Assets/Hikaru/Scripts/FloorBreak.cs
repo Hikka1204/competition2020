@@ -7,11 +7,38 @@ using UnityEngine;
 public class FloorBreak : MonoBehaviour
 {
     private AudioSource audio;
+    private bool isEvent = false;
+    private Vector3 IntPo;
+    private GameObject[] Child = new GameObject[7];
+    private Vector3[] IntPoChild = new Vector3[7];
 
     private void Start()
     {
-        //gameObject.SetActive(false);
+        
         audio = GetComponent<AudioSource>();
+        isEvent = false;
+        IntPo = transform.position;
+        
+    }
+
+    private void OnEnable()
+    {
+        if (isEvent)
+        {
+            isEvent = false;
+            transform.position = IntPo;
+            for (int i = 0; i < 7; i++)
+            {
+                Child[i].transform.parent = gameObject.transform;
+                gameObject.transform.GetChild(i).gameObject.transform.position = IntPoChild[i];
+            }
+            gameObject.GetComponentsInChildren<Rigidbody>().ToList().ForEach(r => {
+                r.isKinematic = true;
+                r.transform.SetParent(gameObject.transform);
+                r.gameObject.SetActive(false);
+            });
+
+        }
     }
 
     public void destroyObject()
@@ -30,7 +57,8 @@ public class FloorBreak : MonoBehaviour
             r.AddTorque(vect, ForceMode.Impulse);
         });
         audio.Play();
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
 
@@ -42,7 +70,10 @@ public class FloorBreak : MonoBehaviour
             for (int i = 0; i < gameObject.transform.childCount; i++)
             {
                 gameObject.transform.GetChild(i).gameObject.SetActive(true);
+                Child[i] = gameObject.transform.GetChild(i).gameObject;
+                IntPoChild[i] = Child[i].transform.position;
             }
+            isEvent = true;
             destroyObject();
         }
     }

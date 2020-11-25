@@ -15,9 +15,6 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
 
     void Start()
     {
-        commentManager = GameObject.FindGameObjectWithTag("CommentManager").GetComponent<CommentManager>();
-        
-
         ComeObj = GameObject.FindGameObjectWithTag("Comment"); // UI「Comment」を入れいている
         _HintNum = 0;
         once_esc = false;
@@ -75,12 +72,12 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     // 敵から逃げきった後に通常会話を生成するためだけの関数
     void addhint()
     {
-        ComeObj.GetComponent<Come_Generate>().AddComment();
+        ComeObj.GetComponent<nico>().AddComment();
     }
 
     void addcomment()
     {
-        ComeObj.GetComponent<Come_Generate>().AddComment();
+        ComeObj.GetComponent<nico>().AddComment();
     }
 
     public void EscapeFlgCome()
@@ -88,7 +85,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
         if (CommentManager.Instance.Escape_Flg)
         {
             Debug.Log("逃走中");
-            ComeObj.GetComponent<Come_Generate>().AddComment_Escape();
+            ComeObj.GetComponent<nico>().AddComment_Escape();
             Invoke("EscapeFlgCome", Random.Range(1, 3));
         }
     }

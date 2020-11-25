@@ -14,13 +14,14 @@ public class EventExit1 : MonoBehaviour
     [SerializeField] GlitchEffect _p_CameraGl;
     [SerializeField] private float _eventRate = 2f;
     private float EventTime;
-
+    private bool isEvent = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        isEvent = false;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -36,7 +37,8 @@ public class EventExit1 : MonoBehaviour
                 _p_CameraGl.enabled = false;
                 _p_Chara.enabled = true;
                 _p_Fir.enabled = true;
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                gameObject.SetActive(true);
             }
         }
 
@@ -44,8 +46,9 @@ public class EventExit1 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (isEvent == false && other.gameObject.tag == "Player")
         {
+            isEvent = true;
             _enemy.SetActive(false);
             _enemy.transform.position = _spawnPo;
             _p_CameraObject.enabled = true;

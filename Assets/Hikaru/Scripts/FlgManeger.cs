@@ -17,6 +17,7 @@ public class FlgManeger : MonoBehaviour
     [SerializeField] private GameObject _breakFloor; //壊れるオブジェクトの追加
     [SerializeField] private GameObject _exitDoorOpenSE;    //離れたらドアが開く音を鳴らすオブジェクト
     [SerializeField] private GameObject _stagingEnemy;  //演出用エネミー
+    [SerializeField] private GameObject _Staging_Door;  //イベント発生用ドア
     [SerializeField] private GameObject _Examination_room_rust_key; //診察室のカギ
     [SerializeField] private GameObject _Stairs_rust_key; //階段のカギ
     [SerializeField] private GameObject _letter;        //手紙
@@ -48,6 +49,10 @@ public class FlgManeger : MonoBehaviour
     [SerializeField] FirstPersonController _p_Fir;
     [SerializeField] GlitchEffect _p_CameraGl;
     [SerializeField] private EventCamera _eventCamera;
+    [SerializeField] private Hand _hand;
+    [SerializeField] private Staging_Door _staging_Door;
+    [SerializeField] private GameObject AddForce_Rubble;
+    [SerializeField] private GameObject WallDes;    //消す壁
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +92,8 @@ public class FlgManeger : MonoBehaviour
                 _Examination_room_rust_key.gameObject.SetActive(true);
                 _Stairs_rust_key.gameObject.SetActive(true);
                 _letter.gameObject.SetActive(true);
+                _Staging_Door.GetComponent<Staging_Door>().enabled = true;
+                _Staging_Door.GetComponent<Staging_Door>().Respawn();
                 Destroy(_floor65_Des);
                 break;
             case 3: //更衣室の手紙を読んだ時
@@ -124,52 +131,79 @@ public class FlgManeger : MonoBehaviour
     {
         if (_enemy.activeSelf == true)
         {
+            _enemy.GetComponent<NavMeshAgent>().enabled = false;
             _enemy.SetActive(true);
-            _enemy.GetComponent<NavMeshAgent>().enabled = true;
             _enemy.transform.position = _enemySpawnPo[flg];
+            _enemy.GetComponent<NavMeshAgent>().enabled = true;
         }
         _p_CameraGl.enabled = false;
         _eventCamera.CameraStop();
         _p_Chara.enabled = true;
         _p_Fir.enabled = true;
         _FPSController.transform.position = _PlayerSpawnPo[flg];
+
         switch (flg)
         {
             case 0:
                 
                 break;
-            case 1:
+            case 1://音を止めた時
 
                 break;
-            case 2:
+            case 2://更衣室の鍵を拾った時
+                _Changing_room_rust_key.gameObject.SetActive(true);
+                _breakFloor.gameObject.SetActive(true);
+                _exitDoorOpenSE.gameObject.SetActive(true);
+                _stagingEnemy.gameObject.SetActive(true);
+                _Examination_room_rust_key.gameObject.SetActive(true);
+                _Stairs_rust_key.gameObject.SetActive(true);
+                _letter.gameObject.SetActive(true);
 
+                _hand.SetKey(0);
                 break;
-            case 3:
-
+            case 3://更衣室の手紙を読んだ時
+                _Changing_room_rust_key.gameObject.SetActive(true);
+                _Stairs_rust_key.gameObject.SetActive(true);
+                _EnterEvent.gameObject.SetActive(true);
+                _hand.SetKey(1);
                 break;
-            case 4:
-
+            case 4://診察室のノートを読んだ時
+                _Reference_room_rust_key.gameObject.SetActive(true);
                 break;
-            case 5:
-
+            case 5://資料室でイベントが起きた時
+                _Operating_room_rust_key.gameObject.SetActive(true);
+                _hand.SetKey(4);
                 break;
-            case 6:
-
+            case 6://手術室のカギを取ったら
+                _Operating_room_rust_key.gameObject.SetActive(true);
+                _hand.SetKey(4);
                 break;
-            case 7:
-
+            case 7://霊安室のカギを取ったら
+                _Morgue_rust_key.gameObject.SetActive(true);
+                AddForce_Rubble.SetActive(false);
+                WallDes.SetActive(true);
                 break;
-            case 8:
+            case 8://非常口のカギを取ったら
 
                 break;
             default:
+
                 break;
         }
     } 
 
-    IEnumerable Dray()
+    public void ObjectFlgActive()
     {
-        yield return new WaitForSeconds(0.2f);
+        _Changing_room_rust_key.gameObject.SetActive(true);
+        _Examination_room_rust_key.gameObject.SetActive(true);
+        _Stairs_rust_key.gameObject.SetActive(true);
+        _letter.gameObject.SetActive(true);
+        _Reference_room_rust_key.gameObject.SetActive(true);
+        _NoteOb.gameObject.SetActive(true);
+        _Event_Enter_Reference_room.gameObject.SetActive(true);
+        _Operating_room_rust_key.gameObject.SetActive(true);
+        _Morgue_rust_key.gameObject.SetActive(true);
+        _Emergency_exit_rust_key.gameObject.SetActive(true);
     }
 
 }
