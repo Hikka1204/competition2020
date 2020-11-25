@@ -32,16 +32,18 @@ public class FlagManager : MonoBehaviour
 
     public bool[] SerifFlg = new bool[30]; // プレイヤーのセリフフラグ
     public bool[] Co_Hint = new bool[30];       // ヒント系のコメント一覧 
+    public bool[] Key_Text = new bool[8];       // ヒント系のコメント一覧 
 
 
     [ContextMenu("ResetFlags")]
 	public void ResetFlags()
 	{
         SerifFlg = new bool[SerifFlg.Length];
+        Key_Text = new bool[Key_Text.Length];
         //Co_Name = new string[Co_Name.Length];
         //Co_Talk = new string[Co_Talk.Length];
         //Co_Reaction = new string[Co_Reaction.Length];
         //Co_Escape = new string[Co_Escape.Length];
         //Co_Hint = new string[Co_Hint.Length];
-	}
+    }
 }

@@ -17,7 +17,11 @@ public class Enemy_Spawn : MonoBehaviour
     {
         isEvent = false;
         Anim = _enemy.gameObject.GetComponent<Animator>();
+    }
 
+    private void OnEnable()
+    {
+        isEvent = false;
     }
 
     // Update is called once per frame

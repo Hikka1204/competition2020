@@ -13,6 +13,14 @@ public class Exit_Door_OpenSE : MonoBehaviour
     private float DestroyRate = 2;    //デストロイするまでの時間
     private float DestroyTime;   //ブレイクするまでのカウント
 
+    private void OnEnable()
+    {
+        if (SEflg)
+        {
+            SEflg = false;
+        }
+    }
+
     void Update()
     {
 
@@ -32,7 +40,8 @@ public class Exit_Door_OpenSE : MonoBehaviour
             DestroyTime -= Time.deltaTime;
             if(DestroyTime <= 0)
             {
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                gameObject.SetActive(true);
             }
         }
     }

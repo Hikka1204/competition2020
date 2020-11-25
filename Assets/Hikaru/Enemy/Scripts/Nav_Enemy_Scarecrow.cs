@@ -56,6 +56,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
 
     void Update()
     {
+        Anim.SetFloat("speed", Enemy_Nav.speed);
         if (Input.GetKey(KeyCode.R))
         {
             gameObject.GetComponent<NavMeshAgent>().enabled = true;

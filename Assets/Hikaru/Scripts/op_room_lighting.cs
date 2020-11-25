@@ -8,22 +8,34 @@ public class op_room_lighting : MonoBehaviour
     [SerializeField] private Material _default;
     [SerializeField] private Material _change;
     private GameObject Child;
-    private bool isEvent;   
+    private bool isEvent = false;   
+    private bool stopEvent = false;
 
     void Start()
     {
         isEvent = false;
-        StartCoroutine("Blink");
+        stopEvent = false;
+        //StartCoroutine("Blink");
     }
 
     private void OnEnable()
     {
-        StartCoroutine("Blink");
+        //StartCoroutine("Blink");
     }
 
     public void setIsEvent(bool a)
     {
-        isEvent = a;
+        stopEvent = a;
+    }
+
+    private void Update()
+    {
+        if(isEvent == false)
+        {
+            isEvent = true;
+            stopEvent = false;
+            StartCoroutine("Blink");
+        }
     }
 
     IEnumerator Blink()
@@ -36,7 +48,7 @@ public class op_room_lighting : MonoBehaviour
             lightComponent.enabled = false;
             gameObject.transform.GetChild(0).gameObject.SetActive(false);
             yield return new WaitForSeconds(interval);
-            if (isEvent == true) yield break;
+            if (stopEvent == true) yield break;
             renderComponent.material = _change;
             lightComponent.enabled = true;
             gameObject.transform.GetChild(0).gameObject.SetActive(true);

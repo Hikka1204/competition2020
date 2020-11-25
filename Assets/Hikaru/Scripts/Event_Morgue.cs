@@ -20,6 +20,11 @@ public class Event_Morgue : MonoBehaviour
         isEvent = false;
     }
 
+    private void OnEnable()
+    {
+        isEvent = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
