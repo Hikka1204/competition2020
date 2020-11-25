@@ -89,6 +89,11 @@ public class PlayerSerif : MonoBehaviour
             this.GetComponent<Text>().text = "１階の非常口のカギを手に入れた";
             KeyControl(7);
         }
+        if (FlagManager.Instance.Key_Text[8] == true)
+        {
+            this.GetComponent<Text>().text = "扉のカギを開けた";
+            KeyControl(8);
+        }
     }
 
     void TextControl (int i)
