@@ -57,18 +57,6 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     void Update()
     {
         Anim.SetFloat("speed", Enemy_Nav.speed);
-        if (Input.GetKey(KeyCode.R))
-        {
-            gameObject.GetComponent<NavMeshAgent>().enabled = true;
-            Over_Flg = false;
-            Player_flg = false;
-            TrackingStatus = false;
-            ForeverTrackingflg = false;
-            SearchTime = _SearchRate;
-            Number = 0;
-            Anim.SetFloat("speed", Enemy_Nav.speed);
-            SetSearchLocation();
-        }
 
         if (Over_Flg == false)
         {
@@ -116,6 +104,24 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         //}
     }
 
+    public void Respawn()
+    {
+        gameObject.GetComponent<NavMeshAgent>().enabled = true;
+        Over_Flg = false;
+        Player_flg = false;
+        TrackingStatus = false;
+        ForeverTrackingflg = false;
+        SearchTime = _SearchRate;
+        TrackingTime = 0;
+        Number = 0;
+        Anim.SetFloat("speed", Enemy_Nav.speed);
+        SetSearchLocation();
+    }
+
+    public bool Get_Over_Flg()
+    {
+        return Over_Flg;
+    }
 
     private void SetPlayerLocation()
     {

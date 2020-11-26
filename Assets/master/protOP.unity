@@ -732,6 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeRate: 25
+  SceneNumber: 2
 --- !u!4 &2018022029
 Transform:
   m_ObjectHideFlags: 0

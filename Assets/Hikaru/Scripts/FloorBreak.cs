@@ -23,22 +23,28 @@ public class FloorBreak : MonoBehaviour
 
     private void OnEnable()
     {
-        if (isEvent)
-        {
-            isEvent = false;
-            transform.position = IntPo;
-            for (int i = 0; i < 7; i++)
+            if (isEvent)
             {
-                Child[i].transform.parent = gameObject.transform;
-                gameObject.transform.GetChild(i).gameObject.transform.position = IntPoChild[i];
-            }
-            gameObject.GetComponentsInChildren<Rigidbody>().ToList().ForEach(r => {
-                r.isKinematic = true;
-                r.transform.SetParent(gameObject.transform);
-                r.gameObject.SetActive(false);
-            });
+                isEvent = false;
+                transform.position = IntPo;
+                for (int i = 0; i < 7; i++)
+                {
+                    Child[i].transform.parent = gameObject.transform;
+                    gameObject.transform.GetChild(i).gameObject.transform.position = IntPoChild[i];
+                }
 
-        }
+                gameObject.GetComponentsInChildren<Rigidbody>().ToList().ForEach(r =>
+                {
+                    r.isKinematic = true;
+                    r.transform.SetParent(gameObject.transform);
+                    r.gameObject.SetActive(false);
+                });
+
+                return;
+
+            }
+
+        
     }
 
     public void destroyObject()

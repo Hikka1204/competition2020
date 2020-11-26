@@ -12,12 +12,17 @@ public class ClearDoor : MonoBehaviour
     [SerializeField] byte _KeyFlg = 7;  //キーフラグ用
     [SerializeField] GameObject Hand;
     private byte GetKeyFlg;     //プレイヤーのキーを取得する変数
-
+    GameObject ManageObject;
+    SceneFadeManager fadeManager;
 
     // Start is called before the first frame update
     void Start()
     {
         GetKeyFlg = 0;
+        //SceneFadeManagerがアタッチされているオブジェクトを取得
+        ManageObject = GameObject.Find("ManageObject");
+        //オブジェクトの中のSceneFadeManagerを取得
+        fadeManager = ManageObject.GetComponent<SceneFadeManager>();
     }
 
     // Update is called once per frame
@@ -28,7 +33,8 @@ public class ClearDoor : MonoBehaviour
             if(_KeyFlg == GetKeyFlg)
             {
                 //Clear
-                clearUI.SetActive(true);
+                //clearUI.SetActive(true);
+                fadeManager.fadeOutStart(0, 0, 0, 0, "Master_Ending_Text");
             }
         }
     }
