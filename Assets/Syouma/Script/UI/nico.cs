@@ -29,10 +29,7 @@ public class nico : MonoBehaviour
 
     void Update()
     {
-        if (StepShift[0]) Invoke("Step0Reset", 3);
-        if (StepShift[1]) Invoke("Step1Reset", 2);
-        if (StepShift[2]) Invoke("Step2Reset", 2);
-        if (StepShift[3]) Invoke("Step3Reset", 1);
+
     }
 
     /*** コメントを追加する処理 ***/
@@ -57,16 +54,32 @@ public class nico : MonoBehaviour
         TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().EscapeCommnet();
 
         ComNum++;
-        if (ComNum > 6) DeleteComment();
+        if (ComNum > 10) DeleteComment();
     }
 
     void Generate()
     {
         TextList.Add((GameObject)Instantiate(TextPrefab));
-        if (!StepShift[0]) { y = Step0; StepShift[0] = true; }
-        else if (!StepShift[1]) { y = Step1; StepShift[1] = true; }
-        else if (!StepShift[2]) { y = Step2; StepShift[2] = true; }
-        else if (!StepShift[3]) { y = Step3; StepShift[3] = true; }
+        if (!StepShift[0]) {
+            y = Step0;
+            StepShift[0] = true;
+            Invoke("Step0Reset", 3);
+        }
+        else if (!StepShift[1]) {
+            y = Step1;
+            StepShift[1] = true;
+            Invoke("Step1Reset", Random.Range(2, 3));
+        }
+        else if (!StepShift[2]) {
+            y = Step2;
+            StepShift[2] = true;
+            Invoke("Step2Reset", 2);
+        }
+        else if (!StepShift[3]) {
+            y = Step3;
+            StepShift[3] = true;
+            Invoke("Step3Reset", 1);
+        }
 
         TextList[ComNum].transform.position = new Vector3(x, y, 0f);
         TextList[ComNum].transform.SetParent(this.transform, false);
