@@ -63,7 +63,7 @@ public class nico : MonoBehaviour
         if (!StepShift[0]) {
             y = Step0;
             StepShift[0] = true;
-            Invoke("Step0Reset", 3);
+            Invoke("Step0Reset", Random.Range(3, 4));
         }
         else if (!StepShift[1]) {
             y = Step1;
