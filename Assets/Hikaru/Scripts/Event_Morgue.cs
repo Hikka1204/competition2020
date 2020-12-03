@@ -55,6 +55,7 @@ public class Event_Morgue : MonoBehaviour
         _eventCamera.enabled = true;
         _eventCamera.CameraNum(9);
         yield return new WaitForSeconds(1.5f); //待つ
+        FlagManager.Instance.Co_Event[10] = true; // イベントコメント表示
         _eventCamera.CameraStop();
         _p_Chara.enabled = true;
         _p_Fir.enabled = true;

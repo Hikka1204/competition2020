@@ -50,7 +50,7 @@ public class CommentManager : MonoBehaviour
     {
         public string[] E_Comment;
     }
-    [System.NonSerialized] public ComeEvent[] Event = new ComeEvent[10];
+    [System.NonSerialized] public ComeEvent[] Event = new ComeEvent[11];
 
     public bool Escape_Flg; // true=逃げている、false=通常時
     public bool Event_Flg; // true=逃げている、false=通常時
@@ -341,53 +341,59 @@ public class CommentManager : MonoBehaviour
         Event[1].E_Comment[0] = "ちょんまげ男：なんか聞こえるぞ";
         Event[1].E_Comment[1] = "りんご星人：音なってるぞ？";
         Event[1].E_Comment[2] = "みかママ：そういえば受付にナースコールあったよ";
+        // 幽霊と初対面した際
+        Event[2].E_Comment[0] = "きな粉：おいおいまじかよ";
+        Event[2].E_Comment[1] = "りんご星人：うわあぁぁ";
+        Event[2].E_Comment[2] = "あげぱん：完全に見えてますが…";
+        Event[2].E_Comment[3] = "かおり：もう嫌なんだけど！";
+        Event[2].E_Comment[4] = "ちょんまげ男：ここかなりやばいって!!";
         // ナースコールを止めて受付から出る、遠くで扉の音が鳴ったタイミング
-        Event[2].E_Comment[0] = "きな粉：音しなかった？";
-        Event[2].E_Comment[1] = "りんご星人：ドアが開く音したよね？";
-        Event[2].E_Comment[2] = "かおり：遠くで音したよ";
+        Event[3].E_Comment[0] = "きな粉：さっきの奴じゃない？";
+        Event[3].E_Comment[1] = "りんご星人：ドアが開く音したよね？";
+        Event[3].E_Comment[2] = "かおり：遠くで音したよ";
         // 地下に落ちたタイミング
-        Event[3].E_Comment[0] = "りんご星人：何が起きたんだ！？";
-        Event[3].E_Comment[1] = "ちょんまげ男：びっくりした！！";
-        Event[3].E_Comment[2] = "もち：ええええええ";
-        Event[3].E_Comment[3] = "目黒：危なっ！";
-        Event[3].E_Comment[4] = "髪の毛ほしい：くずれんのか！";
-        Event[3].E_Comment[5] = "かおり：大丈夫ですか？";
-        Event[3].E_Comment[6] = "卵かけライス：早く帰ったほうがいい";
-        Event[3].E_Comment[7] = "みさき：あぶなかった～";
-        Event[3].E_Comment[8] = "アレン：うわ大丈夫か？";
+        Event[4].E_Comment[0] = "りんご星人：何が起きたんだ！？";
+        Event[4].E_Comment[1] = "ちょんまげ男：びっくりした！！";
+        Event[4].E_Comment[2] = "もち：ええええええ";
+        Event[4].E_Comment[3] = "目黒：危なっ！";
+        Event[4].E_Comment[4] = "髪の毛ほしい：くずれんのか！";
+        Event[4].E_Comment[5] = "かおり：大丈夫ですか？";
+        Event[4].E_Comment[6] = "卵かけライス：早く帰ったほうがいい";
+        Event[4].E_Comment[7] = "みさき：あぶなかった～";
+        Event[4].E_Comment[8] = "アレン：うわ大丈夫か？";
         //C_Event[18] = "せいや：FF外から失礼するゾ＾～　この放送面白スギィ！自分、お気に入り登録とコテハン登録とTwitterフォローとYoutubeチャンネル登録と高評価と通知ONとツイートのファボいいすか？淫夢のリストにもぶちこんでやるぜ";
         // 診察室でのイベント中
-        Event[4].E_Comment[0] = "目黒：なんだこれ！";
-        Event[4].E_Comment[1] = "きな粉：なになになに！！";
-        Event[4].E_Comment[2] = "りんご星人：血じゃん！";
-        Event[4].E_Comment[3] = "髪の毛ほしい：まじかよ";
-        Event[4].E_Comment[4] = "アレン：おいおいおいおい";
-        Event[4].E_Comment[5] = "ぼたん飴：やばすぎでしょ";
-        Event[4].E_Comment[6] = "もち：手が・・・";
+        Event[5].E_Comment[0] = "目黒：なんだこれ！";
+        Event[5].E_Comment[1] = "きな粉：なになになに！！";
+        Event[5].E_Comment[2] = "りんご星人：血じゃん！";
+        Event[5].E_Comment[3] = "髪の毛ほしい：まじかよ";
+        Event[5].E_Comment[4] = "アレン：おいおいおいおい";
+        Event[5].E_Comment[5] = "ぼたん飴：やばすぎでしょ";
+        Event[5].E_Comment[6] = "もち：手が・・・";
         // 資料室でのイベント中
-        Event[5].E_Comment[0] = "みさき：うわ！";
-        Event[5].E_Comment[1] = "みかママ：いるいる";
-        Event[5].E_Comment[2] = "りんご星人：怒ってる？";
-        Event[5].E_Comment[3] = "卵かけライス：近い近い！";
-        // 資料室でのイベント4後
-        Event[6].E_Comment[0] = "りんご星人：あいつカギ落としたぞ";
-        Event[6].E_Comment[1] = "もち：あれなんか落ちてる";
-        // 手術室に入ったら 2
-        Event[7].E_Comment[0] = "りんご星人：ここはやばい";
-        Event[7].E_Comment[1] = "ちょんまげ男：不気味だ";
-        Event[7].E_Comment[2] = "あげぱん：カギがある！";
+        Event[6].E_Comment[0] = "みさき：うわ！";
+        Event[6].E_Comment[1] = "卵かけライス：近い近い！";
+        Event[6].E_Comment[2] = "みかママ：いるいる";
+        Event[6].E_Comment[3] = "りんご星人：怒ってる？";
+        // 資料室でのイベント後
+        Event[7].E_Comment[0] = "りんご星人：あいつカギ落としたぞ";
+        Event[7].E_Comment[1] = "もち：あれなんか落ちてる";
+        // 手術室に入ったら 
+        Event[8].E_Comment[0] = "りんご星人：ここはやばい";
+        Event[8].E_Comment[1] = "ちょんまげ男：不気味だ";
+        Event[8].E_Comment[2] = "あげぱん：カギがある！";
         // 霊安室に入ったら
-        Event[8].E_Comment[0] = "りんご星人：全員男…？";
-        Event[8].E_Comment[1] = "さちこ：あっ…カギある";
-        Event[8].E_Comment[2] = "あげぱん：死体じゃん…";
-        Event[8].E_Comment[3] = "さちこ：本物じゃないですよね";
-        Event[8].E_Comment[4] = "卵かけライス：カギがあるぞ！";
+        Event[9].E_Comment[0] = "りんご星人：全員男…？";
+        Event[9].E_Comment[1] = "さちこ：あっ…カギある";
+        Event[9].E_Comment[2] = "あげぱん：死体じゃん…";
+        Event[9].E_Comment[3] = "さちこ：本物じゃないですよね";
+        Event[9].E_Comment[4] = "卵かけライス：カギがあるぞ！";
         // 霊安室でのイベント中
-        Event[9].E_Comment[0] = "アレン：やばいやばい";
-        Event[9].E_Comment[1] = "髪の毛ほしい：うわ！きた！";
-        Event[9].E_Comment[2] = "目黒：早くここでよ！！";
-        Event[9].E_Comment[3] = "みかママ：逃げ切って！";
-        Event[9].E_Comment[4] = "りんご星人：非常口までそのまま突っ切れ！";
+        Event[10].E_Comment[0] = "アレン：やばいやばい";
+        Event[10].E_Comment[1] = "髪の毛ほしい：うわ！きた！";
+        Event[10].E_Comment[2] = "目黒：早くここでよ！！";
+        Event[10].E_Comment[3] = "みかママ：逃げ切って！";
+        Event[10].E_Comment[4] = "りんご星人：非常口までそのまま突っ切れ！";
     }                      
 
 }

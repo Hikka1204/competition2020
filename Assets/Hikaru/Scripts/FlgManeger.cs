@@ -106,6 +106,7 @@ public class FlgManeger : MonoBehaviour
                 }
                 break;
             case 3: //更衣室の手紙を読んだ時
+                FlagManager.Instance.Status = 1;
                 _Reference_room_rust_key.gameObject.SetActive(true);
                 _EnterEvent1.gameObject.SetActive(true);
                 _EnterEvent2.gameObject.SetActive(true);
@@ -117,6 +118,7 @@ public class FlgManeger : MonoBehaviour
                 _Event_Enter_Reference_room.gameObject.SetActive(true);
                 break;
             case 5: //資料室でイベントが起きた時
+                FlagManager.Instance.Status = 2;
                 _Operating_room_rust_key.gameObject.SetActive(true);
                 _operating_room_lighting1.GetComponent<op_room_lighting>().enabled = true;
                 _operating_room_lighting2.GetComponent<op_room_lighting>().enabled = true;

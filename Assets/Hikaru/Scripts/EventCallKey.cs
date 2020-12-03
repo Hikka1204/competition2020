@@ -47,6 +47,7 @@ public class EventCallKey : MonoBehaviour
         yield return new WaitForSeconds(0.5f); //待つ
         _EventCallKey_staging_enemy.SetActive(true);
         yield return new WaitForSeconds(0.5f); //待つ
+        FlagManager.Instance.Co_Event[2] = true; // イベントコメント表示
         _p_CameraGl.enabled = false;
         _eventCamera.enabled = true;
         _eventCamera.CameraNum(3);

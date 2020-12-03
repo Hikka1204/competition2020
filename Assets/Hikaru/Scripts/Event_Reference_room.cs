@@ -60,13 +60,15 @@ public class Event_Reference_room : MonoBehaviour
         _p_CameraGl.enabled = false;
         _eventCamera.enabled = true;
         _eventCamera.CameraNum(2);
+        FlagManager.Instance.Co_Event[6] = true; // イベントコメント表示
         yield return new WaitForSeconds(2.5f); //待つ
+        
         Destroy(Event_Enter_Reference_Enemy);
         _eventCamera.CameraStop();
         yield return new WaitForSeconds(1.0f); //待つ
         _p_Chara.enabled = true;
         _p_Fir.enabled = true;
-
+        FlagManager.Instance.Co_Event[7] = true; // イベントコメント表示
         yield break;
     }
 }
