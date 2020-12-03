@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class PlayerSerif : MonoBehaviour
 {
     const float WaitTime = 3f; // セリフの表示時間
+    private bool ispushE = false;
 
     void Start()
     {
-
+        ispushE = false;
     }
 
     void Update()
@@ -57,43 +58,68 @@ public class PlayerSerif : MonoBehaviour
         }
         if (FlagManager.Instance.Key_Text[1] == true)
         {
-            this.GetComponent<Text>().text = "地下の更衣室のカギが手に入れた";
-            KeyControl(1);
+            var po = GetComponent<Text>().transform.position;
+            GetComponent<Text>().transform.position = new Vector3(po.x, 60, po.z);
+            this.GetComponent<Text>().text = "地下の更衣室のカギが手に入れた\n「ここは二階じゃなくて地下があるのか…」";
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
+            {
+                ispushE = false;
+                FlagManager.Instance.Key_Text[1] = false;
+                GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
+                TextClear();
+            }
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == false) ispushE = true;
+            //StartCoroutine(e_PlayerSerif("「ここは二階じゃなくて地下があるのか…」", 1));
         }
         if (FlagManager.Instance.Key_Text[2] == true)
         {
             this.GetComponent<Text>().text = "中央の階段のカギを手に入れた";
-            KeyControl(2);
+            StartCoroutine(e_PlayerSerif("「これで戻れそうだ」", 2));
         }
         if (FlagManager.Instance.Key_Text[3] == true)
         {
             this.GetComponent<Text>().text = "１階の診察室のカギを手に入れた";
-            KeyControl(3);
+            StartCoroutine(e_PlayerSerif("「確か入り口の横の部屋だ」", 3));
         }
         if (FlagManager.Instance.Key_Text[4] == true)
         {
             this.GetComponent<Text>().text = "地下の資料室のカギを手に入れた";
-            KeyControl(4);
+            StartCoroutine(e_PlayerSerif("「地下に落ちた場所のすぐ近くだったような…」", 4));
         }
         if (FlagManager.Instance.Key_Text[5] == true)
         {
             this.GetComponent<Text>().text = "１階の手術室のカギを手に入れた";
-            KeyControl(5);
+            StartCoroutine(e_PlayerSerif("「確か受付の前の部屋のはずだ」", 5));
         }
         if (FlagManager.Instance.Key_Text[6] == true)
         {
-            this.GetComponent<Text>().text = "地下の霊安室のカギを手に入れた";
-            KeyControl(6);
+            var po = GetComponent<Text>().transform.position;
+            GetComponent<Text>().transform.position = new Vector3(po.x, 60, po.z);
+            this.GetComponent<Text>().text = "地下の霊安室のカギを手に入れた\n「地下の奥…長い一本道を進んだところにあったような」";
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
+            {
+                ispushE = false;
+                FlagManager.Instance.Key_Text[6] = false;
+                GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
+                TextClear();
+            }
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == false) ispushE = true;
+            //StartCoroutine(e_PlayerSerif("「ここは二階じゃなくて地下があるのか…」", 1));
         }
         if (FlagManager.Instance.Key_Text[7] == true)
         {
             this.GetComponent<Text>().text = "１階の非常口のカギを手に入れた";
-            KeyControl(7);
+            StartCoroutine(e_PlayerSerif("「やった！これで出られる…!!」", 7));
         }
         if (FlagManager.Instance.Key_Text[8] == true)
         {
-            this.GetComponent<Text>().text = "扉のカギが開いた！";
+            this.GetComponent<Text>().text = "カギを開けた";
             KeyControl(8);
+        }
+        if (FlagManager.Instance.Key_Text[9] == true)
+        {
+            this.GetComponent<Text>().text = "…？開かない…";
+            KeyControl(9);
         }
     }
 
@@ -109,23 +135,14 @@ public class PlayerSerif : MonoBehaviour
         FlagManager.Instance.Key_Text[i] = false;
     }
 
-    void KeyPlayerText(int i)
+
+    private IEnumerator e_PlayerSerif(string P_serif,int i)
     {
-        
-        switch (i)
-        {
-
-        }
-        //Invoke("TextClear", WaitTime);
-    }
-
-    private IEnumerator e_PlayerSerif(string character)
-    {
-
-
-        yield return new WaitForSeconds(0.5f); //待つ
-
-
+        FlagManager.Instance.Key_Text[i] = false;
+        yield return new WaitForSeconds(WaitTime); //待つ
+        this.GetComponent<Text>().text = P_serif;
+        yield return new WaitForSeconds(WaitTime); //待つ
+        TextClear();
         yield break;
     }
 
