@@ -14,7 +14,7 @@ public class Come_List : MonoBehaviour
 
     void Start()
     {
-        if (!CommentManager.Instance.Escape_Flg)
+        if (!CommentManager.Instance.Escape_Flg && !CommentManager.Instance.Event_Flg)
         {
             // CommentManagerの変数を使えるようにしている
             //C_manager = GameObject.FindGameObjectWithTag("CommentManager").GetComponent<CommentManager>();
@@ -58,6 +58,12 @@ public class Come_List : MonoBehaviour
             Check = CommentManager.Instance.Escape[Random.Range(0, CommentManager.Instance.Escape.Length)];
         } while (Check == CommentManager.Instance.Previous); // ひとつ前のコメントと同じが調べている
         this.GetComponent<Text>().text = CommentManager.Instance.Escape[Random.Range(0, CommentManager.Instance.Escape.Length)];
+    }
+
+    /*** ヒント系の生成 ***/
+    public void HintCommnet(int index, int _index)
+    {
+        this.GetComponent<Text>().text = CommentManager.Instance.Event[index].E_Comment[_index];
     }
 
     void Update()
@@ -119,12 +125,7 @@ public class Come_List : MonoBehaviour
 
 
 
-    ///*** ヒント系の生成 ***/
-    //public void HintCommnet(int index)
-    //{
-    //    this.GetComponent<Text>().text += Name[Random.Range(0, Name.Count)];
-    //    this.GetComponent<Text>().text += Hint[index];
-    //}
+
 
 
 }
