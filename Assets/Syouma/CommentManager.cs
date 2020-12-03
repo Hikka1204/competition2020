@@ -53,10 +53,11 @@ public class CommentManager : MonoBehaviour
     [System.NonSerialized] public ComeEvent[] Event = new ComeEvent[10];
 
     public bool Escape_Flg; // true=逃げている、false=通常時
+    public bool Event_Flg; // true=逃げている、false=通常時
     // 逃げている間のコメント集
     [System.NonSerialized] public string[] Escape = new string[39];
     // 敵のコメント集
-    [System.NonSerialized] public string[] Enemy = new string[5];
+    [System.NonSerialized] public string[] Enemy = new string[11];
 
 
     void Start()
@@ -66,6 +67,7 @@ public class CommentManager : MonoBehaviour
         EnemyCommentSet();
         EventCommentSet();
         Escape_Flg = false;
+        Event_Flg = false;
     }
 
     void Update()
@@ -312,11 +314,17 @@ public class CommentManager : MonoBehaviour
     }
     void EnemyCommentSet()
     {
-        Enemy[0] = "";
-        Enemy[1] = "";
-        Enemy[2] = "";
-        Enemy[3] = "";
-        Enemy[4] = "";
+        Enemy[0] = "逃がさない…";
+        Enemy[1] = "うぅぅ゛";
+        Enemy[2] = "見つけた…";
+        Enemy[3] = "あ゛あぁ゛";
+        Enemy[4] = "どうして";
+        Enemy[5] = "許さない…";
+        Enemy[6] = "あ゛あぁぁ";
+        Enemy[7] = "あの人も…";
+        Enemy[8] = "あの女も…";
+        Enemy[9] = "皆いなくなればいい…";
+        Enemy[10] = "あなたも逃がさない";
     }
     void EventCommentSet()
     {

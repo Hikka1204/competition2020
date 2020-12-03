@@ -31,7 +31,7 @@ public class FlagManager : MonoBehaviour
     }
 
     public bool[] SerifFlg = new bool[30]; // プレイヤーのセリフフラグ
-    public bool[] Co_Hint = new bool[30];       // ヒント系のコメント一覧 
+    public bool[] Co_Event = new bool[10];       // ヒント系のコメント一覧 
     public bool[] Key_Text = new bool[30];       // ヒント系のコメント一覧 
 
 

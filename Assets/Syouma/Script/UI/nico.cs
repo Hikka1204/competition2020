@@ -9,6 +9,7 @@ public class nico : MonoBehaviour
 
     int ComNum = 0; // 今出ているコメントの数
     int Delcnt = 0; // 削除したコメントの数
+    const int COMEMAX = 10; // 画面に表示せる最大コメント数
 
     // コメントの出現座標
     const float x =　0f;
@@ -18,7 +19,6 @@ public class nico : MonoBehaviour
     const float Step2 = -60f;
     const float Step3 = -90f;
     bool[] StepShift; 
-
 
     void Start()
     {
@@ -32,21 +32,22 @@ public class nico : MonoBehaviour
 
     }
 
-    /*** コメントを追加する処理 ***/
+    /*** 通常コメントを追加する処理 ***/
     public void AddComment()
     {
-        if (!CommentManager.Instance.Escape_Flg)
+        if (!CommentManager.Instance.Escape_Flg && !CommentManager.Instance.Event_Flg)
         {
             Generate();
             //TextList[ComNum].GetComponent<Come_List>().RandomComment();
             TextList[ComNum].gameObject.GetComponentInChildren<Come_List>();
             ComNum++;
-            if (ComNum > 10) DeleteComment();
+            if (ComNum > COMEMAX) DeleteComment();
 
             Invoke("AddComment", Random.Range(1, 6));
             //Invoke("AddComment", 1); /*デバッグ用*/
         }
     }
+
     /*** 逃げている間のコメントを追加する処理 ***/
     public void AddComment_Escape()
     {
@@ -54,8 +55,19 @@ public class nico : MonoBehaviour
         TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().EscapeCommnet();
 
         ComNum++;
-        if (ComNum > 10) DeleteComment();
+        if (ComNum > COMEMAX) DeleteComment();
     }
+
+    /*** イベント時の特定コメントを追加する処理 ***/
+    public void AddComment_Hint(int index,int _index)
+    {
+        Generate();
+        TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().HintCommnet(index, _index);
+
+        ComNum++;
+        if (ComNum > COMEMAX) DeleteComment();
+    }
+
 
     void Generate()
     {
