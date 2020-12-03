@@ -111,6 +111,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         Player_flg = false;
         Player_Get = false;
         TrackingStatus = false;
+        CommentManager.Instance.Escape_Flg = false;
         ForeverTrackingflg = false;
         SearchTime = 0.1f;
         TrackingTime = 0;
@@ -170,6 +171,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                 if (Player_Get == false && TrackingTime <= 0)
                 {
                     TrackingStatus = true;
+                    CommentManager.Instance.Escape_Flg = true;
                     _player_BGM.GetComponent<Player_BGM>().BGMPlay(1);
                     Anim.SetFloat("speed", Enemy_Nav.speed);
                     audio.clip = _TrackingSE;
@@ -190,6 +192,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         Over_Flg = false;
         Player_flg = false;
         TrackingStatus = false;
+        CommentManager.Instance.Escape_Flg = false;
         ForeverTrackingflg = false;
         Player_Get = false;
         SearchTime = 1;
@@ -206,6 +209,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
             Enemy_Nav.SetDestination(gameObject.transform.position);
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
             TrackingStatus = false;
+            CommentManager.Instance.Escape_Flg = false;
             //SetSearchLocation();
             _player_BGM.GetComponent<Player_BGM>().BGMPlay(0);
             audio.Stop();

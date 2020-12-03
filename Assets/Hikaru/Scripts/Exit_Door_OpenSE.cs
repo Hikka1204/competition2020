@@ -53,6 +53,7 @@ public class Exit_Door_OpenSE : MonoBehaviour
             _audiosource.clip = _OpenSE;
             _audiosource.Play();
             SEflg = true;
+            FlagManager.Instance.Co_Event[3] = true; // イベントコメント表示
             CloseTime = CloseRate;
         }
     }

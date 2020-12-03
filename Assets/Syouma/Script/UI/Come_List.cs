@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class Come_List : MonoBehaviour
 
 {   
-    int Status = 0; // [0=序盤,1=中盤,2=終盤]
     int NameNum; // 名前用　要素数格納変数
     int ComeNum; // コメント用　要素数格納変数
     string Check = null; // 作ったコメントをチェックために入れる変数
@@ -22,7 +21,7 @@ public class Come_List : MonoBehaviour
             NameNum = Random.Range(0, CommentManager.Instance.Audience.Length);
 
             // コメントの内容を入力
-            switch (Status)
+            switch (FlagManager.Instance.Status)
             {
                 case 0:// 序盤
                     do

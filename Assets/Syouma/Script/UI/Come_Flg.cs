@@ -53,12 +53,25 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
         {
             Debug.Log("イベント中");
             ComeObj.GetComponent<nico>().AddComment_Hint(_EventNum, _EventComeNum);
-            
-            if (CommentManager.Instance.Event[_EventNum].E_Comment[_EventComeNum] != null) Invoke("HintCome", Random.Range(1, 2));
+
+            if (CommentManager.Instance.Event[_EventNum].E_Comment[_EventComeNum] != null)
+            {
+                switch (_EventNum)
+                {
+                    case 4:
+                    case 6:
+                    case 8:
+                        Invoke("HintCome", Random.Range(1, 2));
+                        break;
+                    default:
+                        Invoke("HintCome", Random.Range(1, 3));
+                        break;
+                }
+            }
             else
             {
                 CommentManager.Instance.Event_Flg = false;
-                FlagManager.Instance.Co_Event[0] = false;
+                //FlagManager.Instance.Co_Event[_EventNum] = false;
                 once_esc = false;
                 _EventNum++;
                 _EventComeNum = 0;

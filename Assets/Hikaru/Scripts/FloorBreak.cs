@@ -79,6 +79,7 @@ public class FloorBreak : MonoBehaviour
                 Child[i] = gameObject.transform.GetChild(i).gameObject;
                 IntPoChild[i] = Child[i].transform.position;
             }
+            FlagManager.Instance.Co_Event[4] = true; // イベントコメント表示
             isEvent = true;
             destroyObject();
         }
