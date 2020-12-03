@@ -51,12 +51,13 @@ public class PlayerSerif : MonoBehaviour
     {
         if (FlagManager.Instance.Key_Text[0] == true)
         {
-            this.GetComponent<Text>().text = "鍵がかかっているようだ";
+            this.GetComponent<Text>().text = "カギがかかっている";
+
             KeyControl(0);
         }
         if (FlagManager.Instance.Key_Text[1] == true)
         {
-            this.GetComponent<Text>().text = "地下の更衣室のカギを手に入れた";
+            this.GetComponent<Text>().text = "地下の更衣室のカギが手に入れた";
             KeyControl(1);
         }
         if (FlagManager.Instance.Key_Text[2] == true)
@@ -91,7 +92,7 @@ public class PlayerSerif : MonoBehaviour
         }
         if (FlagManager.Instance.Key_Text[8] == true)
         {
-            this.GetComponent<Text>().text = "扉のカギを開けた";
+            this.GetComponent<Text>().text = "扉のカギが開いた！";
             KeyControl(8);
         }
     }
@@ -106,6 +107,26 @@ public class PlayerSerif : MonoBehaviour
     {
         Invoke("TextClear", WaitTime);
         FlagManager.Instance.Key_Text[i] = false;
+    }
+
+    void KeyPlayerText(int i)
+    {
+        
+        switch (i)
+        {
+
+        }
+        //Invoke("TextClear", WaitTime);
+    }
+
+    private IEnumerator e_PlayerSerif(string character)
+    {
+
+
+        yield return new WaitForSeconds(0.5f); //待つ
+
+
+        yield break;
     }
 
     void TextClear()

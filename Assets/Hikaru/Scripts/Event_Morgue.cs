@@ -53,7 +53,7 @@ public class Event_Morgue : MonoBehaviour
         _enemy.GetComponent<Nav_Enemy_Scarecrow>().SetForeverTracking(true);
         _p_CameraGl.enabled = false;
         _eventCamera.enabled = true;
-        _eventCamera.CameraNum(0);
+        _eventCamera.CameraNum(9);
         yield return new WaitForSeconds(1.5f); //待つ
         _eventCamera.CameraStop();
         _p_Chara.enabled = true;

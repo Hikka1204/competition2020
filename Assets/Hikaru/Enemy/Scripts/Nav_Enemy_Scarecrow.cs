@@ -109,9 +109,10 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         gameObject.GetComponent<NavMeshAgent>().enabled = true;
         Over_Flg = false;
         Player_flg = false;
+        Player_Get = false;
         TrackingStatus = false;
         ForeverTrackingflg = false;
-        SearchTime = _SearchRate;
+        SearchTime = 0.1f;
         TrackingTime = 0;
         Number = 0;
         Anim.SetFloat("speed", Enemy_Nav.speed);
@@ -190,7 +191,8 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         Player_flg = false;
         TrackingStatus = false;
         ForeverTrackingflg = false;
-        SearchTime = _SearchRate;
+        Player_Get = false;
+        SearchTime = 1;
         Number = 0;
         Anim.SetFloat("speed", Enemy_Nav.speed);
     }

@@ -12,8 +12,7 @@ public class Zoom : MonoBehaviour
 
     const float MaxView = 50f; // 元の視野角
     public bool Zoomflg = false; // true=ズームイン、false=ズームアウト
-
-    [SerializeField] private CameraObject _cameraObj;
+    private bool SumStop = false;
 
     GameObject CameraOBJ; // カメラそのものが入る変数
     CameraControllerFPS CameraController; // CameraControllerFPSが入る変数
@@ -24,7 +23,7 @@ public class Zoom : MonoBehaviour
         cam = this.GetComponent<Camera>();
         zoom -= Zoom_Speed;
         Zoomflg = false;
-
+        SumStop = false;
         CameraOBJ = GameObject.Find("FirstPersonCharacter");
         CameraController = CameraOBJ.GetComponent<CameraControllerFPS>();
 
@@ -34,10 +33,12 @@ public class Zoom : MonoBehaviour
     {
         //if (Input.GetKey(KeyCode.Q)) Zoomflg = true;
 
-        if (Zoomflg){
+        if (Zoomflg)
+        {
             Invoke("ZoomStart",1);
         }
-        else{
+        else if(Zoomflg == false)
+        {
             cam.fieldOfView -= zoom; // JOJOにズームアウトしている
         }
 
@@ -45,6 +46,7 @@ public class Zoom : MonoBehaviour
         if (cam.fieldOfView < Zoom_View)
         {
             cam.fieldOfView = Zoom_View;
+            SumStop = true;
             Invoke("ZoomOut", Zoom_Time);
         }
 
@@ -52,19 +54,29 @@ public class Zoom : MonoBehaviour
         {
             cam.fieldOfView = MaxView;
             CameraController.g_FOVflg = true; // Fov値を固定化
+            Invoke("resetSumStop", Zoom_Time);
         }
     }
     
     void ZoomStart()
     {
+        if (SumStop) return;
         cam.fieldOfView += zoom; // JOJOにズームインしている
         CameraController.g_FOVflg = false; // Fov値を固定化解除
-        _cameraObj.enabled = true;
+        if (cam.fieldOfView < Zoom_View)
+        {
+            SumStop = true;
+        }
     }
 
     void ZoomOut()
     {
         Zoomflg = false; // ズームアウト開始のフラグ
-        _cameraObj.enabled = false;
+
+    }
+
+    void resetSumStop()
+    {
+        SumStop = false;
     }
 }
