@@ -124,12 +124,13 @@ public class FlgManeger : MonoBehaviour
                 _operating_room_lighting2.GetComponent<op_room_lighting>().enabled = true;
                 break;
             case 6: //手術室のカギを取ったら
-                _operating_room_lighting1.GetComponent<op_room_lighting>().setIsEvent(true);
-                _operating_room_lighting2.GetComponent<op_room_lighting>().setIsEvent(true);
+                
                 _Morgue_rust_key.gameObject.SetActive(true);
                 break;
             case 7: //霊安室のカギを取ったら
                 _Emergency_exit_rust_key.gameObject.SetActive(true);
+                _operating_room_lighting1.GetComponent<op_room_lighting>().setIsEvent(true);
+                _operating_room_lighting2.GetComponent<op_room_lighting>().setIsEvent(true);
                 break;
             case 8: //非常口のカギを取ったら
                 _EnemySpawn_P.SetActive(true);

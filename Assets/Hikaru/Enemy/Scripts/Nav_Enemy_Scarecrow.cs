@@ -33,17 +33,20 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     private float SearchTime;   //_SearchRateの取得
     private float TrackingTime; //_TrackingRateの取得
     private bool ForeverTrackingflg;    //ずっと追いかけるかどうか
+    private GameObject TrackingEnemy;   //子のプレイヤー索敵用オブジェクトの格納
 
     void Start()
     {
         //プレイヤーのNavMeshAgentを取得
         Enemy_Nav = GetComponent<NavMeshAgent>();
         audio = gameObject.GetComponent<AudioSource>();
+        
         //目的地のオブジェクトを取得
         //Destination = GameObject.Find("Goal");
         Anim = GetComponent<Animator>();
         //目的地を設定
         //Enemy_Nav.SetDestination(Destination.position);
+        TrackingEnemy = gameObject.transform.GetChild(5).gameObject;
         Over_Flg = false;
         Player_flg = false;
         TrackingStatus = false;
@@ -74,6 +77,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                     if (TrackingTime <= 0)
                     {
                         TrackingStatus = false;
+                        CommentManager.Instance.Escape_Flg = false;
                         SetSearchLocation();
                         _player_BGM.GetComponent<Player_BGM>().BGMPlay(0);
                         audio.Stop();
@@ -106,6 +110,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
 
     public void Respawn()
     {
+        TrackingEnemy.GetComponent<BoxCollider>().enabled = false;
         gameObject.GetComponent<NavMeshAgent>().enabled = true;
         Over_Flg = false;
         Player_flg = false;
@@ -113,11 +118,13 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         TrackingStatus = false;
         CommentManager.Instance.Escape_Flg = false;
         ForeverTrackingflg = false;
-        SearchTime = 0.1f;
+        SearchTime = _SearchRate;
         TrackingTime = 0;
         Number = 0;
         Anim.SetFloat("speed", Enemy_Nav.speed);
+        _player_BGM.GetComponent<Player_BGM>().BGMPlay(0);
         SetSearchLocation();
+        TrackingEnemy.GetComponent<BoxCollider>().enabled = true;
     }
 
     public bool Get_Over_Flg()

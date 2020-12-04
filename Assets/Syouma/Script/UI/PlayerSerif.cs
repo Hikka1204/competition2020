@@ -67,6 +67,7 @@ public class PlayerSerif : MonoBehaviour
                 FlagManager.Instance.Key_Text[1] = false;
                 GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
                 TextClear();
+                return;
             }
             if (Input.GetKeyDown(KeyCode.E) && ispushE == false) ispushE = true;
             //StartCoroutine(e_PlayerSerif("「ここは二階じゃなくて地下があるのか…」", 1));
@@ -102,6 +103,7 @@ public class PlayerSerif : MonoBehaviour
                 FlagManager.Instance.Key_Text[6] = false;
                 GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
                 TextClear();
+                return;
             }
             if (Input.GetKeyDown(KeyCode.E) && ispushE == false) ispushE = true;
             //StartCoroutine(e_PlayerSerif("「ここは二階じゃなくて地下があるのか…」", 1));

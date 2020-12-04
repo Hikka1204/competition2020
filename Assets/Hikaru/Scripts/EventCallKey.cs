@@ -13,10 +13,12 @@ public class EventCallKey : MonoBehaviour
     [SerializeField] private EventCamera _eventCamera;
     [SerializeField] private float _Event_CameraTime = 5;
     private bool isEvent = false;
+    private bool ispushE = false;
     // Start is called before the first frame update
     void Start()
     {
         isEvent = false;
+        ispushE = false;
     }
 
     private void OnEnable()
@@ -24,6 +26,7 @@ public class EventCallKey : MonoBehaviour
         if (isEvent)
         {
             isEvent = false;
+            ispushE = false;
         }
 
     }
@@ -31,19 +34,29 @@ public class EventCallKey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isEvent == false)
+        if (isEvent && !ispushE && Input.GetKeyDown(KeyCode.E))
+        {
+            ispushE = true;
+            StartCoroutine("Event");
+        }
+
+        if (isEvent == false)
         {
             isEvent = true;
-            StartCoroutine("Event");
+            _EventCallKey_staging_enemy.SetActive(false);
+
+            _p_Chara.enabled = false;
+            _p_Fir.enabled = false;
+
         }
     }
 
     IEnumerator Event()
     {
-        _EventCallKey_staging_enemy.SetActive(false);
         _p_CameraGl.enabled = true;
-        _p_Chara.enabled = false;
-        _p_Fir.enabled = false;
+        //_EventCallKey_staging_enemy.SetActive(false);
+        //_p_Chara.enabled = false;
+        //_p_Fir.enabled = false;
         yield return new WaitForSeconds(0.5f); //待つ
         _EventCallKey_staging_enemy.SetActive(true);
         yield return new WaitForSeconds(0.5f); //待つ
