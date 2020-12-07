@@ -5,10 +5,16 @@ using UnityEngine;
 public class ChairBlowAway : MonoBehaviour
 {
     private Rigidbody rb;
-    [SerializeField] private float _rb_Y = 0.05f;
-    [SerializeField] private float angle_x = 10f;
+
+    //回転する角度を変えれる
+    [SerializeField] private float angle_x = 0.0f;
     [SerializeField] private float angle_y = 0.0f;
     [SerializeField] private float angle_z = 0.0f;
+
+    //飛ばす方向を変えれる
+    [SerializeField] private float _rb_X = 0.0f;
+    [SerializeField] private float _rb_Y = 0.05f;
+    [SerializeField] private float _rb_Z = 0.0f;
 
     private AudioSource audioSource;
     [SerializeField] AudioClip WallHitSE;
@@ -35,7 +41,7 @@ public class ChairBlowAway : MonoBehaviour
         
         Rigidbody rb = this.GetComponent<Rigidbody>();
         Vector3 now = rb.position;
-        now += new Vector3(-0.2f, _rb_Y, 0.0f);
+        now += new Vector3(_rb_X, _rb_Y, _rb_Z);
         rb.position = now;
     }
 

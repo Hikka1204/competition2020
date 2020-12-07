@@ -31,11 +31,15 @@ public class Zoom : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetKey(KeyCode.Q)) Zoomflg = true;
+        if (Input.GetKey(KeyCode.Q)) Zoomflg = true;
+        // ↓動画用
+        //if (Input.GetKey(KeyCode.Space)) Zoomflg = true;
 
         if (Zoomflg)
         {
-            Invoke("ZoomStart",1);
+            Invoke("ZoomStart", 1);
+            // ↓動画用
+            //ZoomStart();
         }
         else if(Zoomflg == false)
         {
