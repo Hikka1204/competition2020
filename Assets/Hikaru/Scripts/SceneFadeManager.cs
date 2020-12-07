@@ -11,7 +11,8 @@ public class SceneFadeManager : MonoBehaviour
     //フェードイン処理の開始、完了を管理するフラグ
     private bool isFadeIn = true;
     //透明度が変わるスピード
-    float fadeSpeed = 0.75f;
+    [SerializeField] float fadeInSpeed = 0.75f;
+    [SerializeField] float fadeOutSpeed = 0.75f;
     //画面をフェードさせるための画像をパブリックで取得
     public Image fadeImage;
     float red, green, blue, alfa;
@@ -51,7 +52,7 @@ public class SceneFadeManager : MonoBehaviour
         if (isFadeIn == true)
         {
             //不透明度を徐々に下げる
-            alfa -= fadeSpeed * Time.deltaTime;
+            alfa -= fadeInSpeed * Time.deltaTime;
             //変更した透明度を画像に反映させる関数を呼ぶ
             SetColor();
             if (alfa <= 0)
@@ -60,7 +61,7 @@ public class SceneFadeManager : MonoBehaviour
         if (isFadeOut == true)
         {
             //不透明度を徐々に上げる
-            alfa += fadeSpeed * Time.deltaTime;
+            alfa += fadeOutSpeed * Time.deltaTime;
             //変更した透明度を画像に反映させる関数を呼ぶ
             SetColor();
             if (alfa >= 1)
