@@ -8,9 +8,6 @@ public class WheelChair_Back : MonoBehaviour
     [SerializeField] private float angle_x;
     [SerializeField] public float angle_z;
 
-    private float currentTime = 3;
-    private float BA;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +26,26 @@ public class WheelChair_Back : MonoBehaviour
         Transform mytransform = this.transform;
         Vector3 now = rb.position;
         now += new Vector3(angle_x, 0.0f, angle_z);
-        rb.position = now;   
-        //rb = this.GetComponent<Rigidbody>();
-        //Vector3 force = new Vector3(angle_x, 0.0f, angle_z);
-        //rb.AddForce(force);
+        rb.position = now;
+    }
+
+    
+    IEnumerator Speed()
+    {
+        angle_z = -0.01f;
+
+        //何秒停止
+        yield return new WaitForSeconds(0.8f);
+
+        angle_z = -0.003f;
+
+        //何秒停止
+        yield return new WaitForSeconds(0.8f);
+        angle_z = 0;
+    }
+
+    public void speeddown()
+    {
+        StartCoroutine(Speed());
     }
 }

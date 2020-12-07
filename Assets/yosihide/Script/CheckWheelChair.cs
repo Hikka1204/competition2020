@@ -43,6 +43,7 @@ public class CheckWheelChair : MonoBehaviour
             }
             if (Count > Goal)
             {
+                wcb.speeddown();
                 Destroy(gameObject.GetComponent<CheckWheelChair>());
             }
 
