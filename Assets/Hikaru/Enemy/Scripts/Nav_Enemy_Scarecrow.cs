@@ -34,6 +34,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     private float TrackingTime; //_TrackingRateの取得
     private bool ForeverTrackingflg;    //ずっと追いかけるかどうか
     private GameObject TrackingEnemy;   //子のプレイヤー索敵用オブジェクトの格納
+    private bool floorChenge = false;   //false:地下 teue:一階
 
     void Start()
     {
@@ -55,6 +56,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         Number = 0;
         Anim.SetFloat("speed", Enemy_Nav.speed);
         SetSearchLocation();
+        floorChenge = false;
     }
 
     void Update()
@@ -100,12 +102,11 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
             }
         }
 
-        //if (Over_Flg == false)
-        //{
-        //    //目的地を設定
-        //    //Enemy_Nav.SetDestination(Destination);
-        //    Anim.SetFloat("speed", Enemy_Nav.speed);
-        //}
+    }
+
+    public void FloorChenge(bool a)
+    {
+        floorChenge = a;
     }
 
     public void Respawn()
@@ -169,11 +170,11 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         audio.Play();
     }
 
-    public void GetPlayer(bool Get)
+    public void GetPlayer(int Get)
     {
         switch (Get)
         {
-            case true:
+            case 0:
                 SetPlayerLocation();
                 if (Player_Get == false && TrackingTime <= 0)
                 {
@@ -185,11 +186,25 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                     audio.Play();
                 }
                 break;
-            case false:
-                TrackingTime = _TrackingRate;
+            case 1:
+                if(Player_Get == true) TrackingTime = _TrackingRate;
+                break;
+            case 2:
+                if(TrackingTime > 0 || Player_Get == true)
+                {
+                    _player_BGM.GetComponent<Player_BGM>().BGMPlay(0);
+                    audio.Stop();
+                }
+                TrackingTime = 0;
+                SetSearchLocation();
                 break;
         }
-        Player_Get = Get;
+        //Player_Get = Get;
+        if(Get == 0)
+        {
+            Player_Get = true;
+        }
+        else if(Get == 1 || Get == 2) Player_Get = false;
     }
 
     public void PlayerSpawn()

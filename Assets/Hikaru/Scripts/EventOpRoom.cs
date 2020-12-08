@@ -85,7 +85,7 @@ public class EventOpRoom : MonoBehaviour
         _enemy.transform.position = _spawnPo;
         _enemy.SetActive(true);
         yield return new WaitForSeconds(0.2f); //待つ
-        _enemy.GetComponent<Nav_Enemy_Scarecrow>().GetPlayer(true);
+        _enemy.GetComponent<Nav_Enemy_Scarecrow>().GetPlayer(0);
         _p_CameraGl.enabled = false;
         _eventCamera.enabled = true;
         _eventCamera.CameraNum(6);
