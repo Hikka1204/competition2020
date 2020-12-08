@@ -7,7 +7,8 @@ using UnityEngine;
 public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
 {
     bool once_esc;
-    int _HintNum;   // ヒント系のコメントを順番に出すため
+    int _EventNum; // イベント番号を入れている
+    int _EventComeNum; // イベントコメント番号を入れている
 
     GameObject ComeObj;
     [SerializeField] GameObject Com_Prehub;
@@ -16,14 +17,13 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     void Start()
     {
         ComeObj = GameObject.FindGameObjectWithTag("Comment"); // UI「Comment」を入れいている
-        _HintNum = 0;
+        _EventNum = 0;
+        _EventComeNum = 0;
         once_esc = false;
-
     }
 
     void Update()
     {
-        
         // 逃げている間だけ逃げる系のコメントを生成
         if (CommentManager.Instance.Escape_Flg)
         {
@@ -39,45 +39,46 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
             }
         }
 
-        //// ヒント系コメントを0～順にコメントさせている
-        //if (FlagManager.Instance.Co_Hint[_HintNum] == true)
-        //{
-        //    ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
-        //    FlagManager.Instance.Co_Hint[_HintNum] = false;
-        //    _HintNum++;
-        //}
-
-        // 
-
-        //if (FlagManager.Instance.Co_Hint[0])
-        //{
-        //    ComeObj.GetComponent<Come_Generate>().AddComment_Hint(0);
-        //    FlagManager.Instance.Co_Hint[0] = false;
-        //    _HintNum++;
-        //}  // No.1:ナースコールが鳴った時のコメント
-        //if (FlagManager.Instance.Co_Hint[1])
-        //{
-        //    ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
-        //    Invoke("HintCome", 2); 
-        //    FlagManager.Instance.Co_Hint[1] = false;
-        //}
+        // ヒント系コメントを0～順にコメントさせている
+        if (FlagManager.Instance.Co_Event[_EventNum] && !CommentManager.Instance.Event_Flg)
+        {
+            CommentManager.Instance.Event_Flg = true;
+            Invoke("HintCome", Random.Range(1, 2));
+        }
     }
 
     void HintCome()
     {
-        _HintNum++;
-        //ComeObj.GetComponent<Come_Generate>().AddComment_Hint(_HintNum);
-    }
+        if (CommentManager.Instance.Event_Flg)
+        {
+            Debug.Log("イベント中");
+            ComeObj.GetComponent<nico>().AddComment_Hint(_EventNum, _EventComeNum);
 
-    // 敵から逃げきった後に通常会話を生成するためだけの関数
-    void addhint()
-    {
-        ComeObj.GetComponent<nico>().AddComment();
-    }
-
-    void addcomment()
-    {
-        ComeObj.GetComponent<nico>().AddComment();
+            if (CommentManager.Instance.Event[_EventNum].E_Comment[_EventComeNum] != null)
+            {
+                switch (_EventNum)
+                {
+                    case 4:
+                    case 6:
+                    case 8:
+                        Invoke("HintCome", Random.Range(1, 2));
+                        break;
+                    default:
+                        Invoke("HintCome", Random.Range(1, 3));
+                        break;
+                }
+            }
+            else
+            {
+                CommentManager.Instance.Event_Flg = false;
+                //FlagManager.Instance.Co_Event[_EventNum] = false;
+                once_esc = false;
+                _EventNum++;
+                _EventComeNum = 0;
+                Invoke("addcomment", Random.Range(2, 4));
+            }
+            _EventComeNum++;
+        }
     }
 
     public void EscapeFlgCome()
@@ -89,17 +90,16 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
             Invoke("EscapeFlgCome", Random.Range(1, 3));
         }
     }
+    // 敵から逃げきった後に通常会話を生成するためだけの関数
+    void addcomment()
+    {
+        ComeObj.GetComponent<nico>().AddComment();
+    }
 
     public void ReactionCome()
     {
         //_ReactionNum = Random.Range(0, Lists.Reaction.Count);
         //ComeObj.GetComponent<Come_Generate>().AddComment_Reaction();
     }
-
-   
-    //    // ナースコール
-    //    // ナースコール止めて扉の音が鳴ったあと
-    //    // ズームで幽霊を見た後
-    //}
 
 }

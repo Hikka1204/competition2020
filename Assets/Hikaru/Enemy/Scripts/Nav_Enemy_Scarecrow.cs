@@ -33,17 +33,20 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     private float SearchTime;   //_SearchRateの取得
     private float TrackingTime; //_TrackingRateの取得
     private bool ForeverTrackingflg;    //ずっと追いかけるかどうか
+    private GameObject TrackingEnemy;   //子のプレイヤー索敵用オブジェクトの格納
 
     void Start()
     {
         //プレイヤーのNavMeshAgentを取得
         Enemy_Nav = GetComponent<NavMeshAgent>();
         audio = gameObject.GetComponent<AudioSource>();
+        
         //目的地のオブジェクトを取得
         //Destination = GameObject.Find("Goal");
         Anim = GetComponent<Animator>();
         //目的地を設定
         //Enemy_Nav.SetDestination(Destination.position);
+        TrackingEnemy = gameObject.transform.GetChild(5).gameObject;
         Over_Flg = false;
         Player_flg = false;
         TrackingStatus = false;
@@ -57,18 +60,6 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     void Update()
     {
         Anim.SetFloat("speed", Enemy_Nav.speed);
-        if (Input.GetKey(KeyCode.R))
-        {
-            gameObject.GetComponent<NavMeshAgent>().enabled = true;
-            Over_Flg = false;
-            Player_flg = false;
-            TrackingStatus = false;
-            ForeverTrackingflg = false;
-            SearchTime = _SearchRate;
-            Number = 0;
-            Anim.SetFloat("speed", Enemy_Nav.speed);
-            SetSearchLocation();
-        }
 
         if (Over_Flg == false)
         {
@@ -86,6 +77,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                     if (TrackingTime <= 0)
                     {
                         TrackingStatus = false;
+                        CommentManager.Instance.Escape_Flg = false;
                         SetSearchLocation();
                         _player_BGM.GetComponent<Player_BGM>().BGMPlay(0);
                         audio.Stop();
@@ -116,6 +108,29 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         //}
     }
 
+    public void Respawn()
+    {
+        TrackingEnemy.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<NavMeshAgent>().enabled = true;
+        Over_Flg = false;
+        Player_flg = false;
+        Player_Get = false;
+        TrackingStatus = false;
+        CommentManager.Instance.Escape_Flg = false;
+        ForeverTrackingflg = false;
+        SearchTime = _SearchRate;
+        TrackingTime = 0;
+        Number = 0;
+        Anim.SetFloat("speed", Enemy_Nav.speed);
+        _player_BGM.GetComponent<Player_BGM>().BGMPlay(0);
+        SetSearchLocation();
+        TrackingEnemy.GetComponent<BoxCollider>().enabled = true;
+    }
+
+    public bool Get_Over_Flg()
+    {
+        return Over_Flg;
+    }
 
     private void SetPlayerLocation()
     {
@@ -163,6 +178,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                 if (Player_Get == false && TrackingTime <= 0)
                 {
                     TrackingStatus = true;
+                    CommentManager.Instance.Escape_Flg = true;
                     _player_BGM.GetComponent<Player_BGM>().BGMPlay(1);
                     Anim.SetFloat("speed", Enemy_Nav.speed);
                     audio.clip = _TrackingSE;
@@ -183,8 +199,10 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         Over_Flg = false;
         Player_flg = false;
         TrackingStatus = false;
+        CommentManager.Instance.Escape_Flg = false;
         ForeverTrackingflg = false;
-        SearchTime = _SearchRate;
+        Player_Get = false;
+        SearchTime = 1;
         Number = 0;
         Anim.SetFloat("speed", Enemy_Nav.speed);
     }
@@ -198,6 +216,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
             Enemy_Nav.SetDestination(gameObject.transform.position);
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
             TrackingStatus = false;
+            CommentManager.Instance.Escape_Flg = false;
             //SetSearchLocation();
             _player_BGM.GetComponent<Player_BGM>().BGMPlay(0);
             audio.Stop();

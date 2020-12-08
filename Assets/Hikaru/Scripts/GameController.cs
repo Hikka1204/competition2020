@@ -14,7 +14,14 @@ public class GameController : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.P)) Quit();
-        //if (Input.GetKey(KeyCode.R)) RetryButton();
+        if (Input.GetKey(KeyCode.K)) Ro();
+        if (Input.GetKey(KeyCode.O)) RetryButton();
+    }
+
+    void Ro()
+    {
+        float x = 90;
+        this.transform.Rotate(0.0f, 0.0f, x);
     }
 
     void Quit()

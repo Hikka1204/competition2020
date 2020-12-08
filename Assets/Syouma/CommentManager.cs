@@ -34,6 +34,7 @@ public class CommentManager : MonoBehaviour
         }
 
     }
+    // 通常時のコメントを入れる配列
     public struct ComeData
     {
         public string Name;
@@ -44,14 +45,29 @@ public class CommentManager : MonoBehaviour
     [System.NonSerialized] public ComeData[] Audience = new ComeData[15];
     [System.NonSerialized] public string Previous = null; // ひとつ前のコメントを入れる変数
 
+    // イベント時のコメントを入れる配列
+    public struct ComeEvent
+    {
+        public string[] E_Comment;
+    }
+    [System.NonSerialized] public ComeEvent[] Event = new ComeEvent[11];
+
     public bool Escape_Flg; // true=逃げている、false=通常時
+    public bool Event_Flg; // true=逃げている、false=通常時
     // 逃げている間のコメント集
-    [System.NonSerialized] public string[] Escape = new string[38];
+    [System.NonSerialized] public string[] Escape = new string[39];
+    // 敵のコメント集
+    [System.NonSerialized] public string[] Enemy = new string[11];
+
+
     void Start()
     {
         CommentSet();
         EscapeComeSet();
+        EnemyCommentSet();
+        EventCommentSet();
         Escape_Flg = false;
+        Event_Flg = false;
     }
 
     void Update()
@@ -59,52 +75,6 @@ public class CommentManager : MonoBehaviour
 
     }
 
-    void EscapeComeSet()
-    {
-        Escape[0]  = "かおり：逃げて！";
-        Escape[1]  = "かおり：なんなの？！";
-        Escape[2]  = "かおり：何あれ！！";
-        Escape[3]  = "ちょんまげ男：走れ！";
-        Escape[4]  = "ちょんまげ男：走れ走れ走れ";
-        Escape[5]  = "ちょんまげ男：なんだよあれ！";
-        Escape[6]  = "卵かけライス：だからやめとけって...";
-        Escape[7]  = "卵かけライス：捕まるなよ";
-        Escape[8]  = "卵かけライス：助からないかもな";
-        Escape[9]  = "みさき：ええええええ！";
-        Escape[10]  = "みさき：やばいいい";
-        Escape[11]  = "みさき：死なないで！";
-        Escape[12] = "りんご星人：なんだこいつっ！";
-        Escape[13] = "りんご星人：すごいもの見てるわ";
-        Escape[14] = "りんご星人：逃げきれ！";
-        Escape[15] = "みかママ：え？";
-        Escape[16] = "みかママ：お願い逃げて";
-        Escape[17] = "みかママ：逃げ切って！";
-        Escape[18] = "あげパン：やばいやばい";
-        Escape[19] = "あげパン：早く逃げて";
-        Escape[20] = "あげパン：すごくない";
-
-        Escape[21] = "さちこ：早く出て";
-        Escape[22] = "さちこ：逃げてください！";
-        Escape[23] = "さちこ：もう無理です";
-        Escape[24] = "きな粉：死なないで";
-        Escape[25] = "きな粉：えええ";
-        Escape[26] = "きな粉：こわ";
-        Escape[27] = "もち：早く出よ！！！";
-        Escape[28] = "もち：怖い怖い怖い";
-        Escape[29] = "もち：無理無理";
-        Escape[30] = "目黒：ヤバヤバ";
-        Escape[31] = "目黒：捕まらないで";
-        Escape[32] = "目黒：ガチカコレ";
-        Escape[33] = "ぼたん飴：こわっｗ";
-        Escape[34] = "ぼたん飴：本物の幽霊？！";
-        Escape[35] = "ぼたん飴：これ本当ですか？";
-        Escape[36] = "髪の毛ほしい：まじ？";
-        Escape[37] = "髪の毛ほしい：もっと走って！";
-        Escape[38] = "髪の毛ほしい：来てるって！！";
-        //Escape[39] = "たか：";
-        //Escape[40] = "たか：";
-        //Escape[41] = "たか：";
-    }
     void CommentSet()
     {
         for (int i = 0; i < Audience.Length; i++)
@@ -296,4 +266,134 @@ public class CommentManager : MonoBehaviour
         Audience[14].Comment_3[1] = "あーもう、なんかやだなぁ";
 
     }
+    void EscapeComeSet()
+    {
+        Escape[0]  = "かおり：逃げて！";
+        Escape[1]  = "かおり：なんなの？！";
+        Escape[2]  = "かおり：何あれ！！";
+        Escape[3]  = "ちょんまげ男：走れ！";
+        Escape[4]  = "ちょんまげ男：走れ走れ走れ";
+        Escape[5]  = "ちょんまげ男：なんだよあれ！";
+        Escape[6]  = "卵かけライス：だからやめとけって...";
+        Escape[7]  = "卵かけライス：捕まるなよ";
+        Escape[8]  = "卵かけライス：助からないかもな";
+        Escape[9]  = "みさき：ええええええ！";
+        Escape[10]  = "みさき：やばいいい";
+        Escape[11]  = "みさき：死なないで！";
+        Escape[12] = "りんご星人：なんだこいつっ！";
+        Escape[13] = "りんご星人：すごいもの見てるわ";
+        Escape[14] = "りんご星人：逃げきれ！";
+        Escape[15] = "みかママ：え？";
+        Escape[16] = "みかママ：お願い逃げて";
+        Escape[17] = "みかママ：逃げ切って！";
+        Escape[18] = "あげパン：やばいやばい";
+        Escape[19] = "あげパン：早く逃げて";
+        Escape[20] = "あげパン：すごくない";
+
+        Escape[21] = "さちこ：早く出て";
+        Escape[22] = "さちこ：逃げてください！";
+        Escape[23] = "さちこ：もう無理です";
+        Escape[24] = "きな粉：死なないで";
+        Escape[25] = "きな粉：えええ";
+        Escape[26] = "きな粉：こわ";
+        Escape[27] = "もち：早く出よ！！！";
+        Escape[28] = "もち：怖い怖い怖い";
+        Escape[29] = "もち：無理無理";
+        Escape[30] = "目黒：ヤバヤバ";
+        Escape[31] = "目黒：捕まらないで";
+        Escape[32] = "目黒：ガチカコレ";
+        Escape[33] = "ぼたん飴：こわっｗ";
+        Escape[34] = "ぼたん飴：本物の幽霊？！";
+        Escape[35] = "ぼたん飴：これ本当ですか？";
+        Escape[36] = "髪の毛ほしい：まじ？";
+        Escape[37] = "髪の毛ほしい：もっと走って！";
+        Escape[38] = "髪の毛ほしい：来てるって！！";
+        //Escape[39] = "たか：";
+        //Escape[40] = "たか：";
+        //Escape[41] = "たか：";
+    }
+    void EnemyCommentSet()
+    {
+        Enemy[0] = "逃がさない…";
+        Enemy[1] = "うぅぅ゛";
+        Enemy[2] = "見つけた…";
+        Enemy[3] = "あ゛あぁ゛";
+        Enemy[4] = "どうして";
+        Enemy[5] = "許さない…";
+        Enemy[6] = "あ゛あぁぁ";
+        Enemy[7] = "あの人も…";
+        Enemy[8] = "あの女も…";
+        Enemy[9] = "皆いなくなればいい…";
+        Enemy[10] = "あなたも逃がさない";
+    }
+    void EventCommentSet()
+    {
+        for (int i = 0; i < Event.Length; i++)
+        {
+            Event[i].E_Comment = new string[9];
+        }
+
+        // OPムービーが終わった後で
+        Event[0].E_Comment[0] = "かおり：ここからじゃ出れないよね？";
+        Event[0].E_Comment[1] = "りんご星人：何が起きたんだ！？";
+        Event[0].E_Comment[2] = "あげぱん：出口を探そう";
+        // 非常口のドアが開かずナースコールが鳴りだしたら
+        Event[1].E_Comment[0] = "ちょんまげ男：なんか聞こえるぞ";
+        Event[1].E_Comment[1] = "りんご星人：音なってるぞ？";
+        Event[1].E_Comment[2] = "みかママ：そういえば受付にナースコールあったよ";
+        // 幽霊と初対面した際
+        Event[2].E_Comment[0] = "きな粉：おいおいまじかよ";
+        Event[2].E_Comment[1] = "りんご星人：うわあぁぁ";
+        Event[2].E_Comment[2] = "あげぱん：完全に見えてますが…";
+        Event[2].E_Comment[3] = "かおり：もう嫌なんだけど！";
+        Event[2].E_Comment[4] = "ちょんまげ男：ここかなりやばいって!!";
+        // ナースコールを止めて受付から出る、遠くで扉の音が鳴ったタイミング
+        Event[3].E_Comment[0] = "きな粉：さっきの奴じゃない？";
+        Event[3].E_Comment[1] = "りんご星人：ドアが開く音したよね？";
+        Event[3].E_Comment[2] = "かおり：遠くで音したよ";
+        // 地下に落ちたタイミング
+        Event[4].E_Comment[0] = "りんご星人：何が起きたんだ！？";
+        Event[4].E_Comment[1] = "ちょんまげ男：びっくりした！！";
+        Event[4].E_Comment[2] = "もち：ええええええ";
+        Event[4].E_Comment[3] = "目黒：危なっ！";
+        Event[4].E_Comment[4] = "髪の毛ほしい：くずれんのか！";
+        Event[4].E_Comment[5] = "かおり：大丈夫ですか？";
+        Event[4].E_Comment[6] = "卵かけライス：早く帰ったほうがいい";
+        Event[4].E_Comment[7] = "みさき：あぶなかった～";
+        Event[4].E_Comment[8] = "アレン：うわ大丈夫か？";
+        //C_Event[18] = "せいや：FF外から失礼するゾ＾～　この放送面白スギィ！自分、お気に入り登録とコテハン登録とTwitterフォローとYoutubeチャンネル登録と高評価と通知ONとツイートのファボいいすか？淫夢のリストにもぶちこんでやるぜ";
+        // 診察室でのイベント中
+        Event[5].E_Comment[0] = "目黒：なんだこれ！";
+        Event[5].E_Comment[1] = "きな粉：なになになに！！";
+        Event[5].E_Comment[2] = "りんご星人：血じゃん！";
+        Event[5].E_Comment[3] = "髪の毛ほしい：まじかよ";
+        Event[5].E_Comment[4] = "アレン：おいおいおいおい";
+        Event[5].E_Comment[5] = "ぼたん飴：やばすぎでしょ";
+        Event[5].E_Comment[6] = "もち：手が・・・";
+        // 資料室でのイベント中
+        Event[6].E_Comment[0] = "みさき：うわ！";
+        Event[6].E_Comment[1] = "卵かけライス：近い近い！";
+        Event[6].E_Comment[2] = "みかママ：いるいる";
+        Event[6].E_Comment[3] = "りんご星人：怒ってる？";
+        // 資料室でのイベント後
+        Event[7].E_Comment[0] = "りんご星人：あいつカギ落としたぞ";
+        Event[7].E_Comment[1] = "もち：あれなんか落ちてる";
+        // 手術室に入ったら 
+        Event[8].E_Comment[0] = "りんご星人：ここはやばい";
+        Event[8].E_Comment[1] = "ちょんまげ男：不気味だ";
+        Event[8].E_Comment[2] = "あげぱん：カギがある！";
+        // 霊安室に入ったら
+        Event[9].E_Comment[0] = "りんご星人：全員男…？";
+        Event[9].E_Comment[1] = "さちこ：あっ…カギある";
+        Event[9].E_Comment[2] = "あげぱん：死体じゃん…";
+        Event[9].E_Comment[3] = "さちこ：本物じゃないですよね";
+        Event[9].E_Comment[4] = "卵かけライス：カギがあるぞ！";
+        // 霊安室でのイベント中
+        Event[10].E_Comment[0] = "アレン：やばいやばい";
+        Event[10].E_Comment[1] = "髪の毛ほしい：うわ！きた！";
+        Event[10].E_Comment[2] = "目黒：早くここでよ！！";
+        Event[10].E_Comment[3] = "みかママ：逃げ切って！";
+        Event[10].E_Comment[4] = "りんご星人：非常口までそのまま突っ切れ！";
+    }                      
+
 }

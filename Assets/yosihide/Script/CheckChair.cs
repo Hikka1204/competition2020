@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CheckChair : MonoBehaviour
 {
-    GameObject Chair;
+    public GameObject Chair;
     ChairBlowAway script;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        Chair = GameObject.FindGameObjectWithTag("Chair");
+        
         script = Chair.gameObject.GetComponent<ChairBlowAway>();
         
     }

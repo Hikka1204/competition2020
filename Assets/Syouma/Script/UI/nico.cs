@@ -9,6 +9,7 @@ public class nico : MonoBehaviour
 
     int ComNum = 0; // 今出ているコメントの数
     int Delcnt = 0; // 削除したコメントの数
+    const int COMEMAX = 10; // 画面に表示せる最大コメント数
 
     // コメントの出現座標
     const float x =　0f;
@@ -19,7 +20,6 @@ public class nico : MonoBehaviour
     const float Step3 = -90f;
     bool[] StepShift; 
 
-
     void Start()
     {
         TextList.Clear(); //Listの初期化
@@ -29,27 +29,25 @@ public class nico : MonoBehaviour
 
     void Update()
     {
-        if (StepShift[0]) Invoke("Step0Reset", 3);
-        if (StepShift[1]) Invoke("Step1Reset", 2);
-        if (StepShift[2]) Invoke("Step2Reset", 2);
-        if (StepShift[3]) Invoke("Step3Reset", 1);
+
     }
 
-    /*** コメントを追加する処理 ***/
+    /*** 通常コメントを追加する処理 ***/
     public void AddComment()
     {
-        if (!CommentManager.Instance.Escape_Flg)
+        if (!CommentManager.Instance.Escape_Flg && !CommentManager.Instance.Event_Flg)
         {
             Generate();
             //TextList[ComNum].GetComponent<Come_List>().RandomComment();
             TextList[ComNum].gameObject.GetComponentInChildren<Come_List>();
             ComNum++;
-            if (ComNum > 10) DeleteComment();
+            if (ComNum > COMEMAX) DeleteComment();
 
             Invoke("AddComment", Random.Range(1, 6));
             //Invoke("AddComment", 1); /*デバッグ用*/
         }
     }
+
     /*** 逃げている間のコメントを追加する処理 ***/
     public void AddComment_Escape()
     {
@@ -57,16 +55,43 @@ public class nico : MonoBehaviour
         TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().EscapeCommnet();
 
         ComNum++;
-        if (ComNum > 6) DeleteComment();
+        if (ComNum > COMEMAX) DeleteComment();
     }
+
+    /*** イベント時の特定コメントを追加する処理 ***/
+    public void AddComment_Hint(int index,int _index)
+    {
+        Generate();
+        TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().HintCommnet(index, _index);
+
+        ComNum++;
+        if (ComNum > COMEMAX) DeleteComment();
+    }
+
 
     void Generate()
     {
         TextList.Add((GameObject)Instantiate(TextPrefab));
-        if (!StepShift[0]) { y = Step0; StepShift[0] = true; }
-        else if (!StepShift[1]) { y = Step1; StepShift[1] = true; }
-        else if (!StepShift[2]) { y = Step2; StepShift[2] = true; }
-        else if (!StepShift[3]) { y = Step3; StepShift[3] = true; }
+        if (!StepShift[0]) {
+            y = Step0;
+            StepShift[0] = true;
+            Invoke("Step0Reset", Random.Range(3, 4));
+        }
+        else if (!StepShift[1]) {
+            y = Step1;
+            StepShift[1] = true;
+            Invoke("Step1Reset", Random.Range(2, 3));
+        }
+        else if (!StepShift[2]) {
+            y = Step2;
+            StepShift[2] = true;
+            Invoke("Step2Reset", 2);
+        }
+        else if (!StepShift[3]) {
+            y = Step3;
+            StepShift[3] = true;
+            Invoke("Step3Reset", 1);
+        }
 
         TextList[ComNum].transform.position = new Vector3(x, y, 0f);
         TextList[ComNum].transform.SetParent(this.transform, false);

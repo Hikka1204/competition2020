@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Hikaru/Scenes/Epilogue.unity
-    guid: d72c1dfd10b8dde4b9e5625b57474195
+    path: Assets/master/Master_OP_Text.unity
+    guid: 8bab5451028c5a4449ed498c5a19a781
   - enabled: 1
     path: Assets/master/protOP.unity
     guid: 4ff10ea00e70dbe4fa182043de54fb2c
   - enabled: 1
-    path: Assets/master/Build1119.unity
-    guid: d71d3bf47d7f9af4798bd333ad42f171
+    path: Assets/master/MainGame.unity
+    guid: 3fb0e72930203a847941172476a84a75
+  - enabled: 1
+    path: Assets/master/Master_Ending_Text.unity
+    guid: efd70e7ff8f4081429da3f1f51992bc3
   m_configObjects: {}

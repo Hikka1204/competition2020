@@ -66,13 +66,13 @@ public class DoorMove : MonoBehaviour {
             else if (_KeyFlg <= GetKeyFlg)  //鍵付きなら鍵を持ってるか判断する
             {
                 _KeyFlg = 0;    //鍵無しドアにする
-                FlagManager.Instance.SerifFlg[8] = true;
+                FlagManager.Instance.Key_Text[8] = true;
                 audioSource.clip = _KeyInSE;
                 audioSource.Play();
             }
             else //鍵を持たずに鍵付きドアを開けようとしたとき
             {
-                FlagManager.Instance.SerifFlg[0] = true;
+                FlagManager.Instance.Key_Text[0] = true;
                 audioSource.clip = _KeyOutSE;
                 audioSource.Play();
             }

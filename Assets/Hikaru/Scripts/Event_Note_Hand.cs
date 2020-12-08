@@ -76,6 +76,7 @@ public class Event_Note_Hand : MonoBehaviour
         _eventCamera.enabled = true;
         _eventCamera.CameraNum(1);
         yield return new WaitForSeconds(1.0f); //待つ
+        FlagManager.Instance.Co_Event[5] = true; // イベントコメント表示
         _exampleOb.GetComponent<Example>().enabled = true;
         yield return new WaitForSeconds(5.0f); //待つ
         _eventCamera.CameraStop();

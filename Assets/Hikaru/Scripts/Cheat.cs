@@ -69,6 +69,10 @@ public class Cheat : MonoBehaviour
             {
                 flgm.ObjectFlgActive();
             }
+            if (Input.GetKey(KeyCode.Alpha6))//フラグを持ってるオブジェクトをすべて出現させる
+            {
+                flgm.PlayerSpawn();
+            }
 
 
         }

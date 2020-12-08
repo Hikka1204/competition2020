@@ -18,10 +18,12 @@ public class EventOpRoom : MonoBehaviour
     private GameObject[] Child;
     private Vector3[] IntPoChild;
     private bool isEvent = true;
+    private bool ispushE = false;
     // Start is called before the first frame update
     void Start()
     {
         isEvent = true;
+        ispushE = false;
         Child = new GameObject[AddForce_Rubble.transform.childCount];
         IntPoChild = new Vector3[AddForce_Rubble.transform.childCount];
         int count = gameObject.transform.childCount;
@@ -38,6 +40,7 @@ public class EventOpRoom : MonoBehaviour
         if (!isEvent)
         {
             isEvent = true;
+            ispushE = false;
             for (int i = 0; i < AddForce_Rubble.transform.childCount; i++)
             {
                 //Child[i].SetActive(true);
@@ -53,19 +56,28 @@ public class EventOpRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isEvent == true)
+        if(!isEvent && !ispushE && Input.GetKeyDown(KeyCode.E))
+        {
+            ispushE = true;
+            StartCoroutine("Event");
+        }
+
+        if (isEvent == true)
         {
             isEvent = false;
-            StartCoroutine("Event");
+            _enemy.SetActive(false);
+            _p_Chara.enabled = false;
+            _p_Fir.enabled = false;
+
         }
     }
 
     IEnumerator Event()
     {
-        _enemy.SetActive(false);
+        //_enemy.SetActive(false);
         _p_CameraGl.enabled = true;
-        _p_Chara.enabled = false;
-        _p_Fir.enabled = false;
+        //_p_Chara.enabled = false;
+        //_p_Fir.enabled = false;
         yield return new WaitForSeconds(0.5f); //待つ
         AddForce_Rubble.SetActive(true);
         //Destroy(WallDes);
@@ -76,7 +88,7 @@ public class EventOpRoom : MonoBehaviour
         _enemy.GetComponent<Nav_Enemy_Scarecrow>().GetPlayer(true);
         _p_CameraGl.enabled = false;
         _eventCamera.enabled = true;
-        _eventCamera.CameraNum(0);
+        _eventCamera.CameraNum(6);
         yield return new WaitForSeconds(2.0f); //待つ
         _eventCamera.CameraStop();
         _p_Chara.enabled = true;

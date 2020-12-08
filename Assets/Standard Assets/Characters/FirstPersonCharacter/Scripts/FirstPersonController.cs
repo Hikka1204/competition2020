@@ -18,7 +18,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private float m_JumpSpeed;
         [SerializeField] private float m_StickToGroundForce;
         [SerializeField] private float m_GravityMultiplier;
-        [SerializeField] private MouseLook m_MouseLook;
+        [SerializeField] public MouseLook m_MouseLook;
         [SerializeField] private bool m_UseFovKick;
         [SerializeField] private FOVKick m_FovKick = new FOVKick();
         [SerializeField] private bool m_UseHeadBob;
@@ -43,6 +43,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
         private float m_RunSpeedInt;
+        public bool isEventCamera = false;
+
+        [SerializeField] private GameObject _enemyCamera; // 注視したいオブジェクトをInspectorから入れておく
+        [SerializeField] private GameObject _eventRote; // 注視したいオブジェクトをInspectorから入れておく
+        [SerializeField] private GameObject _Reference_Enemy_Camera; // 注視したいオブジェクトをInspectorから入れておく
+        [SerializeField] private GameObject _EventCallKey_Enemy_Camera;
+        public float speed = 0.1f;  // 補完スピードを決める
+        private GameObject targetObject;
+        [SerializeField] GameObject FPSController;
+        Camera FirstPersonCamera;
+        [SerializeField] FirstPersonController fir;
+
+
 
         // Use this for initialization
         private void Start()
@@ -58,6 +71,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
             m_RunSpeedInt = m_RunSpeed;
+            isEventCamera = false;
         }
 
 
@@ -239,9 +253,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
-            m_MouseLook.LookRotation (transform, m_Camera.transform);
+            if (isEventCamera)
+            {
+                
+            }
+            else
+            {
+                m_MouseLook.LookRotation(transform, m_Camera.transform);
+            }
         }
-
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {

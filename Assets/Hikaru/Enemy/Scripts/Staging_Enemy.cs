@@ -11,7 +11,6 @@ public class Staging_Enemy : MonoBehaviour
     private Animator Anim;      //アニメーション格納
     private bool Player_flg = false;      //ゲームオーバーフラグ
     [SerializeField] GlitchEffect camera;
-    [SerializeField] GameObject _StaColi;
     [SerializeField] private float Timedes = 5f;    //即デストロイしないようにするための変数
     private float TimedesTime;  //Timedesのセット用変数
     private Staging_Enemy StaEne;
@@ -38,21 +37,22 @@ public class Staging_Enemy : MonoBehaviour
         //Script格納
         StaEne = gameObject.GetComponent<Staging_Enemy>();
         //目的地を設定
-        Enemy_Nav.SetDestination(gameObject.transform.position);
+        Enemy_Nav.SetDestination(Destination);
         Player_flg = false;
-        TimedesTime = 0;
+        TimedesTime = Timedes;
     }
 
     private void OnEnable()
     {
         if (Player_flg)
         {
+            Enemy_Nav.enabled = false;
             //最初のポジションを格納
             transform.position = IntPo;
             transform.localEulerAngles = IntRo;
             Player_flg = false;
-            Enemy_Nav.SetDestination(IntPo);
-            _StaColi.SetActive(true);
+            Enemy_Nav.enabled = true;
+            Enemy_Nav.SetDestination(Destination);
             TimedesTime = Timedes;
         }
     }
@@ -61,43 +61,18 @@ public class Staging_Enemy : MonoBehaviour
     {
         
 
-        if (Player_flg == true) { //イベントが発生したとき
-            if(TimedesTime > 0)
-            {
-                TimedesTime -= Time.deltaTime;
-                
-            }
-            if (TimedesTime <= 0)
-            {
-                PlayerOb.GetComponent<CharacterController>().enabled = true;
-                PlayerOb.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
-                camera.enabled = false;
-                //gameObject.GetComponent<Staging_Enemy>().
-                //Destroy(gameObject);
-                gameObject.SetActive(false);
-                //StaEne.enabled = false;
-            }
-
-        }
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(Player_flg == false && other.gameObject.tag == "Player")
+        if(TimedesTime > 0)
         {
-            Enemy_Nav.SetDestination(Destination);
-            PlayerOb.GetComponent<CharacterController>().enabled = false;
-            PlayerOb.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
-            Player_flg = true;
-            //Destroy(_StaColi);
-            _StaColi.SetActive(false);
+            TimedesTime -= Time.deltaTime;
             Anim.SetFloat("speed", Enemy_Nav.speed);
-            camera.enabled = true;
-            TimedesTime = Timedes;
-            // ズームさせる処理
-            zoom.Zoomflg = true;
-
         }
+        if (TimedesTime <= 0)
+        {
+            Player_flg = true;
+            gameObject.SetActive(false);
+        }
+
     }
+
+
 }

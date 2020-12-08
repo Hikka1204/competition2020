@@ -23,4 +23,6 @@ public class FadeScript : MonoBehaviour
         count += speed;
         alfa = Mathf.Abs(Mathf.Sin(count));
     }
+
+    
 }
