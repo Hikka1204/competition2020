@@ -6,7 +6,8 @@ public class Door_OpenClose : MonoBehaviour
 {
     private Animator animator;
     private AudioSource audioSource;
-    [SerializeField] private float _speed = 1;  //ドアのアニメーション速度
+    [SerializeField] private float _Open_speed = 1;
+    [SerializeField] private float _Close_speed = 1;//ドアのアニメーション速度
     [SerializeField] AudioClip _OpenSE;
     [SerializeField] AudioClip _CloseSE;
     private bool isEvent;
@@ -16,7 +17,6 @@ public class Door_OpenClose : MonoBehaviour
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         //animator.SetBool("Open", true);
-        animator.speed = _speed;
         isEvent = false;
     }
 
@@ -29,7 +29,7 @@ public class Door_OpenClose : MonoBehaviour
     {
         audioSource.clip = _OpenSE;
         audioSource.Play();
-        
+        animator.speed = _Open_speed;
         animator.SetBool("Auto Door", false);
     }
 
@@ -38,8 +38,14 @@ public class Door_OpenClose : MonoBehaviour
         audioSource.clip = _CloseSE;
         audioSource.Play();
         if (isEvent) return;
+        animator.speed = _Close_speed;
         animator.SetBool("Auto Door", true);
         //Destroy(gameObject.GetComponent<Door_Close_anim>());
+    }
+
+    public void StartAnim()
+    {
+        animator.SetBool("Auto Door", true);
     }
 
 

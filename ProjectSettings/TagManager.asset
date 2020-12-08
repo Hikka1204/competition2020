@@ -24,6 +24,9 @@ TagManager:
   - CommentManager
   - FlagManager
   - Comment
+  - WheelChair
+  - Chair
+  - Zone
   layers:
   - Default
   - TransparentFX
@@ -49,7 +52,7 @@ TagManager:
   - Book
   - Shelf
   - Rubble_NotPlayer
-  - 
+  - Zone
   - 
   - 
   - 

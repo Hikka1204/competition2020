@@ -39,9 +39,11 @@ public class FlgManeger : MonoBehaviour
     //flg 6
     [SerializeField] private GameObject _Morgue_rust_key; //霊安室のカギ
     //flg 7
+    [SerializeField] private GameObject _ZoneOP;
     [SerializeField] private GameObject _Emergency_exit_rust_key; //非常口のカギ
     //flg 8
     [SerializeField] private GameObject _EnemySpawn_P;  //エネミーのスポーンの親
+    [SerializeField] private GameObject _SafeZone;
 
     //リスタートするとき
     [SerializeField] private GameObject _enemy;
@@ -129,11 +131,13 @@ public class FlgManeger : MonoBehaviour
                 break;
             case 7: //霊安室のカギを取ったら
                 _Emergency_exit_rust_key.gameObject.SetActive(true);
+                _ZoneOP.SetActive(false);
                 _operating_room_lighting1.GetComponent<op_room_lighting>().setIsEvent(true);
                 _operating_room_lighting2.GetComponent<op_room_lighting>().setIsEvent(true);
                 break;
             case 8: //非常口のカギを取ったら
                 _EnemySpawn_P.SetActive(true);
+                _SafeZone.SetActive(false);
                 break;
             default:
                 break;
@@ -208,7 +212,7 @@ public class FlgManeger : MonoBehaviour
                 WallDes.SetActive(true);
                 break;
             case 8://非常口のカギを取ったら
-
+                
                 break;
             default:
 
