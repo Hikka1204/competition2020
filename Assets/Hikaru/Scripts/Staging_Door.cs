@@ -41,7 +41,7 @@ public class Staging_Door : MonoBehaviour
         if(EventTime > 0)
         {
             EventTime -= Time.deltaTime;
-            _enemy.GetComponent<Nav_Enemy_Scarecrow>().GetPlayer(true);
+            _enemy.GetComponent<Nav_Enemy_Scarecrow>().GetPlayer(0);
             if (EventTime <= 0)
             {
                 _p_CameraObject.CameraStop();

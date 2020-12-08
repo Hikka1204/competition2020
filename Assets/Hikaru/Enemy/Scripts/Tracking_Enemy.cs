@@ -27,7 +27,7 @@ public class Tracking_Enemy : MonoBehaviour
 
         if (playerflg == false && other.gameObject.tag == "Player_Body_Tracking")
         {
-            parent.GetPlayer(true);
+            parent.GetPlayer(0);
             playerflg = true;
         }
         
@@ -37,7 +37,7 @@ public class Tracking_Enemy : MonoBehaviour
     {
         if (playerflg == true && other.gameObject.tag == "Player_Body_Tracking")
         {
-            parent.GetPlayer(false);
+            parent.GetPlayer(1);
             playerflg = false;
         }
     }

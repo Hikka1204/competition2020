@@ -28,7 +28,6 @@ public class Event_Reference_room : MonoBehaviour
         if(other.gameObject.tag == "Player" && !isEvent)
         {
             isEvent = true;
-            AddForce();
             StartCoroutine("Event");
         }
     }
@@ -62,7 +61,7 @@ public class Event_Reference_room : MonoBehaviour
         _eventCamera.CameraNum(2);
         FlagManager.Instance.Co_Event[6] = true; // イベントコメント表示
         yield return new WaitForSeconds(2.5f); //待つ
-        
+        AddForce();
         Destroy(Event_Enter_Reference_Enemy);
         _eventCamera.CameraStop();
         yield return new WaitForSeconds(1.0f); //待つ

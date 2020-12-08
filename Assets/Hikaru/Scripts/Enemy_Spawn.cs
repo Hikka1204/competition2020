@@ -47,7 +47,7 @@ public class Enemy_Spawn : MonoBehaviour
         _enemy.transform.position = _spawnPo;
         _enemy.SetActive(true);
         yield return new WaitForSeconds(0.2f); //待つ
-        _enemy.GetComponent<Nav_Enemy_Scarecrow>().GetPlayer(true);
+        _enemy.GetComponent<Nav_Enemy_Scarecrow>().GetPlayer(0);
         Anim.SetFloat("speed", 1);
         _p_CameraGl.enabled = false;
         yield return new WaitForSeconds(0.2f); //待つ

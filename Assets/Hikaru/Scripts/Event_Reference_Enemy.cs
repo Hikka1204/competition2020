@@ -40,6 +40,12 @@ public class Event_Reference_Enemy : MonoBehaviour
         
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
 }

@@ -26,6 +26,7 @@ public class Door_Close_anim : MonoBehaviour
 
     public void OpenSE()    //アニメーションに関数を追加している //ドアが開く音
     {
+        return;
         audioSource.clip = _OpenSE;
         audioSource.Play();
     }
