@@ -27,7 +27,7 @@ public class ED_SceneChange : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    fadeManager.fadeOutStart(0, 0, 0, 0, "Master_OP_Text");
+                    fadeManager.fadeOutStart(0, 0, 0, 0, "Title_Master");
                 }
                 if (Input.GetMouseButtonDown(1))
                 {
