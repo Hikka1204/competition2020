@@ -92,6 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c87d84d0ea8bbe419a9d89741bf2fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EventColor: {r: 0.40813366, g: 0.754717, b: 0.2171591, a: 1}
+  EnemyColor: {r: 0.6981132, g: 0.049394794, b: 0.049394794, a: 1}
+  EnemyFont: {fileID: 12800000, guid: d733d358aeda470469587b83c0dcc7a9, type: 3}
 --- !u!114 &3250633857501377867
 MonoBehaviour:
   m_ObjectHideFlags: 0
