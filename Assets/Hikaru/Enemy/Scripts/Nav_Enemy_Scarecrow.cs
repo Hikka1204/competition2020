@@ -20,6 +20,10 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     [SerializeField] private float _TrackingRate;   //追いかける時間
     [SerializeField] private AudioClip _TrackingSE;
     [SerializeField] private AudioClip _DeathSE;
+    [SerializeField] private float MaxSpeed = 4.5f;
+    [SerializeField] private float MinSpeed = 2.5f;
+    [SerializeField] private float Deceleration_speed = 0.01f;
+    private float EnemySpeed;
 
     private AudioSource audio;
     NavMeshAgent Enemy_Nav;     //このオブジェクトについてるナビメッシュ
@@ -41,7 +45,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         //プレイヤーのNavMeshAgentを取得
         Enemy_Nav = GetComponent<NavMeshAgent>();
         audio = gameObject.GetComponent<AudioSource>();
-        
+        EnemySpeed = Enemy_Nav.speed;
         //目的地のオブジェクトを取得
         //Destination = GameObject.Find("Goal");
         Anim = GetComponent<Animator>();
@@ -136,10 +140,13 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     private void SetPlayerLocation()
     {
         Enemy_Nav.SetDestination(_Player_tr.gameObject.transform.position);
+        EnemySpeed -= Deceleration_speed;
+        Enemy_Nav.speed = EnemySpeed;
     }
 
     private void SetSearchLocation()
     {
+        Enemy_Nav.speed = MinSpeed;
         int RandomNumber;   //ランダムな値を取得
         while (true)
         {
@@ -155,6 +162,8 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         }
         
     }
+
+    
 
     public bool GetTrackingStatus()
     {
@@ -184,6 +193,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                     Anim.SetFloat("speed", Enemy_Nav.speed);
                     audio.clip = _TrackingSE;
                     audio.Play();
+                    EnemySpeed = MaxSpeed;
                 }
                 break;
             case 1:
@@ -197,6 +207,11 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                 }
                 TrackingTime = 0;
                 SetSearchLocation();
+                break;
+
+            case 4:
+                Anim.SetTrigger("attack");
+
                 break;
         }
         //Player_Get = Get;
