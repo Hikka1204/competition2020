@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: d733d358aeda470469587b83c0dcc7a9
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: g_comichorrorR_free-Regular
+  fontNames:
+  - g_comichorrorR_free-Regular
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d27913b8eb517d440be5a38ee9567e7a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

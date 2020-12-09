@@ -10,7 +10,7 @@ public class Event_Reference_Enemy : MonoBehaviour
     private Animator Anim;      //アニメーション格納
     private Staging_Enemy StaEne;
     [SerializeField] private float _DesRate = 3f;
-
+    private bool isEvent = false;
     void Start()
     {
         ////目的地のオブジェクトを取得
@@ -21,23 +21,39 @@ public class Event_Reference_Enemy : MonoBehaviour
         Anim = GetComponent<Animator>();
         //Script格納
         StaEne = gameObject.GetComponent<Staging_Enemy>();
-        
+        isEvent = false;
+        Enemy_Nav.SetDestination(gameObject.transform.position);
+    }
+
+    private void OnEnable()
+    {
+        if (isEvent)
+        {
+            isEvent = false;
+        }
     }
 
     void Update()
     {
-        if(_DesRate > 0)
+        if (isEvent)
         {
-            Anim.SetFloat("speed", Enemy_Nav.speed);
-            //目的地のオブジェクトを取得
-            Enemy_Nav.SetDestination(Destination.transform.position);
-            _DesRate -= Time.deltaTime;
-            if(_DesRate <= 0)
+            if (_DesRate > 0)
             {
-                gameObject.SetActive(false);
+                Anim.SetFloat("speed", Enemy_Nav.speed);
+                //目的地のオブジェクトを取得
+                Enemy_Nav.SetDestination(Destination.transform.position);
+                _DesRate -= Time.deltaTime;
+                if (_DesRate <= 0)
+                {
+                    gameObject.SetActive(false);
+                }
             }
         }
-        
+    }
+
+    public void StartEvent()
+    {
+        isEvent = true;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class Come_List : MonoBehaviour
 
 {   
+    public Color EventColor; // イベント系のコメントは緑色
+    public Color EnemyColor; // 敵のコメントは赤色
+    public Font EnemyFont;
     int NameNum; // 名前用　要素数格納変数
     int ComeNum; // コメント用　要素数格納変数
     string Check = null; // 作ったコメントをチェックために入れる変数
@@ -12,6 +15,11 @@ public class Come_List : MonoBehaviour
     //CommentManager C_manager;
 
     void Start()
+    {
+
+    }
+
+    public void Comment()
     {
         if (!CommentManager.Instance.Escape_Flg && !CommentManager.Instance.Event_Flg)
         {
@@ -63,6 +71,15 @@ public class Come_List : MonoBehaviour
     public void HintCommnet(int index, int _index)
     {
         this.GetComponent<Text>().text = CommentManager.Instance.Event[index].E_Comment[_index];
+        this.GetComponent<Text>().color = EventColor;
+    }
+
+    /*** ヒント系の生成 ***/
+    public void EnemyComment(int index)
+    {
+        this.GetComponent<Text>().text = CommentManager.Instance.Enemy[index];
+        this.GetComponent<Text>().color = EnemyColor;
+        this.GetComponent<Text>().font = EnemyFont;
     }
 
     void Update()

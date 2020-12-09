@@ -9,6 +9,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     bool once_esc;
     int _EventNum; // イベント番号を入れている
     int _EventComeNum; // イベントコメント番号を入れている
+    int _EnemyNum; // 敵コメントのフラグ番号を入れている
 
     GameObject ComeObj;
     [SerializeField] GameObject Com_Prehub;
@@ -19,6 +20,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
         ComeObj = GameObject.FindGameObjectWithTag("Comment"); // UI「Comment」を入れいている
         _EventNum = 0;
         _EventComeNum = 0;
+        _EnemyNum = 0;
         once_esc = false;
     }
 
@@ -45,7 +47,14 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
             CommentManager.Instance.Event_Flg = true;
             Invoke("HintCome", Random.Range(1, 2));
         }
+        if (FlagManager.Instance.Co_Enemy[_EnemyNum])
+        {
+            Invoke("EnemyflgCome", 1);
+            _EnemyNum++;
+        }
     }
+
+    /*--------------------------------------------------------------------------------*/
 
     void HintCome()
     {
@@ -54,7 +63,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
             Debug.Log("イベント中");
             ComeObj.GetComponent<nico>().AddComment_Hint(_EventNum, _EventComeNum);
 
-            if (CommentManager.Instance.Event[_EventNum].E_Comment[_EventComeNum] != null)
+            if (CommentManager.Instance.Event[_EventNum].E_Comment[_EventComeNum+1] != null)
             {
                 switch (_EventNum)
                 {
@@ -85,11 +94,16 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     {
         if (CommentManager.Instance.Escape_Flg)
         {
-            Debug.Log("逃走中");
             ComeObj.GetComponent<nico>().AddComment_Escape();
             Invoke("EscapeFlgCome", Random.Range(1, 3));
         }
     }
+
+    public void EnemyflgCome()
+    {
+        ComeObj.GetComponent<nico>().AddComment_Enemy(_EnemyNum - 1);
+    }
+
     // 敵から逃げきった後に通常会話を生成するためだけの関数
     void addcomment()
     {

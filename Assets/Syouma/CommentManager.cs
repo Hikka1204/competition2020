@@ -314,7 +314,7 @@ public class CommentManager : MonoBehaviour
     }
     void EnemyCommentSet()
     {
-        Enemy[0] = "逃がさない…";
+        Enemy[0] = "にがさない…";
         Enemy[1] = "うぅぅ゛";
         Enemy[2] = "見つけた…";
         Enemy[3] = "あ゛あぁ゛";
@@ -324,7 +324,7 @@ public class CommentManager : MonoBehaviour
         Enemy[7] = "あの人も…";
         Enemy[8] = "あの女も…";
         Enemy[9] = "皆いなくなればいい…";
-        Enemy[10] = "あなたも逃がさない";
+        Enemy[10] = "あなたもにがさない";
     }
     void EventCommentSet()
     {

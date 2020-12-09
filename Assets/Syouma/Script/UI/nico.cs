@@ -39,7 +39,7 @@ public class nico : MonoBehaviour
         {
             Generate();
             //TextList[ComNum].GetComponent<Come_List>().RandomComment();
-            TextList[ComNum].gameObject.GetComponentInChildren<Come_List>();
+            TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().Comment();
             ComNum++;
             if (ComNum > COMEMAX) DeleteComment();
 
@@ -63,6 +63,16 @@ public class nico : MonoBehaviour
     {
         Generate();
         TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().HintCommnet(index, _index);
+
+        ComNum++;
+        if (ComNum > COMEMAX) DeleteComment();
+    }
+
+    /*** 敵のコメントを追加する処理 ***/
+    public void AddComment_Enemy(int index)
+    {
+        Generate();
+        TextList[ComNum].gameObject.GetComponentInChildren<Come_List>().EnemyComment(index);
 
         ComNum++;
         if (ComNum > COMEMAX) DeleteComment();
