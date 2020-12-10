@@ -30,5 +30,19 @@ public class Key1 : MonoBehaviour
     private void TextSwitch(byte key)
     {
         FlagManager.Instance.Key_Text[key] = true;
+        
+        // 敵コメント表示
+        switch (key)
+        {
+            case 1:
+                FlagManager.Instance.Co_Enemy[1] = true;
+                break;
+            case 2:
+                FlagManager.Instance.Co_Enemy[3] = true;
+                break;
+            case 7:
+                FlagManager.Instance.Co_Enemy[10] = true;
+                break;
+        }
     }
 }

@@ -70,11 +70,44 @@ public class Come_List : MonoBehaviour
     /*** ヒント系の生成 ***/
     public void HintCommnet(int index, int _index)
     {
-        this.GetComponent<Text>().text = CommentManager.Instance.Event[index].E_Comment[_index];
-        this.GetComponent<Text>().color = EventColor;
+        // 一部のイベントコメントを白色で表示させるための処理
+        switch (index)
+        {
+            case 0: // すべて緑色で表示されるイベント
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 9:
+            case 10:
+                this.GetComponent<Text>().text = CommentManager.Instance.Event[index].E_Comment[_index];
+                this.GetComponent<Text>().color = EventColor;
+                break;
+            case 2: // 一部白で表示されるイベント
+                if (_index < 3)
+                {
+                    this.GetComponent<Text>().text = CommentManager.Instance.Event[index].E_Comment[_index];
+                    this.GetComponent<Text>().color = EventColor;
+                }
+                else
+                    this.GetComponent<Text>().text = CommentManager.Instance.Event[index].E_Comment[_index];
+                break;
+            case 6: // 一部白で表示されるイベント
+                if (_index < 3)
+                    this.GetComponent<Text>().text = CommentManager.Instance.Event[index].E_Comment[_index];
+                else{
+                    this.GetComponent<Text>().text = CommentManager.Instance.Event[index].E_Comment[_index];
+                    this.GetComponent<Text>().color = EventColor;
+                }
+                break;
+            default: // 全て白で表示されるイベント
+                this.GetComponent<Text>().text = CommentManager.Instance.Event[index].E_Comment[_index];
+                break;
+        }
     }
 
-    /*** ヒント系の生成 ***/
+    /*** 敵コメントの生成 ***/
     public void EnemyComment(int index)
     {
         this.GetComponent<Text>().text = CommentManager.Instance.Enemy[index];

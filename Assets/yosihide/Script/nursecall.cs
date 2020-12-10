@@ -17,6 +17,7 @@ public class nursecall : MonoBehaviour
         {
             FlagManager.Instance.SerifFlg[0] = true; // 「鍵がかかっているようだ」を表示
             FlagManager.Instance.Co_Event[1] = true; // イベントコメント表示
+            FlagManager.Instance.Co_Enemy[0] = true; // 敵コメント表示
             _NurseCall.GetComponent<AudioSource>().clip = NurseCallSE;
             _NurseCall.GetComponent<AudioSource>().Play();
             //Destroy(GetComponent<nursecall>());
