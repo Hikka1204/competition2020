@@ -18,12 +18,13 @@ public class nico : MonoBehaviour
     const float Step1 = -30f;
     const float Step2 = -60f;
     const float Step3 = -90f;
+    const float Step4 = -120f;
     bool[] StepShift; 
 
     void Start()
     {
         TextList.Clear(); //Listの初期化
-        StepShift = new bool[4];
+        StepShift = new bool[5];
         Invoke("AddComment", 1); // 1秒後にコメント追加する
     }
 
@@ -100,7 +101,12 @@ public class nico : MonoBehaviour
         else if (!StepShift[3]) {
             y = Step3;
             StepShift[3] = true;
-            Invoke("Step3Reset", 1);
+            Invoke("Step3Reset", 2);
+        }
+        else if (!StepShift[4]) {
+            y = Step4;
+            StepShift[4] = true;
+            Invoke("Step4Reset", 1);
         }
 
         TextList[ComNum].transform.position = new Vector3(x, y, 0f);
@@ -131,5 +137,9 @@ public class nico : MonoBehaviour
     void Step3Reset()
     {
         StepShift[3] = false;
+    }
+    void Step4Reset()
+    {
+        StepShift[4] = false;
     }
 }

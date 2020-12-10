@@ -41,16 +41,19 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
             }
         }
 
-        // ヒント系コメントを0～順にコメントさせている
+        // ヒント系コメントを0～順生成させている
         if (FlagManager.Instance.Co_Event[_EventNum] && !CommentManager.Instance.Event_Flg)
         {
             CommentManager.Instance.Event_Flg = true;
             Invoke("HintCome", Random.Range(1, 2));
         }
+
+        // 敵のコメントを0～順に生成させている
         if (FlagManager.Instance.Co_Enemy[_EnemyNum])
         {
-            Invoke("EnemyflgCome", 1);
+            //Invoke("EnemyflgCome", 1);
             _EnemyNum++;
+            EnemyflgCome();
         }
     }
 

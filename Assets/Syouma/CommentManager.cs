@@ -320,7 +320,7 @@ public class CommentManager : MonoBehaviour
         Enemy[3] = "あ゛あぁ゛";
         Enemy[4] = "どうして";
         Enemy[5] = "許さない…";
-        Enemy[6] = "あ゛あぁぁ";
+        Enemy[6] = "あ゛あぁぁ゛";
         Enemy[7] = "あの人も…";
         Enemy[8] = "あの女も…";
         Enemy[9] = "皆いなくなればいい…";
@@ -342,11 +342,11 @@ public class CommentManager : MonoBehaviour
         Event[1].E_Comment[1] = "りんご星人：音なってるぞ？";
         Event[1].E_Comment[2] = "みかママ：そういえば受付にナースコールあったよ";
         // 幽霊と初対面した際
-        Event[2].E_Comment[0] = "きな粉：おいおいまじかよ";
-        Event[2].E_Comment[1] = "りんご星人：うわあぁぁ";
-        Event[2].E_Comment[2] = "あげぱん：完全に見えてますが…";
-        Event[2].E_Comment[3] = "かおり：もう嫌なんだけど！";
-        Event[2].E_Comment[4] = "ちょんまげ男：ここかなりやばいって!!";
+        Event[2].E_Comment[0] = "きな粉：ついて行ってみません？";
+        Event[2].E_Comment[1] = "りんご星人：バレないように追いかけよう！";
+        Event[2].E_Comment[2] = "ちょんまげ男：お前も行けｗ";
+        Event[2].E_Comment[3] = "あげぱん：完全に見えてますが…";
+        Event[2].E_Comment[4] = "かおり：もう嫌なんだけど！";
         // ナースコールを止めて受付から出る、遠くで扉の音が鳴ったタイミング
         Event[3].E_Comment[0] = "きな粉：さっきの奴じゃない？";
         Event[3].E_Comment[1] = "りんご星人：ドアが開く音したよね？";
