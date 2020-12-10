@@ -5,7 +5,7 @@ using UnityEngine;
 public class Key1 : MonoBehaviour
 {
 
-    [SerializeField]private byte _KeyFlg = 1;
+    [SerializeField] private byte _KeyFlg = 1;
     [SerializeField] private byte _fmgFlg = 2;
     [SerializeField] private FlgManeger fmg;
     [SerializeField] private bool StartSetActive = true;
@@ -29,6 +29,9 @@ public class Key1 : MonoBehaviour
 
     private void TextSwitch(byte key)
     {
-        FlagManager.Instance.Key_Text[key] = true;
+        if (_KeyFlg != 2 && _KeyFlg != 3)
+        {
+            FlagManager.Instance.Key_Text[key] = true;
+        }
     }
 }

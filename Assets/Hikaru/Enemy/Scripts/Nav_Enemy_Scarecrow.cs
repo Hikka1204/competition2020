@@ -18,14 +18,14 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     [SerializeField] private float _SearchRate; //探索時間が過ぎるとまた別の目的地に行く
     [SerializeField] private Vector3[] Location_Nav;
     [SerializeField] private float _TrackingRate;   //追いかける時間
-    [SerializeField] private AudioClip _TrackingSE;
-    [SerializeField] private AudioClip _DeathSE;
-    [SerializeField] private float MaxSpeed = 4.5f;
-    [SerializeField] private float MinSpeed = 2.5f;
-    [SerializeField] private float Deceleration_speed = 0.01f;
+    [SerializeField] private AudioClip _TrackingSE; //追いかけるときのSE
+    [SerializeField] private AudioClip _DeathSE;    //プレイヤーを捕まえた時のSE
+    [SerializeField] private float MaxSpeed = 4.5f; //エネミーの最大スピード
+    [SerializeField] private float MinSpeed = 2.5f; //エネミーの最小スピード
+    [SerializeField] private float Deceleration_speed = 0.01f;  //エネミーのスピードを毎フレーム減らす
     private float EnemySpeed;
 
-    private AudioSource audio;
+    private AudioSource audio;  //AudioSource Component格納用
     NavMeshAgent Enemy_Nav;     //このオブジェクトについてるナビメッシュ
     private Animator Anim;      //アニメーション格納
     private bool Over_Flg;      //ゲームオーバーフラグ
@@ -39,6 +39,8 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     private bool ForeverTrackingflg;    //ずっと追いかけるかどうか
     private GameObject TrackingEnemy;   //子のプレイヤー索敵用オブジェクトの格納
     private bool floorChenge = false;   //false:地下 teue:一階
+    private bool WaitEvent = false;     //一時待機させる
+    private Quaternion IntRo;           //初期の向きを取得
 
     void Start()
     {
@@ -59,48 +61,53 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         SearchTime = _SearchRate;
         Number = 0;
         Anim.SetFloat("speed", Enemy_Nav.speed);
+        IntRo = transform.localRotation;
         SetSearchLocation();
         floorChenge = false;
     }
 
     void Update()
     {
-        Anim.SetFloat("speed", Enemy_Nav.speed);
-
-        if (Over_Flg == false)
+        if (!WaitEvent)
         {
-            if (ForeverTrackingflg)
-            {
-                SetPlayerLocation();
-            }
 
-            else if (!ForeverTrackingflg)
+            Anim.SetFloat("speed", Enemy_Nav.speed);
+
+            if (Over_Flg == false)
             {
-                if (Player_Get == false && TrackingTime > 0)
+                if (ForeverTrackingflg)
                 {
-                    TrackingTime -= Time.deltaTime;
                     SetPlayerLocation();
-                    if (TrackingTime <= 0)
+                }
+
+                else if (!ForeverTrackingflg)
+                {
+                    if (Player_Get == false && TrackingTime > 0)
                     {
-                        TrackingStatus = false;
-                        CommentManager.Instance.Escape_Flg = false;
-                        SetSearchLocation();
-                        _player_BGM.GetComponent<Player_BGM>().BGMPlay(0);
-                        audio.Stop();
+                        TrackingTime -= Time.deltaTime;
+                        SetPlayerLocation();
+                        if (TrackingTime <= 0)
+                        {
+                            TrackingStatus = false;
+                            CommentManager.Instance.Escape_Flg = false;
+                            SetSearchLocation();
+                            _player_BGM.GetComponent<Player_BGM>().BGMPlay(0);
+                            audio.Stop();
+                        }
                     }
-                }
-                else if (Player_Get == true)
-                {
-                    SetPlayerLocation();
-                }
-
-
-                if (Player_Get == false && SearchTime > 0 && TrackingTime <= 0)
-                {
-                    SearchTime -= Time.deltaTime;
-                    if (SearchTime <= 0)
+                    else if (Player_Get == true)
                     {
-                        SetSearchLocation();
+                        SetPlayerLocation();
+                    }
+
+
+                    if (Player_Get == false && SearchTime > 0 && TrackingTime <= 0)
+                    {
+                        SearchTime -= Time.deltaTime;
+                        if (SearchTime <= 0)
+                        {
+                            SetSearchLocation();
+                        }
                     }
                 }
             }
@@ -140,8 +147,12 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
     private void SetPlayerLocation()
     {
         Enemy_Nav.SetDestination(_Player_tr.gameObject.transform.position);
-        EnemySpeed -= Deceleration_speed;
-        Enemy_Nav.speed = EnemySpeed;
+        if(EnemySpeed >= MinSpeed)
+        {
+            EnemySpeed -= Deceleration_speed;
+            Enemy_Nav.speed = EnemySpeed;
+        }
+        
     }
 
     private void SetSearchLocation()
@@ -194,6 +205,7 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                     audio.clip = _TrackingSE;
                     audio.Play();
                     EnemySpeed = MaxSpeed;
+                    WaitEvent = false;
                 }
                 break;
             case 1:
@@ -210,8 +222,18 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
                 break;
 
             case 4:
+                Anim.SetFloat("speed", 0.0f);
+                Enemy_Nav.SetDestination(gameObject.transform.position);
+                WaitEvent = true;
+                break;
+            case 5:
+                Anim.SetFloat("speed", 1.0f);
+                WaitEvent = false;
+                break;
+            case 6:
                 Anim.SetTrigger("attack");
-
+                Enemy_Nav.SetDestination(gameObject.transform.position);
+                WaitEvent = true;
                 break;
         }
         //Player_Get = Get;
@@ -242,7 +264,9 @@ public class Nav_Enemy_Scarecrow : MonoBehaviour
         
         if (Over_Flg == false && collision.gameObject.tag == "Player") 
         {
-
+            var aim = collision.transform.position - this.transform.position;
+            var look = Quaternion.LookRotation(aim);
+            this.transform.localRotation = new Quaternion(IntRo.x,look.y, IntRo.z, IntRo.w);
             Enemy_Nav.SetDestination(gameObject.transform.position);
             gameObject.GetComponent<NavMeshAgent>().enabled = false;
             TrackingStatus = false;

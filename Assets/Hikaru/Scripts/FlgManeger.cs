@@ -23,6 +23,7 @@ public class FlgManeger : MonoBehaviour
     [SerializeField] private GameObject _EventCallKey;  //イベント
     [SerializeField] private GameObject _EventFirst1;   //イベント発生用当たり判定付きオブジェクト
     [SerializeField] private GameObject _EventFirst2;   //イベント発生用当たり判定付きオブジェクト
+    [SerializeField] private GameObject _EventChanging_room; //更衣室イベント用
     //flg 3
     [SerializeField] private GameObject _Reference_room_rust_key;   //資料室のカギ
     [SerializeField] private GameObject _EnterEvent1;     //範囲外に出た時
@@ -104,6 +105,7 @@ public class FlgManeger : MonoBehaviour
                     _Stairs_rust_key.gameObject.SetActive(true);
                     _letter.gameObject.SetActive(true);
                     _EventCallKey.SetActive(true);
+                    _EventChanging_room.SetActive(true);
                     Destroy(_floor65_Des);
                 }
                 break;
@@ -232,6 +234,7 @@ public class FlgManeger : MonoBehaviour
         _Operating_room_rust_key.gameObject.SetActive(true);
         _Morgue_rust_key.gameObject.SetActive(true);
         _Emergency_exit_rust_key.gameObject.SetActive(true);
+        _EventChanging_room.SetActive(true);
     }
 
 }

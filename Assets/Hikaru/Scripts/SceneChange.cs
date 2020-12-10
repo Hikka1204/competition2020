@@ -24,7 +24,7 @@ public class SceneChange : MonoBehaviour
         if(FadeRate > 0)
         {
             FadeRate -= Time.deltaTime;
-            if(FadeRate <= 0 || Input.GetMouseButtonDown(0))
+            if(FadeRate <= 0 || Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
             {
                 switch (SceneNumber)
                 {
