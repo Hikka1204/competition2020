@@ -31,7 +31,8 @@ public class FlagManager : MonoBehaviour
     }
 
     public bool[] SerifFlg = new bool[30]; // プレイヤーのセリフフラグ
-    public bool[] Co_Event = new bool[11];       // ヒント系のコメント一覧 
+    public bool[] Co_Event = new bool[11];       // イベント系のコメントフラグ
+    public bool[] Co_Enemy = new bool[11];       // 敵のコメンフラグ
     public bool[] Key_Text = new bool[30];       // ヒント系のコメント一覧 
     public int Status = 0;  // [0=序盤,1=中盤,2=終盤]
 

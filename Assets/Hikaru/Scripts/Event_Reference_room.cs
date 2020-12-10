@@ -60,11 +60,13 @@ public class Event_Reference_room : MonoBehaviour
         _eventCamera.enabled = true;
         _eventCamera.CameraNum(2);
         FlagManager.Instance.Co_Event[6] = true; // イベントコメント表示
-        yield return new WaitForSeconds(2.5f); //待つ
-        AddForce();
-        Destroy(Event_Enter_Reference_Enemy);
-        _eventCamera.CameraStop();
         yield return new WaitForSeconds(1.0f); //待つ
+        AddForce();
+        yield return new WaitForSeconds(4.0f); //待つ
+        //Destroy(Event_Enter_Reference_Enemy);
+        Event_Enter_Reference_Enemy.GetComponent<Event_Reference_Enemy>().StartEvent();
+        yield return new WaitForSeconds(2.0f); //待つ
+        _eventCamera.CameraStop();
         _p_Chara.enabled = true;
         _p_Fir.enabled = true;
         FlagManager.Instance.Co_Event[7] = true; // イベントコメント表示

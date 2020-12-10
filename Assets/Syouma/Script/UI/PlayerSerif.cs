@@ -48,6 +48,9 @@ public class PlayerSerif : MonoBehaviour
         }
     }
 
+    
+
+
     private void Key()
     {
         if (FlagManager.Instance.Key_Text[0] == true)
@@ -60,7 +63,7 @@ public class PlayerSerif : MonoBehaviour
         {
             var po = GetComponent<Text>().transform.position;
             GetComponent<Text>().transform.position = new Vector3(po.x, 60, po.z);
-            this.GetComponent<Text>().text = "地下の更衣室のカギが手に入れた\n「ここは二階じゃなくて地下があるのか…」";
+            this.GetComponent<Text>().text = "皆さん、地下の更衣室のカギだって、\nなるほどこの病院は二階じゃなくて地下があるんすね";
             if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
             {
                 ispushE = false;
@@ -74,29 +77,77 @@ public class PlayerSerif : MonoBehaviour
         }
         if (FlagManager.Instance.Key_Text[2] == true)
         {
-            this.GetComponent<Text>().text = "中央の階段のカギを手に入れた";
-            StartCoroutine(e_PlayerSerif("「これで戻れそうだ」", 2));
+            //this.GetComponent<Text>().text = "中央の階段のカギを手に入れた";
+            //StartCoroutine(e_PlayerSerif("「これで戻れそうだ」", 2));
+            var po = GetComponent<Text>().transform.position;
+            GetComponent<Text>().transform.position = new Vector3(po.x, 60, po.z);
+            this.GetComponent<Text>().text = "診察室のカギがありました\n確か入ってきたところのすぐ横でしたよね？\n階段のカギもあったし行ってみましょうか。";
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
+            {
+                ispushE = false;
+                FlagManager.Instance.Key_Text[2] = false;
+                GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
+                TextClear();
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == false) ispushE = true;
         }
         if (FlagManager.Instance.Key_Text[3] == true)
         {
-            this.GetComponent<Text>().text = "１階の診察室のカギを手に入れた";
-            StartCoroutine(e_PlayerSerif("「確か入り口の横の部屋だ」", 3));
+            //this.GetComponent<Text>().text = "１階の診察室のカギを手に入れた";
+            //StartCoroutine(e_PlayerSerif("「確か入り口の横の部屋だ」", 3));
+            var po = GetComponent<Text>().transform.position;
+            GetComponent<Text>().transform.position = new Vector3(po.x, 60, po.z);
+            this.GetComponent<Text>().text = "診察室のカギがありました\n確か入ってきたところのすぐ横でしたよね？\n階段のカギもあったし行ってみましょうか。";
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
+            {
+                ispushE = false;
+                FlagManager.Instance.Key_Text[3] = false;
+                GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
+                TextClear();
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == false) ispushE = true;
         }
         if (FlagManager.Instance.Key_Text[4] == true)
         {
-            this.GetComponent<Text>().text = "地下の資料室のカギを手に入れた";
-            StartCoroutine(e_PlayerSerif("「地下に落ちた場所のすぐ近くだったような…」", 4));
+            //this.GetComponent<Text>().text = "地下の資料室のカギを手に入れた";
+            //StartCoroutine(e_PlayerSerif("「地下に落ちた場所のすぐ近くだったような…」", 4));
+            var po = GetComponent<Text>().transform.position;
+            GetComponent<Text>().transform.position = new Vector3(po.x, 60, po.z);
+            this.GetComponent<Text>().text = "資料室のカギです…\n地下に落ちた所のすぐ近くの部屋でしたよね？\nあそこは危ないんで階段で行きます。";
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
+            {
+                ispushE = false;
+                FlagManager.Instance.Key_Text[4] = false;
+                GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
+                TextClear();
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == false) ispushE = true;
         }
         if (FlagManager.Instance.Key_Text[5] == true)
         {
-            this.GetComponent<Text>().text = "１階の手術室のカギを手に入れた";
-            StartCoroutine(e_PlayerSerif("「確か受付の前の部屋のはずだ」", 5));
+            //this.GetComponent<Text>().text = "１階の手術室のカギを手に入れた";
+            //StartCoroutine(e_PlayerSerif("「確か受付の前の部屋のはずだ」", 5));
+            var po = GetComponent<Text>().transform.position;
+            GetComponent<Text>().transform.position = new Vector3(po.x, 60, po.z);
+            this.GetComponent<Text>().text = "手術室のカギ…\n受付の前のところでしたよね？\n早めに非常口のカギ見つけてここから出たいと思います…。";
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
+            {
+                ispushE = false;
+                FlagManager.Instance.Key_Text[5] = false;
+                GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
+                TextClear();
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == false) ispushE = true;
         }
         if (FlagManager.Instance.Key_Text[6] == true)
         {
             var po = GetComponent<Text>().transform.position;
             GetComponent<Text>().transform.position = new Vector3(po.x, 60, po.z);
-            this.GetComponent<Text>().text = "地下の霊安室のカギを手に入れた\n「地下の奥…長い一本道を進んだところにあったような」";
+            this.GetComponent<Text>().text = "霊安室のカギ…\n確か地下の奥…長い廊下の先だったと思います。\nこれかなりやばい方向に進んでませんか…？無事に出られるんですかね？";
             if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
             {
                 ispushE = false;
@@ -110,8 +161,20 @@ public class PlayerSerif : MonoBehaviour
         }
         if (FlagManager.Instance.Key_Text[7] == true)
         {
-            this.GetComponent<Text>().text = "１階の非常口のカギを手に入れた";
-            StartCoroutine(e_PlayerSerif("「やった！これで出られる…!!」", 7));
+            //this.GetComponent<Text>().text = "１階の非常口のカギを手に入れた";
+            //StartCoroutine(e_PlayerSerif("「やった！これで出られる…!!」", 7));
+            var po = GetComponent<Text>().transform.position;
+            GetComponent<Text>().transform.position = new Vector3(po.x, 60, po.z);
+            this.GetComponent<Text>().text = "非常口のカギ…！\nやった…やった！皆さん！\nこれでやっと出られます…！ありがとうございます!!";
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
+            {
+                ispushE = false;
+                FlagManager.Instance.Key_Text[7] = false;
+                GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
+                TextClear();
+                return;
+            }
+            if (Input.GetKeyDown(KeyCode.E) && ispushE == false) ispushE = true;
         }
         if (FlagManager.Instance.Key_Text[8] == true)
         {
@@ -135,17 +198,6 @@ public class PlayerSerif : MonoBehaviour
     {
         Invoke("TextClear", WaitTime);
         FlagManager.Instance.Key_Text[i] = false;
-    }
-
-
-    private IEnumerator e_PlayerSerif(string P_serif,int i)
-    {
-        FlagManager.Instance.Key_Text[i] = false;
-        yield return new WaitForSeconds(WaitTime); //待つ
-        this.GetComponent<Text>().text = P_serif;
-        yield return new WaitForSeconds(WaitTime); //待つ
-        TextClear();
-        yield break;
     }
 
     void TextClear()

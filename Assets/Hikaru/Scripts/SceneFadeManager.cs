@@ -21,11 +21,12 @@ public class SceneFadeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
         SetRGBA(0, 0, 0, 1);
         //シーン遷移が完了した際にフェードインを開始するように設定
         SceneManager.sceneLoaded += fadeInStart;
     }
+
     //シーン遷移が完了した際にフェードインを開始するように設定
     void fadeInStart(Scene scene, LoadSceneMode mode)
     {
