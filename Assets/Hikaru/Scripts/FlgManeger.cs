@@ -16,7 +16,6 @@ public class FlgManeger : MonoBehaviour
     [SerializeField] private GameObject _floor65_Des;  //デストロイする床
     [SerializeField] private GameObject _breakFloor; //壊れるオブジェクトの追加
     [SerializeField] private GameObject _exitDoorOpenSE;    //離れたらドアが開く音を鳴らすオブジェクト
-    [SerializeField] private GameObject _Staging_Door;  //イベント発生用ドア
     [SerializeField] private GameObject _Examination_room_rust_key; //診察室のカギ
     [SerializeField] private GameObject _Stairs_rust_key; //階段のカギ
     [SerializeField] private GameObject _letter;        //手紙
@@ -56,9 +55,16 @@ public class FlgManeger : MonoBehaviour
     [SerializeField] GlitchEffect _p_CameraGl;
     [SerializeField] private EventCamera _eventCamera;
     [SerializeField] private Hand _hand;
-    [SerializeField] private Staging_Door _staging_Door;
     [SerializeField] private GameObject AddForce_Rubble;
     [SerializeField] private GameObject WallDes;    //消す壁
+
+    //血痕
+    [SerializeField] private GameObject Event1;
+    [SerializeField] private GameObject Event2;
+    [SerializeField] private GameObject Event3;
+    [SerializeField] private GameObject Event4;
+    [SerializeField] private GameObject Event5;
+    [SerializeField] private GameObject Event6;
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +103,8 @@ public class FlgManeger : MonoBehaviour
             case 2: //更衣室の鍵を拾った時
                 for (int i = 0; i < 2; i++)
                 {
+                    Event1.SetActive(false);
+                    Event2.SetActive(true);
                     _breakFloor.gameObject.SetActive(true);
                     _exitDoorOpenSE.gameObject.SetActive(true);
                     _EventFirst1.gameObject.SetActive(true);
@@ -110,6 +118,8 @@ public class FlgManeger : MonoBehaviour
                 }
                 break;
             case 3: //更衣室の手紙を読んだ時
+                Event2.SetActive(false);
+                Event3.SetActive(true);
                 FlagManager.Instance.Status = 1;
                 _Reference_room_rust_key.gameObject.SetActive(true);
                 _EnterEvent1.gameObject.SetActive(true);
@@ -117,27 +127,33 @@ public class FlgManeger : MonoBehaviour
                 _NoteOb.gameObject.SetActive(true);
                 break;
             case 4: //診察室のノートを読んだ時
+                Event3.SetActive(false);
+                Event4.SetActive(true);
                 _cameraRoll.gameObject.SetActive(true);
                 _bloodHandP.SetActive(true);
                 _Event_Enter_Reference_room.gameObject.SetActive(true);
                 break;
             case 5: //資料室でイベントが起きた時
+                Event4.SetActive(false);
+                Event5.SetActive(true);
                 FlagManager.Instance.Status = 2;
                 _Operating_room_rust_key.gameObject.SetActive(true);
                 _operating_room_lighting1.GetComponent<op_room_lighting>().enabled = true;
                 _operating_room_lighting2.GetComponent<op_room_lighting>().enabled = true;
                 break;
             case 6: //手術室のカギを取ったら
-                
                 _Morgue_rust_key.gameObject.SetActive(true);
                 break;
             case 7: //霊安室のカギを取ったら
+                Event5.SetActive(false);
+                Event6.SetActive(true);
                 _Emergency_exit_rust_key.gameObject.SetActive(true);
                 _ZoneOP.SetActive(false);
                 _operating_room_lighting1.GetComponent<op_room_lighting>().setIsEvent(true);
                 _operating_room_lighting2.GetComponent<op_room_lighting>().setIsEvent(true);
                 break;
             case 8: //非常口のカギを取ったら
+                Event6.SetActive(true);
                 _EnemySpawn_P.SetActive(true);
                 _SafeZone.SetActive(false);
                 break;
@@ -182,8 +198,6 @@ public class FlgManeger : MonoBehaviour
                     _Examination_room_rust_key.gameObject.SetActive(false);
                     _Stairs_rust_key.gameObject.SetActive(false);
                     _letter.gameObject.SetActive(false);
-                    _Staging_Door.GetComponent<Staging_Door>().enabled = true;
-                    _Staging_Door.GetComponent<Staging_Door>().Respawn();
                     _enemy.SetActive(false);
                     _hand.SetKey(0);
                     flg = 1;
