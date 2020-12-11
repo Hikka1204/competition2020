@@ -9,6 +9,10 @@ public class SafeZone : MonoBehaviour
     
     [SerializeField] private GameObject Enemy;
 
+    private bool isEvent = false;
+    private bool isHit = false;
+
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")

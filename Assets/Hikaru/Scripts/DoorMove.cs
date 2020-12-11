@@ -78,14 +78,14 @@ public class DoorMove : MonoBehaviour {
             }
         }
 
-        if(IntKey != 0 && Input.GetKey(KeyCode.R) && IntKey >= Hand.GetComponent<Hand>().GetKey())
-        {
-            if (_KeyFlg != IntKey)
-            {
-                _KeyFlg = IntKey;
-            }
+        //if(IntKey != 0 && Input.GetKey(KeyCode.R) && IntKey >= Hand.GetComponent<Hand>().GetKey())
+        //{
+        //    if (_KeyFlg != IntKey)
+        //    {
+        //        _KeyFlg = IntKey;
+        //    }
             
-        }
+        //}
         
     }
 
