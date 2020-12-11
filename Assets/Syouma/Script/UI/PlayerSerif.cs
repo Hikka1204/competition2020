@@ -6,17 +6,19 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerSerif : MonoBehaviour
 {
+
     const float WaitTime = 3f; // セリフの表示時間
     private bool ispushE = false;
+    private bool isDoor = false;
+    private Vector3 Intpo;  //初期場所
     [SerializeField] CharacterController _p_Chara;
     [SerializeField] FirstPersonController _p_Fir;
-
-
-    private
 
     void Start()
     {
         ispushE = false;
+        isDoor = false;
+        Intpo = gameObject.transform.position;
     }
 
     void Update()
@@ -30,7 +32,18 @@ public class PlayerSerif : MonoBehaviour
         // No.0 : 鍵がない状態で出口を調べた時のセリフ
         if (FlagManager.Instance.SerifFlg[0] == true)
         {
-            this.GetComponent<Text>().text = "鍵がかかっているようだ";
+            
+            if (isDoor == true)
+            {
+                this.GetComponent<Text>().text = "カギがかかってる…探さなきゃ…！…";
+            }
+            if (isDoor == false)
+            {
+                isDoor = true;
+                this.GetComponent<Text>().text = "カギがかかってる…";
+                FlagManager.Instance.SerifFlg[0] = false;
+            }
+            //this.GetComponent<Text>().text = "鍵がかかっているようだ";
             TextControl(0);
         }
 
@@ -52,6 +65,14 @@ public class PlayerSerif : MonoBehaviour
             this.GetComponent<Text>().text = "どこかで「出口」を探さないと！";
             TextControl(3);
         }
+
+        if (FlagManager.Instance.SerifFlg[4] == true)
+        {
+            this.GetComponent<Text>().text = "非常口にカギがかかってる…\nカギを探さないとここから出られない…？";
+            var po = GetComponent<Text>().transform.position;
+            GetComponent<Text>().transform.position = new Vector3(po.x, 90, po.z);
+            TextControl(4);
+        }
     }
 
     
@@ -61,7 +82,19 @@ public class PlayerSerif : MonoBehaviour
     {
         if (FlagManager.Instance.Key_Text[0] == true)
         {
-            this.GetComponent<Text>().text = "カギがかかっている";
+
+            if (isDoor == true)
+            {
+                this.GetComponent<Text>().text = "カギがかかってる…探さなきゃ…！";
+            }
+            if (isDoor == false)
+            {
+                isDoor = true;
+                this.GetComponent<Text>().text = "カギがかかってる…";
+                FlagManager.Instance.Key_Text[0] = false;
+            }
+
+            //this.GetComponent<Text>().text = "カギがかかっている";
 
             KeyControl(0);
         }
@@ -237,5 +270,6 @@ public class PlayerSerif : MonoBehaviour
     void TextClear()
     {
         this.GetComponent<Text>().text = "";
+        GetComponent<Text>().transform.position = new Vector3(Intpo.x, Intpo.y, Intpo.z);
     }
 }

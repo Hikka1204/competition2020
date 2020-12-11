@@ -72,6 +72,13 @@ public class DoorMove : MonoBehaviour {
             }
             else //鍵を持たずに鍵付きドアを開けようとしたとき
             {
+                if(_KeyFlg == 7)
+                {
+                    FlagManager.Instance.SerifFlg[4] = true;
+                    audioSource.clip = _KeyOutSE;
+                    audioSource.Play();
+                    return;
+                }
                 FlagManager.Instance.Key_Text[0] = true;
                 audioSource.clip = _KeyOutSE;
                 audioSource.Play();
