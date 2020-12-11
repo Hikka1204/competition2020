@@ -14,11 +14,11 @@ public class nico : MonoBehaviour
     // コメントの出現座標
     const float x =　0f;
     float y;
-    const float Step0 = 0f; // 各階層のY座標
-    const float Step1 = -30f;
-    const float Step2 = -60f;
-    const float Step3 = -90f;
-    const float Step4 = -120f;
+    const float Step0 = -10f; // 各階層のY座標
+    const float Step1 = -55f;
+    const float Step2 = -100f;
+    const float Step3 = -145f;
+    const float Step4 = -190f;
     bool[] StepShift; 
 
     void Start()
@@ -44,7 +44,7 @@ public class nico : MonoBehaviour
             ComNum++;
             if (ComNum > COMEMAX) DeleteComment();
 
-            Invoke("AddComment", Random.Range(1, 6));
+            Invoke("AddComment", Random.Range(1, 7));
             //Invoke("AddComment", 1); /*デバッグ用*/
         }
     }

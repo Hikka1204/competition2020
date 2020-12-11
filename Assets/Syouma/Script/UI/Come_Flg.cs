@@ -9,6 +9,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     bool once_esc;
     int _EventNum; // イベント番号を入れている
     int _EventComeNum; // イベントコメント番号を入れている
+    int old_EventComeNum; // ひとつ前のイベントコメント番号を入れている
     int _EnemyNum; // 敵コメントのフラグ番号を入れている
 
     GameObject ComeObj;
@@ -20,6 +21,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
         ComeObj = GameObject.FindGameObjectWithTag("Comment"); // UI「Comment」を入れいている
         _EventNum = 0;
         _EventComeNum = 0;
+        old_EventComeNum = -1;
         _EnemyNum = 0;
         once_esc = false;
     }
