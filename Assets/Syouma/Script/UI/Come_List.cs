@@ -24,7 +24,7 @@ public class Come_List : MonoBehaviour
         if (!CommentManager.Instance.Escape_Flg && !CommentManager.Instance.Event_Flg)
         {
             // CommentManagerの変数を使えるようにしている
-            //C_manager = GameObject.FindGameObjectWithTag("CommentManager").GetComponent<CommentManager>();
+            // C_manager = GameObject.FindGameObjectWithTag("CommentManager").GetComponent<CommentManager>();
             // コメントする人をランダムで決める
             NameNum = Random.Range(0, CommentManager.Instance.Audience.Length);
 
@@ -32,26 +32,43 @@ public class Come_List : MonoBehaviour
             switch (FlagManager.Instance.Status)
             {
                 case 0:// 序盤
-                    do
-                    {
-                        // 序盤のコメントがない人だと人を変える
-                        if (CommentManager.Instance.Audience[NameNum].Comment_1[0] == "") NameNum = 14;
-                        do
-                        {
+                       // 序盤のコメントがない人だと人を変える
+                    if (CommentManager.Instance.Audience[NameNum].Comment_1[0] == "") NameNum = 14;
+                    do{
+                        do{
                             ComeNum = Random.Range(0, CommentManager.Instance.Audience[NameNum].Comment_1.Length);
-                        } while (CommentManager.Instance.Audience[NameNum].Comment_1[ComeNum] == null);
+                        } while (CommentManager.Instance.Audience[NameNum].Comment_1[ComeNum] == null);// 配列が５個だから
                         Check = CommentManager.Instance.Audience[NameNum].Name + CommentManager.Instance.Audience[NameNum].Comment_1[ComeNum];
-                    }
-                    while (Check == CommentManager.Instance.Previous); // ひとつ前のコメントと同じが調べている
+                    }while (Check == CommentManager.Instance.Previous); // ひとつ前のコメントと同じが調べている
 
                     this.GetComponent<Text>().text += CommentManager.Instance.Audience[NameNum].Name + CommentManager.Instance.Audience[NameNum].Comment_1[ComeNum];
                     CommentManager.Instance.Previous = this.GetComponent<Text>().text;
                     break;
                 case 1:// 中盤
-                    this.GetComponent<Text>().text += CommentManager.Instance.Audience[NameNum].Comment_2[Random.Range(0, CommentManager.Instance.Audience[NameNum].Comment_2.Length)];
+                       // 中盤のコメントがない人だと人を変える
+                    if (CommentManager.Instance.Audience[NameNum].Comment_2[0] == "") NameNum = 14;
+                    do{
+                        do{
+                            ComeNum = Random.Range(0, CommentManager.Instance.Audience[NameNum].Comment_2.Length);
+                        } while (CommentManager.Instance.Audience[NameNum].Comment_1[ComeNum] == null);
+                        Check = CommentManager.Instance.Audience[NameNum].Name + CommentManager.Instance.Audience[NameNum].Comment_2[ComeNum];
+                    }while (Check == CommentManager.Instance.Previous); // ひとつ前のコメントと同じが調べている
+
+                    this.GetComponent<Text>().text += CommentManager.Instance.Audience[NameNum].Name + CommentManager.Instance.Audience[NameNum].Comment_2[ComeNum];
+                    CommentManager.Instance.Previous = this.GetComponent<Text>().text;
                     break;
                 case 2:// 終盤
-                    this.GetComponent<Text>().text += CommentManager.Instance.Audience[NameNum].Comment_3[Random.Range(0, CommentManager.Instance.Audience[NameNum].Comment_3.Length)];
+                       // 終盤のコメントがない人だと人を変える
+                    if (CommentManager.Instance.Audience[NameNum].Comment_3[0] == "") NameNum = 14;
+                    do{
+                        do{
+                            ComeNum = Random.Range(0, CommentManager.Instance.Audience[NameNum].Comment_3.Length);
+                        } while (CommentManager.Instance.Audience[NameNum].Comment_3[ComeNum] == null);
+                        Check = CommentManager.Instance.Audience[NameNum].Name + CommentManager.Instance.Audience[NameNum].Comment_3[ComeNum];
+                    }while (Check == CommentManager.Instance.Previous); // ひとつ前のコメントと同じが調べている
+
+                    this.GetComponent<Text>().text += CommentManager.Instance.Audience[NameNum].Name + CommentManager.Instance.Audience[NameNum].Comment_3[ComeNum];
+                    CommentManager.Instance.Previous = this.GetComponent<Text>().text;
                     break;
             }
         }
