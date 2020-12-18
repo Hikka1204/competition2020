@@ -11,7 +11,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
     int _EventComeNum; // イベントコメント番号を入れている
     int _EnemyNum; // 敵コメントのフラグ番号を入れている
 
-    const float timeOut = 10f; // イベントコメントのインターバル(秒)
+    const float timeOut = 40f; // イベントコメントのインターバル(秒)
     float timeElapsed; // 経過時間を入れる変数
 
     GameObject ComeObj;
@@ -93,6 +93,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
                     Invoke("HintCome", Random.Range(1, 3));
                     break;
             }
+            _EventComeNum++;
         }
         else
         {
@@ -102,7 +103,7 @@ public class Come_Flg : SingletonMonoBehaviour<Come_Flg>
             _EventComeNum = 0;
             Invoke("addcomment", Random.Range(2, 4));
         }
-        _EventComeNum++;
+        
         
     }
 
