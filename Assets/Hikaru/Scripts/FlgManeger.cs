@@ -169,11 +169,13 @@ public class FlgManeger : MonoBehaviour
                 _Cylinder_Reference_room002.StopLight();
                 break;
             case 6: //手術室のカギを取ったら
+                FlagManager.Instance.Eventroop = false;
                 _Morgue_rust_key.gameObject.SetActive(true);
                 break;
             case 7: //霊安室のカギを取ったら
                 Event5.SetActive(false);
                 Event6.SetActive(true);
+                FlagManager.Instance.Eventroop = true;
                 _Emergency_exit_rust_key.gameObject.SetActive(true);
                 _ZoneOP.SetActive(false);
                 _operating_room_lighting1.GetComponent<op_room_lighting>().setIsEvent(true);
@@ -185,6 +187,7 @@ public class FlgManeger : MonoBehaviour
                 break;
             case 8: //非常口のカギを取ったら
                 Event6.SetActive(true);
+                FlagManager.Instance.Eventroop = false;
                 _EnemySpawn_P.SetActive(true);
                 _SafeZone.SetActive(false);
                 Cylinder_Morgue_light_001.StopLight();

@@ -86,7 +86,7 @@ public class CommentManager : MonoBehaviour
 
         Audience[0].Name = "かおり：";
         Audience[0].Comment_1[0] = "怖くないの？";
-        Audience[0].Comment_1[1] = "初見です。";
+        Audience[0].Comment_1[1] = "無事帰れますように";
         Audience[0].Comment_1[2] = "気を付けてください";
         Audience[0].Comment_1[3] = "チャンネル登録しました";
         Audience[0].Comment_1[4] = "無理しないでくださいね";
@@ -143,8 +143,8 @@ public class CommentManager : MonoBehaviour
         Audience[3].Comment_3[3] = "みつからないでー";
 
         Audience[4].Name = "りんご星人：";
-        Audience[4].Comment_1[0] = "初見です";
-        Audience[4].Comment_1[1] = "こんばんわ";
+        Audience[4].Comment_1[0] = "結構暗いね";
+        Audience[4].Comment_1[1] = "こわいな～";
         Audience[4].Comment_1[2] = "雰囲気あるね";
         Audience[4].Comment_1[3] = "ほんとに何か出るのかな";
             Audience[4].Comment_2[0] = "気を付けて";
@@ -169,7 +169,7 @@ public class CommentManager : MonoBehaviour
         Audience[5].Comment_3[2] = "もう無理、見れない";
 
         Audience[6].Name = "あげパン：";
-        Audience[6].Comment_1[0] = "こんばんわ";
+        Audience[6].Comment_1[0] = "結構もろくなってるな";
         Audience[6].Comment_1[1] = "一人ですか？";
         Audience[6].Comment_1[2] = "雰囲気やばいですね";
             Audience[6].Comment_2[0] = "ここやばいね";
@@ -314,23 +314,23 @@ public class CommentManager : MonoBehaviour
     }
     void EnemyCommentSet()
     {
-        Enemy[0] = "にがさない…";
-        Enemy[1] = "うぅぅ゛";
-        Enemy[2] = "見つけた…";
-        Enemy[3] = "あ゛あぁ゛";
-        Enemy[4] = "どうして";
-        Enemy[5] = "許さない…";
-        Enemy[6] = "あ゛あぁぁ゛";
-        Enemy[7] = "あの人も…";
+        Enemy[0] = "にがさない…"; // 非常口のドアに触れたら
+        Enemy[1] = "うぅぅ゛"; // ナースコールが止まって、カギを取ったら
+        Enemy[2] = "見つけた…"; // 地下に落ちて最初の曲がり角を曲がったら  
+        Enemy[3] = "あ゛あぁ゛"; // 更衣室でカギを取ったら
+        Enemy[4] = "どうして"; // 地上に戻ったら
+        Enemy[5] = "許さない…"; //階段で地下に行ったら
+        Enemy[6] = "あ゛あぁぁ゛"; // 地上に戻り、手術室に向かっている途中で
+        Enemy[7] = "あの人も…"; // 霊安室に向かうまで
         Enemy[8] = "あの女も…";
         Enemy[9] = "皆いなくなればいい…";
-        Enemy[10] = "あなたもにがさない";
+        Enemy[10] = "あなたもにがさない"; // 最後のカギを取り
     }
     void EventCommentSet()
     {
         for (int i = 0; i < Event.Length; i++)
         {
-            Event[i].E_Comment = new string[9];
+            Event[i].E_Comment = new string[10];
         }
 
         // OPムービーが終わった後で

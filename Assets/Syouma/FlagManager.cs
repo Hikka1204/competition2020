@@ -35,7 +35,7 @@ public class FlagManager : MonoBehaviour
     public bool[] Co_Enemy = new bool[11];       // 敵のコメンフラグ
     public bool[] Key_Text = new bool[30];       // ヒント系のコメント一覧 
     public int Status = 0;  // [0=序盤,1=中盤,2=終盤]
-
+    public bool Eventroop; // イベントコメントをループ生成させるフラグ
 
     [ContextMenu("ResetFlags")]
 	public void ResetFlags()
