@@ -6,7 +6,10 @@ public class TextController : MonoBehaviour
 {
     void Start()
     {
-        transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
+        if (this.gameObject.name.Contains("Staff"))
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        else if(this.gameObject.name.Contains("Room"))
+        transform.localScale = new Vector3(-0.15f, 0.15f, 0.1f);
     }
 
     void Update()
