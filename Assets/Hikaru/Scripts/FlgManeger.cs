@@ -23,24 +23,38 @@ public class FlgManeger : MonoBehaviour
     [SerializeField] private GameObject _EventFirst1;   //イベント発生用当たり判定付きオブジェクト
     [SerializeField] private GameObject _EventFirst2;   //イベント発生用当たり判定付きオブジェクト
     [SerializeField] private GameObject _EventChanging_room; //更衣室イベント用
+    [SerializeField] private Light_Hint _Cylinder_Changing_room_001;    //更衣室までのライト01
+    [SerializeField] private Light_Hint _Cylinder_Changing_room_002;    //更衣室までのライト02
+
     //flg 3
     [SerializeField] private GameObject _Reference_room_rust_key;   //資料室のカギ
     [SerializeField] private GameObject _EnterEvent1;     //範囲外に出た時
     [SerializeField] private GameObject _EnterEvent2;     //範囲外に出た時
     [SerializeField] private GameObject _NoteOb;        //ノートオブジェクト
+    [SerializeField] private Light_Hint _Cylinder_Examination_room001;    //診察室までのライト01
+    [SerializeField] private Light_Hint _Cylinder_Examination_room002;    //診察室までのライト02
     //flg 4
     [SerializeField] private GameObject _cameraRoll;     //カメラ回す用オブジェクト イベントに使う
     [SerializeField] private GameObject _bloodHandP;    //血の手の親オブジェクト
     [SerializeField] private GameObject _Event_Enter_Reference_room;    //資料室のイベント
+    [SerializeField] private Light_Hint _Cylinder_Reference_room001;    //資料室までのライト01
+    [SerializeField] private Light_Hint _Cylinder_Reference_room002;    //資料室までのライト02
+
     //flg 5
     [SerializeField] private GameObject _Operating_room_rust_key; //手術室のカギ
     [SerializeField] private GameObject _operating_room_lighting1;  //手術室の点灯
     [SerializeField] private GameObject _operating_room_lighting2;  //手術室の点灯
     //flg 6
     [SerializeField] private GameObject _Morgue_rust_key; //霊安室のカギ
+
     //flg 7
     [SerializeField] private GameObject _ZoneOP;
     [SerializeField] private GameObject _Emergency_exit_rust_key; //非常口のカギ
+    [SerializeField] private Light_Hint Cylinder_Morgue_light_001;    //霊安室までのライト01
+    [SerializeField] private Light_Hint Cylinder_Morgue_light_002;    //霊安室までのライト02
+    [SerializeField] private Light_Hint Cylinder_Morgue_light_003;    //霊安室までのライト03
+    [SerializeField] private Light_Hint Cylinder_Morgue_light_004;    //霊安室までのライト04
+
     //flg 8
     [SerializeField] private GameObject _EnemySpawn_P;  //エネミーのスポーンの親
     [SerializeField] private GameObject _SafeZone;
@@ -114,6 +128,8 @@ public class FlgManeger : MonoBehaviour
                     _letter.gameObject.SetActive(true);
                     _EventCallKey.SetActive(true);
                     _EventChanging_room.SetActive(true);
+                    _Cylinder_Changing_room_001.StartLight();
+                    _Cylinder_Changing_room_002.StartLight();
                     Destroy(_floor65_Des);
                 }
                 break;
@@ -125,6 +141,10 @@ public class FlgManeger : MonoBehaviour
                 _EnterEvent1.gameObject.SetActive(true);
                 _EnterEvent2.gameObject.SetActive(true);
                 _NoteOb.gameObject.SetActive(true);
+                //_Cylinder_Changing_room_001.StopLight();
+                _Cylinder_Changing_room_002.StopLight();
+                _Cylinder_Examination_room001.StartLight();
+                _Cylinder_Examination_room002.StartLight();
                 break;
             case 4: //診察室のノートを読んだ時
                 Event3.SetActive(false);
@@ -132,6 +152,11 @@ public class FlgManeger : MonoBehaviour
                 _cameraRoll.gameObject.SetActive(true);
                 _bloodHandP.SetActive(true);
                 _Event_Enter_Reference_room.gameObject.SetActive(true);
+                _Cylinder_Changing_room_001.StopLight();
+                _Cylinder_Examination_room001.StopLight();
+                _Cylinder_Examination_room002.StopLight();
+                _Cylinder_Reference_room001.StartLight();
+                _Cylinder_Reference_room002.StartLight();
                 break;
             case 5: //資料室でイベントが起きた時
                 Event4.SetActive(false);
@@ -140,6 +165,8 @@ public class FlgManeger : MonoBehaviour
                 _Operating_room_rust_key.gameObject.SetActive(true);
                 _operating_room_lighting1.GetComponent<op_room_lighting>().enabled = true;
                 _operating_room_lighting2.GetComponent<op_room_lighting>().enabled = true;
+                _Cylinder_Reference_room001.StopLight();
+                _Cylinder_Reference_room002.StopLight();
                 break;
             case 6: //手術室のカギを取ったら
                 _Morgue_rust_key.gameObject.SetActive(true);
@@ -151,11 +178,19 @@ public class FlgManeger : MonoBehaviour
                 _ZoneOP.SetActive(false);
                 _operating_room_lighting1.GetComponent<op_room_lighting>().setIsEvent(true);
                 _operating_room_lighting2.GetComponent<op_room_lighting>().setIsEvent(true);
+                Cylinder_Morgue_light_001.StartLight();
+                Cylinder_Morgue_light_002.StartLight();
+                Cylinder_Morgue_light_003.StartLight();
+                Cylinder_Morgue_light_004.StartLight();
                 break;
             case 8: //非常口のカギを取ったら
                 Event6.SetActive(true);
                 _EnemySpawn_P.SetActive(true);
                 _SafeZone.SetActive(false);
+                Cylinder_Morgue_light_001.StopLight();
+                Cylinder_Morgue_light_002.StopLight();
+                Cylinder_Morgue_light_003.StopLight();
+                Cylinder_Morgue_light_004.StopLight();
                 break;
             default:
                 break;

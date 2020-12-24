@@ -15,7 +15,7 @@ public class Player_BGM : MonoBehaviour
     void Start()
     {
         audio = gameObject.GetComponent<AudioSource>();
-        BGMPlay(0);
+        //BGMPlay(0);
     }
 
     // Update is called once per frame
@@ -30,8 +30,8 @@ public class Player_BGM : MonoBehaviour
         switch (a)
         {
             case 0:
-                audio.clip = _NormalBGM;
-                audio.Play();
+                //audio.clip = _NormalBGM;
+                //audio.Play();
                 break;
             case 1:
                 audio.clip = _TrackingBGM;

@@ -29,7 +29,12 @@ public class Key1 : MonoBehaviour
 
     private void TextSwitch(byte key)
     {
-        FlagManager.Instance.Key_Text[key] = true;
+        //FlagManager.Instance.Key_Text[key] = true;
+
+        if(_KeyFlg != 2 && _KeyFlg != 3)
+        {
+            FlagManager.Instance.Key_Text[key] = true;
+        }
         
         // 敵コメント表示
         switch (key)

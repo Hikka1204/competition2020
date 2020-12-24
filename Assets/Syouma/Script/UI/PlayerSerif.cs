@@ -107,8 +107,8 @@ public class PlayerSerif : MonoBehaviour
             this.GetComponent<Text>().text = "皆さん、地下の更衣室のカギだって、\nなるほどこの病院は二階じゃなくて地下があるんすね";
             if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
             {
-                _p_Chara.enabled = true;
-                _p_Fir.enabled = true;
+                //_p_Chara.enabled = true;
+                //_p_Fir.enabled = true;
                 ispushE = false;
                 FlagManager.Instance.Key_Text[1] = false;
                 GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
@@ -211,8 +211,8 @@ public class PlayerSerif : MonoBehaviour
             this.GetComponent<Text>().text = "霊安室のカギ…\n確か地下の奥…長い廊下の先だったと思います。\nこれかなりやばい方向に進んでませんか…？\n無事に出られるんですかね？";
             if (Input.GetKeyDown(KeyCode.E) && ispushE == true)
             {
-                _p_Chara.enabled = true;
-                _p_Fir.enabled = true;
+                //_p_Chara.enabled = true;
+                //_p_Fir.enabled = true;
                 ispushE = false;
                 FlagManager.Instance.Key_Text[6] = false;
                 GetComponent<Text>().transform.position = new Vector3(po.x, po.y, po.z);
