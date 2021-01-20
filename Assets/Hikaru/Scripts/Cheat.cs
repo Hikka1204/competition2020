@@ -13,7 +13,6 @@ public class Cheat : MonoBehaviour
     private bool K2flg;
     private bool isCheat;
 
-
     [SerializeField] private GameObject _cheat_Text;
     [SerializeField] private GameObject _cheat_Help;
     [SerializeField] private GameObject _hand;
@@ -88,8 +87,6 @@ public class Cheat : MonoBehaviour
             _cheat_Text.SetActive(false);
             _cheat_Help.SetActive(false);
         }
-
-        
 
     }
 }
