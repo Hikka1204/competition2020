@@ -204,8 +204,8 @@ public class PlayerSerif : MonoBehaviour
         }
         if (FlagManager.Instance.Key_Text[6] == true)
         {
-            _p_Chara.enabled = false;
-            _p_Fir.enabled = false;
+            //_p_Chara.enabled = false;
+            //_p_Fir.enabled = false;
             var po = GetComponent<Text>().transform.position;
             GetComponent<Text>().transform.position = new Vector3(po.x, 120, po.z);
             this.GetComponent<Text>().text = "霊安室のカギ…\n確か地下の奥…長い廊下の先だったと思います。\nこれかなりやばい方向に進んでませんか…？\n無事に出られるんですかね？";

@@ -130,7 +130,8 @@ public class FlgManeger : MonoBehaviour
                     _EventChanging_room.SetActive(true);
                     _Cylinder_Changing_room_001.StartLight();
                     _Cylinder_Changing_room_002.StartLight();
-                    Destroy(_floor65_Des);
+                    //Destroy(_floor65_Des);
+                    _floor65_Des.SetActive(false);
                 }
                 break;
             case 3: //更衣室の手紙を読んだ時
@@ -189,6 +190,7 @@ public class FlgManeger : MonoBehaviour
                 Event6.SetActive(true);
                 FlagManager.Instance.Eventroop = false;
                 _EnemySpawn_P.SetActive(true);
+
                 _SafeZone.SetActive(false);
                 Cylinder_Morgue_light_001.StopLight();
                 Cylinder_Morgue_light_002.StopLight();
@@ -229,6 +231,7 @@ public class FlgManeger : MonoBehaviour
                 for(int i = 0; i < 2; i++)
                 {
                     _Changing_room_rust_key.gameObject.SetActive(true);
+                    _floor65_Des.SetActive(true);
                     _breakFloor.gameObject.SetActive(false);
                     _exitDoorOpenSE.gameObject.SetActive(false);
                     _EventFirst1.gameObject.SetActive(false);
@@ -245,28 +248,36 @@ public class FlgManeger : MonoBehaviour
             case 3://更衣室の手紙を読んだ時
                 _Changing_room_rust_key.gameObject.SetActive(true);
                 _Stairs_rust_key.gameObject.SetActive(true);
-                _EnterEvent1.gameObject.SetActive(true);
-                _EnterEvent2.gameObject.SetActive(true);
+                _EnterEvent1.gameObject.SetActive(false);
+                _EnterEvent2.gameObject.SetActive(false);
                 _hand.SetKey(1);
+                flg = 2;
                 break;
             case 4://診察室のノートを読んだ時
                 _Reference_room_rust_key.gameObject.SetActive(true);
+                _hand.SetKey(3);
+                flg = 3;
                 break;
             case 5://資料室でイベントが起きた時
                 _Operating_room_rust_key.gameObject.SetActive(true);
-                _hand.SetKey(4);
+                //_hand.SetKey(4);
+                flg = 4;
                 break;
             case 6://手術室のカギを取ったら
                 _Operating_room_rust_key.gameObject.SetActive(true);
                 _hand.SetKey(4);
+                flg = 5;
                 break;
             case 7://霊安室のカギを取ったら
                 _Morgue_rust_key.gameObject.SetActive(true);
                 AddForce_Rubble.SetActive(false);
                 WallDes.SetActive(true);
+                _hand.SetKey(5);
+                flg = 6;
                 break;
             case 8://非常口のカギを取ったら
-                
+                _hand.SetKey(6);
+                flg = 7;
                 break;
             default:
 
