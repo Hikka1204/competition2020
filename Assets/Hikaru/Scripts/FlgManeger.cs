@@ -7,6 +7,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class FlgManeger : MonoBehaviour
 {
     private int flg = 0;
+    private bool floor_flg = false; //壊れる床に触れて落ちたかどうか
+    private int desFlg = 0;
+
     //[SerializeField] private GameObject _EnemyObject;   //エネミー
     //flg 1
     [SerializeField] private GameObject _Uketuke_eve;   //地下室へ誘導するテキスト
@@ -64,6 +67,7 @@ public class FlgManeger : MonoBehaviour
     [SerializeField] private Vector3[] _enemySpawnPo = new Vector3[9];
     [SerializeField] private GameObject _FPSController;
     [SerializeField] private Vector3[] _PlayerSpawnPo = new Vector3[9];
+    [SerializeField] private Vector3 _PlayerSpawnPo_FloorFlg;
     [SerializeField] CharacterController _p_Chara;
     [SerializeField] FirstPersonController _p_Fir;
     [SerializeField] GlitchEffect _p_CameraGl;
@@ -95,17 +99,23 @@ public class FlgManeger : MonoBehaviour
         }
     }
 
-    public void GetFlg(int gflg)
+    public void FloorBreak_getFlg()
+    {
+        floor_flg = true;
+    }
+
+    public void GetFlg(int gflg)    //他のオブジェクトからのフラグの取得
     {
         if(flg < gflg)
         {
             flg = gflg;
-            InitObject();
+            desFlg = gflg;
+            InitObject();   //フラグによるオブジェクトの表示非表示
         }
         
     }
 
-    private void InitObject()
+    private void InitObject()   //フラグによるオブジェクトの表示非表示
     {
         switch (flg)
         {
@@ -216,7 +226,16 @@ public class FlgManeger : MonoBehaviour
         _eventCamera.CameraStop();
         _p_Chara.enabled = true;
         _p_Fir.enabled = true;
-        _FPSController.transform.position = _PlayerSpawnPo[flg];
+        if (flg == 1 && floor_flg)
+        {
+            _FPSController.transform.position = _PlayerSpawnPo_FloorFlg;
+        }
+        else
+        {
+            if(flg == desFlg)
+                _FPSController.transform.position = _PlayerSpawnPo[flg];
+            else if(flg == desFlg) _FPSController.transform.position = _PlayerSpawnPo[flg + 1];
+        }
 
         switch (flg)
         {
@@ -228,43 +247,46 @@ public class FlgManeger : MonoBehaviour
                 break;
             case 2://更衣室の鍵を拾った時
 
-                for(int i = 0; i < 2; i++)
-                {
-                    _Changing_room_rust_key.gameObject.SetActive(true);
-                    _floor65_Des.SetActive(true);
-                    _breakFloor.gameObject.SetActive(false);
-                    _exitDoorOpenSE.gameObject.SetActive(false);
-                    _EventFirst1.gameObject.SetActive(false);
-                    _EventFirst2.gameObject.SetActive(false);
-                    _Examination_room_rust_key.gameObject.SetActive(false);
-                    _Stairs_rust_key.gameObject.SetActive(false);
-                    _letter.gameObject.SetActive(false);
-                    _enemy.SetActive(false);
-                    _hand.SetKey(0);
-                    flg = 1;
-
-                }
+                //for(int i = 0; i < 2; i++)
+                //{
+                //    //_Changing_room_rust_key.gameObject.SetActive(true);
+                //    //_floor65_Des.SetActive(true);
+                //    _breakFloor.gameObject.SetActive(false);
+                //    _exitDoorOpenSE.gameObject.SetActive(false);
+                //    _EventFirst1.gameObject.SetActive(false);
+                //    _EventFirst2.gameObject.SetActive(false);
+                //    _Examination_room_rust_key.gameObject.SetActive(false);
+                //    _Stairs_rust_key.gameObject.SetActive(false);
+                //    _letter.gameObject.SetActive(false);
+                //    _enemy.SetActive(false);
+                //    _hand.SetKey(0);
+                //    flg = 1;
+                //}
                 break;
             case 3://更衣室の手紙を読んだ時
                 _Changing_room_rust_key.gameObject.SetActive(true);
                 _Stairs_rust_key.gameObject.SetActive(true);
                 _EnterEvent1.gameObject.SetActive(false);
                 _EnterEvent2.gameObject.SetActive(false);
+                if (flg != desFlg) return;
                 _hand.SetKey(1);
                 flg = 2;
                 break;
             case 4://診察室のノートを読んだ時
                 _Reference_room_rust_key.gameObject.SetActive(true);
+                if (flg != desFlg) return;
                 _hand.SetKey(3);
                 flg = 3;
                 break;
             case 5://資料室でイベントが起きた時
                 _Operating_room_rust_key.gameObject.SetActive(true);
+                if (flg != desFlg) return;
                 //_hand.SetKey(4);
                 flg = 4;
                 break;
             case 6://手術室のカギを取ったら
                 _Operating_room_rust_key.gameObject.SetActive(true);
+                if (flg != desFlg) return;
                 _hand.SetKey(4);
                 flg = 5;
                 break;
@@ -272,10 +294,12 @@ public class FlgManeger : MonoBehaviour
                 _Morgue_rust_key.gameObject.SetActive(true);
                 AddForce_Rubble.SetActive(false);
                 WallDes.SetActive(true);
+                if (flg != desFlg) return;
                 _hand.SetKey(5);
                 flg = 6;
                 break;
             case 8://非常口のカギを取ったら
+                if (flg != desFlg) return;
                 _hand.SetKey(6);
                 flg = 7;
                 break;

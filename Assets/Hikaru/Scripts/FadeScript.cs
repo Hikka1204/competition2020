@@ -5,24 +5,21 @@ using UnityEngine.UI;
 public class FadeScript : MonoBehaviour
 {
     float alfa;
-    private float speed = 0.005f;
+    float speed = 0.01f;
     float red, green, blue;
-    float count;
 
     void Start()
     {
-        red = GetComponent<Text>().color.r;
-        green = GetComponent<Text>().color.g;
-        blue = GetComponent<Text>().color.b;
+        red = GetComponent<Image>().color.r;
+        green = GetComponent<Image>().color.g;
+        blue = GetComponent<Image>().color.b;
+        alfa = GetComponent<Image>().color.a;
     }
 
     void Update()
     {
-        GetComponent<Text>().color = new Color(red, green, blue, alfa);
-        //alfa += speed;
-        count += speed;
-        alfa = Mathf.Abs(Mathf.Sin(count));
+        if (alfa > 255) return;
+        GetComponent<Image>().color = new Color(red, green, blue, alfa);
+        alfa += speed;
     }
-
-    
 }

@@ -13,7 +13,7 @@ public class EventCamera : MonoBehaviour
     public float speed = 0.1f;  // 補完スピードを決める
     private bool isEvent = false;
     private float firstRo;
-    private float cameraRo;
+    private float cameraRo = 0f;
     private GameObject targetObject;
     [SerializeField] GameObject FPSController;
     Camera FirstPersonCamera;
@@ -124,6 +124,7 @@ public class EventCamera : MonoBehaviour
 
     public void CameraStop()
     {
+        FirstPersonCamera = Camera.main;
         isEvent = false;
         fir.m_MouseLook.EventLookRotation(FPSController.transform, FirstPersonCamera.transform, firstRo, cameraRo);
         fir.isEventCamera = false;

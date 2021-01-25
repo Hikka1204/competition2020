@@ -6,8 +6,10 @@ public class ButtonOver : MonoBehaviour
 {
     [SerializeField] private GameObject CanvasOver;
     [SerializeField] GlitchEffect _p_CameraGl;
-    [SerializeField] FlgManeger _flgManeger;
+    //[SerializeField] FlgManeger _flgManeger;
+    [SerializeField] FadeController fadeController;
     AudioSource audio;
+    private bool isFade = false;
 
     private void Start()
     {
@@ -16,10 +18,12 @@ public class ButtonOver : MonoBehaviour
 
     public void Restart()
     {
+        if (isFade == true) return;
         audio.Play();
         _p_CameraGl.enabled = false;
-        _flgManeger.PlayerSpawn();
         CanvasOver.SetActive(false);
+        fadeController.isFadeOut = true;
+        //_flgManeger.PlayerSpawn();
     }
 
     public void End()
@@ -30,6 +34,11 @@ public class ButtonOver : MonoBehaviour
 #elif UNITY_STANDALONE
       UnityEngine.Application.Quit();
 #endif
+
+    }
+
+    private void Fade()
+    {
 
     }
 

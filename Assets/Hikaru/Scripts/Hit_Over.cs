@@ -9,7 +9,8 @@ public class Hit_Over : MonoBehaviour
     private EventCamera cameraobject;
     //[SerializeField] GameObject Over_UI;  //ゲームオーバーUI
     [SerializeField] GlitchEffect _p_CameraGl;
-    [SerializeField] private GameObject CanvasOver; 
+    [SerializeField] private GameObject CanvasOver;
+    [SerializeField] private GameObject SandStorm;
 
 
     // Start is called before the first frame update
@@ -46,6 +47,7 @@ public class Hit_Over : MonoBehaviour
         yield return new WaitForSeconds(1.0f); //待つ
         CanvasOver.SetActive(true);
         Cursor.visible = true;
+        SandStorm.SetActive(true);
 
         yield break;
     }

@@ -11,6 +11,7 @@ public class FloorBreak : MonoBehaviour
     private Vector3 IntPo;
     private GameObject[] Child = new GameObject[7];
     private Vector3[] IntPoChild = new Vector3[7];
+    [SerializeField] FlgManeger flgManeger;
 
     private void Start()
     {
@@ -73,6 +74,7 @@ public class FloorBreak : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            flgManeger.FloorBreak_getFlg();
             for (int i = 0; i < gameObject.transform.childCount; i++)
             {
                 gameObject.transform.GetChild(i).gameObject.SetActive(true);
